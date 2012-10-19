@@ -3,13 +3,16 @@
 %%
 %% which is made bsed on class 'report.cls'
 %%
-%% AUTHOR: Pedro TomÃ¡s
+%% AUTHOR: Pedro Tomás
 %%
-%% Modified by JosÃ© Rosa
+%% Modified by João Rosa
 %%		- solved juri always showing bug
 %%
+%% Modified by Márcio Nóbrega
+%%		- solved othersupervisor not showing bug
+%%		- enlarged the size of the tabular for the jury
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{thesis}[2007/07/27]
+\ProvidesClass{thesis}[2012/10/19]
 
 \typeout{}
 \typeout{--------------------------------------------------------------}
@@ -18,13 +21,13 @@
 \typeout{ +---+      Version 1.1, July 2007                            }
 \typeout{ +---+      Version 2.0, July 2007 (new IST stylesheet)       }
 \typeout{ +---+  for Instituto Superior Tecnico (IST),                 }
-\typeout{ +---+  Universidade TÃ©nica de Lisboa                         }
+\typeout{ +---+  Universidade Técnica de Lisboa                        }
 \typeout{ * Modified from 'report.cls'                                 }
 \typeout{ * Created to write Dissertations                             }
 \typeout{ * Conforms with IST Master Degree format                     }
 \typeout{ * Should conform with IST PhD Degree format (not verified)   }
 \typeout{                                                              }
-\typeout{ AUTHOR: Pedro TomÃ¡s                                          }
+\typeout{ AUTHOR: Pedro Tomás                                          }
 \typeout{--------------------------------------------------------------}
 \typeout{}
 
@@ -221,6 +224,10 @@
 	{Use the \protect\supervisor{} command in the preamble.}
 }
 
+%DEFINE COMMAND FOR: othersupervisor -> NAME OF THESIS SCIENTIFIC CO-SUPERVISOR
+\newcommand*{\othersupervisor}[1]{\th@StoreIn{\th@othersupervisor}{#1}}
+\newcommand*{\th@othersupervisor}{\relax} % command is optional 
+
 % President of Juri
 \newcommand*{\presidentofjury}[1]{\th@StoreIn{\th@presidentofjury}{#1}}
 \newcommand*{\th@presidentofjury}{\relax} % command is optional
@@ -316,15 +323,16 @@
 			\centering
 			\begin{setfont}{14}
 			   \renewcommand{\arraystretch}{1.2}
-			   \begin{tabular}{r@{~}l l}
-				   \multicolumn{3}{c}{\bfseries\textbf{J\'uri}} \\
-				   \ifthenelse{\equal{\th@presidentofjury}{\relax}}{\relax}{& Presidente: & \th@presidentofjury \\}
-				   & Orientador: & \th@supervisor \\
-				   \ifthenelse{\equal{\th@vogalofjuryone}{\relax}}{\relax}{& Vogais: & \th@vogalofjuryone \\} 
-				   \ifthenelse{\equal{\th@vogalofjurytwo}{\relax}}{\relax}{&         & \th@vogalofjurytwo \\} 
-				   \ifthenelse{\equal{\th@vogalofjurythree}{\relax}}{\relax}{&       & \th@vogalofjurythree \\} 
-				   \ifthenelse{\equal{\th@vogalofjuryfour}{\relax}}{\relax}{&        & \th@vogalofjuryfour \\} 
-				   \ifthenelse{\equal{\th@vogalofjuryfive}{\relax}}{\relax}{&        & \th@vogalofjuryfive \\} 
+			   \begin{tabular}{ll}
+				   \multicolumn{2}{c}{\bfseries\textbf{J\'uri}} \\
+				   \ifthenelse{\equal{\th@presidentofjury}{\relax}}{\relax}{Presidente: & \th@presidentofjury \\}
+				   Orientador: & \th@supervisor \\
+				   \ifthenelse{\equal{\th@othersupervisor}{\relax}}{\relax}{Co-Orientador: & \th@othersupervisor \\}
+				   \ifthenelse{\equal{\th@vogalofjuryone}{\relax}}{\relax}{Vogais: & \th@vogalofjuryone \\} 
+				   \ifthenelse{\equal{\th@vogalofjurytwo}{\relax}}{\relax}{& \th@vogalofjurytwo \\} 
+				   \ifthenelse{\equal{\th@vogalofjurythree}{\relax}}{\relax}{& \th@vogalofjurythree \\} 
+				   \ifthenelse{\equal{\th@vogalofjuryfour}{\relax}}{\relax}{& \th@vogalofjuryfour \\} 
+				   \ifthenelse{\equal{\th@vogalofjuryfive}{\relax}}{\relax}{& \th@vogalofjuryfive \\} 
 			   \end{tabular}
 			\end{setfont}
 			\\ 
