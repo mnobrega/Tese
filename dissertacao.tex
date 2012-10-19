@@ -1,0 +1,58 @@
+% Define the document style. The thesis stylesheet inherits from 'report'. 
+% I had once made a version inheriting from book. However the two versions are almost 
+% compatible. The main difference is that the other version supported 'parts'.
+% (extended from book) and this does not.
+% IST requires the thesis to be written in Arial or similar. Two arguments allow you 
+% to define the thesis font: 'Helvetica' and 'AvantGarde', which transforms normal font
+% into Helvetica or AvantGarde, respectively... dahhhh!
+\documentclass[defaultstyle,10pt,a4paper,master,Helvetica]{thesis}
+%\documentclass[defaultstyle,12pt,phd]{thesis}
+
+\input{0_cfg_misc/d_preamble}
+
+\begin{document}
+
+% This solves a pdfTeX warning about page counters related to hyperref
+% See: http://en.wikibooks.org/wiki/LaTeX/Packages/Hyperref#Problems_with_Links
+\pagenumbering{alph}
+
+\input{1_capa-resumo-indice/1_capa}
+
+\setcounter{page}{1} \pagenumbering{roman}
+
+\baselineskip 18pt % line spacing: -12pt for single spacing
+                   %               -18pt for 1 1/2 spacing
+                   %               -24pt for double spacing
+
+\input{1_capa-resumo-indice/2_agradecimentos}
+
+\input{1_capa-resumo-indice/3_resumo_abstract}
+
+% This is required for the fancy chapters
+\dominitoc
+\dominilof
+% \dominilot %(I'm not using the List of tables)
+
+\input{1_capa-resumo-indice/4_indice}
+
+% Pages number is starting now with arabic style... until now it was on roman mode
+\setcounter{page}{1} \pagenumbering{arabic}
+\baselineskip 18pt
+
+\input{2_texto_principal/1_intro}
+
+\input{2_texto_principal/2_estado_arte}
+
+\input{2_texto_principal/3_trabalho1}
+
+\input{2_texto_principal/4_trabalho2}
+
+\input{2_texto_principal/5_trabalho3}
+
+\input{2_texto_principal/6_conclusoes}
+
+\input{3_referencias-anexos/1_refs}
+
+\input{3_referencias-anexos/2_anexos}
+
+\end{document}

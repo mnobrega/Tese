@@ -1,0 +1,170 @@
+% Defines an additional alphabet... not required in most cases
+% ------------------------------------------------------------
+% \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+% PACKAGE fontenc:
+% -----------------
+% chooses T1-fonts and allows correct automatic hyphenation.
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+% PACKAGE babel:
+% ---------------
+% The 'babel' package may correct some hyphenisation issues of latex. 
+% However in most situations it is not required.
+\usepackage[portuges]{babel}
+
+% PACKAGE latexsym:
+% -----------------
+% Defines additional latex symbols. May be required for thesis with many math symbols.
+%\usepackage{latexsym}
+
+% PACKAGE amsmath, amsthm, amssymb, amsfonts:
+% -------------------------------------------
+% This package is typically required. Among many other things it adds the possibility
+% to put symbols in bold by using \boldsymbol (not \mathbf); defines additional 
+% fonts and symbols; adds the \eqref command for citing equations. I prefer the style
+% "(x.xx)" for referering to an equation than to use "equation x.xx".
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+% PACKAGE multirow, colortbl, longtable:
+% ---------------------------------------
+% These packages are most usefull for advanced tables. The first allows to join rows 
+% throuhg the command \multirow which works similarly with the command \multicolumn
+% The second package allows to color the table (both foreground and background)
+% The third package is only required when tables extend beyond the length of one page;
+% which typically does not happen and should be avoided
+\usepackage{multirow}
+\usepackage{colortbl}
+% \usepackage{longtable}
+
+% PACKAGE graphics, epsfig, subfigure, caption:
+% ---------------------------------------------
+% Packages for figures... well you will certainly need these packages, with the exception
+% of the 'caption' package. This only allows to define extra caption options.
+% Notice that subfigure allows to place figures within figures with its own caption. It
+% should be avoided to create an eps file with subfigures. That will mean that you won't be 
+% able to reference those subfigures. Instead create an EPS file (the only graphics format supported
+% by latex) for each of the subfigures and then use the command \subfigure (see below).
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage[hang,small,bf]{subfigure}
+% \usepackage[hang,small,bf]{caption}
+
+% PACKAGE algorithmic, algorithm
+% ------------------------------
+% These packages are required if you need to describe an algorithm.
+% \usepackage{algorithmic}
+% \usepackage[chapter]{algorithm}
+
+% PACKAGE natbib/cite
+% -------------------
+% The two packages are not compatible, and you should use one of the two. Notice however that the
+% IEEE BiBTeX stylesheet is imcompatible with the natbib package. If using the IEEE format, use the 
+% cite package instead
+\usepackage[square,numbers,sort&compress]{natbib}
+%\usepackage{cite}
+
+% PACKAGE acronyum
+% -----------------
+% This package is most usefull for acronyms. The package garantees that all acronyms definitions are 
+% given at the first usage. IMPORTANT: do not use acronyms in titles/captions; otherwise the definition 
+% will appear on the table of contents.
+\usepackage[printonlyused,withpage]{acronym}
+
+% PACKAGE extra_functions
+% -----------------
+% My Personal package: defines the following commands:
+% \fancychapter{chaptername) -> Prints a fancier chapter (you can also use the fancychapter package for this)
+% \hline{width} -> use for a replacement of the \hline command
+% \Mark1, \Mark2, \Mark3, ...
+\usepackage{extra_functions}
+
+% PACKAGE tocloft
+% -----------------
+% The tocloft package provides means of controlling the typographic design of the Table of Contents,
+% List of Figures and List of Tables. New kinds of `List of . . . ' can be defined.
+% The package has been tested with the tocbibind, minitoc, ccaption, subfigure, float, fncychap, and hyperref packages.
+\usepackage[subfigure]{tocloft}
+
+% PACKAGE babelbib
+% -----------------
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{portuges}
+
+% PACKAGE todonotes
+% -----------------
+% \usepackage{todonotes}
+
+% PACKAGE IEEEtrantools
+% -----------------
+% Allows customization of the IEEEtran bibliography style
+% \usepackage[retainorgcmds]{IEEEtrantools}
+
+% PACKAGE fixltx2e
+% -----------------
+% Allows the \textsubscript{} command, among other fixes
+\usepackage{fixltx2e}
+
+% PACKAGE longtable
+% -----------------
+% Use this instead of tabular when you need footnotes inside a table
+\usepackage{longtable}
+
+% PACKAGE hyperref
+% -----------------
+% Set links for references and citations in document
+% Some MiKTeX distributions have faulty PDF creators in which case this package will not work correctly
+% Long live Linux :D
+\usepackage{hyperref}
+\hypersetup{ a4paper=true,
+             colorlinks=false,
+             citecolor=red,
+             breaklinks=true,
+%            bookmarks=true,		% commented because it generated a warning
+             bookmarksnumbered=true,
+             bookmarksopen=true,
+             pdftitle={Título do PDF},
+             pdfauthor={Autor},
+             pdfsubject={Tese de Mestrado},
+             pdfcreator={LaTeX},
+             pdfkeywords={}
+}
+
+\def\chapterautorefname{Capítulo}
+\def\sectionautorefname{Secção}
+\def\subsectionautorefname{Subsecção}
+\def\figureautorefname{Figura}
+\def\tableautorefname{Tabela}
+
+% PACKAGE hypcap
+% -----------------
+% In case you use the package hyperref to create a PDF, the links to tables or figures
+% will point to the caption of the table or figure, which is always below the table or figure itself.
+% Therefore the table or figure will not be visible, it is above the pointer and one has
+% to scroll up in order to see it.
+% If you want the link point to the top of the image you can use this package
+\usepackage[all]{hypcap}
+
+% PACKAGE breakurl
+% -----------------
+% Provides breakable URLs
+% This package is designed to be loaded after hyperref to provide a breakable
+% hyperlinked \url command under DVI output
+%
+% Note: apparently not needed when using pdfTeX
+% \usepackage{breakurl}
+
+% Set paragraph counter to alphanumeric mode
+\renewcommand{\theparagraph}{\Alph{paragraph}~--}
+
+% Page formatting... It was correct for my master thesis... not sure it is still correct
+\input{0_cfg_misc/d_pagesetup}
+
+% Custom commands for automatic text
+% (remember to add {} after each one, or adjacent spaces will be suppressed)
+\newcommand{\isocless}{\mbox{ISO/IEC 14443}}
+\newcommand{\extlog}{\textit{Extended Logging}}
+\newcommand{\emv}{\nameref{sec:ea:emv}}
+
+\newcommand{\acroemph}[1]{\textit{#1}}
