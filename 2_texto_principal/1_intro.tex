@@ -3,36 +3,60 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \fancychapter{Introdução}
-\label{chap:intro}
-Um pequeno resumo do que se fala ao longo do capítulo e que será mais escrutinado quando passarmos às secções.
+\label{capítulo:introdução}
+Resumo do capítulo.
 
 \section{Motivação}
-\label{sec:intro:motivacao}
-Descrição da necessidade que leva a criar um sistema de monitorização em ambiente doméstico: idosos, pessoas com necessidades especiais, casa inteligente, comunicação bilateral entre casa e pessoas, etc
+\label{secção:introdução:motivação}
+O aumento da esperança de vida provoca actualmente um envelhecimento generalizado da população mundial o que coloca diversos desafios ao desenvolvimento nacional, à sustentabilidade das famílias e à capacidade dos sistemas de saúde. Durante anos recentes o número de pessoas no mundo acima dos 60 anos aumentou de 200 milhões em 1950 para 670 milhões, sector etário que representa já 20\% da população total nos países desenvolvidos. \citep{1}. Com a deslocalização das populações para os grandes centros, a baixa natalidade, a negligência familiar, aumenta cada vez mais o número de idosos que vivem sozinhos em suas casas. Esta situação cria ansiedade em todos os envolvidos, resultando muitas vezes em internamentos precoces em lares, com um custo elevado e vagas limitadas.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/01_demografia_pt.png}
+  \caption{Análise e previsão da população em Portugal entre 1950-2050. \cite{1}}
+  \label{fig:cap1:demogPT}
+\end{figure}
+
+Pessoas com deficiências físicas ou mentais apresentam também uma idêntica necessidade de acompanhamento. Por exemplo, pessoas com deficiência mental média, normalmente têm capacidades sociais e funcionais para serem minimamente independentes, ainda que necessitem de alguma supervisão e assistência. Normalmente têm problemas tão básicos como, por exemplo, decidir quando se levantar ou deitar na cama, ou tomar medicamentos à hora certa.
+
+A monitorização de ambos os casos descritos permitiria libertar mão-de-obra especializada para situações de maior dependência, reduzindo custos e aumentando a eficiência, notificando médicos ou hospitais da mudança de sinais vitais que precedam situações de risco ou interagindo com ambientes inteligentes.
+
+A evolução tecnológica dos sensores wireless tem vindo a introduzir no mercado sensores, rádios e processadores de baixa potência e baixo custo. Estes dispositivos, com o seu reduzido tamanho, têm um enorme potencial para o desenvolvimento de aplicações centradas no utilizador. Com um vasto tipo de sensores, as aplicações ubíquas\footnote{Aplicação que tem como objectivo tornar a interacção entre pessoa e máquina invisível, integrando a informática com acções e comportamentos naturais das pessoas.}   podem por isso surgir como alternativa de baixo custo e enorme valor acrescentado para monitorização de pessoas num ambiente doméstico, criando uma simbiose entre pessoa e máquina que permita usufruir do direito de viver de forma independente, com privacidade, dignidade e total controlo da própria vida.
+
 
 \section{Objectivos}
-\label{sec:intro:objectivos}
-Descrição do Prof melhorada com objectivos bem explícitos
+\label{secção:introdução:objectivos}
+Nesta dissertação é proposto o desenvolvimento de uma solução onde uma ou mais pessoas, portadoras de um nó wireless, se movimentam num ambiente onde existem outros nós wireless. Deverá ser possível localizar cada pessoa e estabelecer uma comunicação bidireccional entre esta e um servidor central. 
+
+Assim definem-se os seguintes objectivos:
+\begin{itemize}
+	\item Identificar necessidades num ambiente doméstico e propor para estas soluções de hardware existentes no mercado;
+	\item Definir a arquitectura do sistema e os papeis de cada interveniente;
+	\item Identificar uma plataforma de simulação existente que permita, de uma forma realista, simular o comportamento do sistema;
+	\item Implementar a simulação de um algoritmo de encaminhamento;
+	\item Implementar a simulação de um algoritmo de localização;
+	\item Analisar a simulação com métricas que permitam conhecer o erro de localização, bem como os limites e valores óptimos do sistema;
+\end{itemize}
+
 
 \section{Principais Contribuições}
-\label{sec:intro:contribs}
-Criação de solução que permite fazer a monitorização de pessoas em ambiente doméstico usando uma WSN; Criação de
-uma framework altamente customizável para simulação de vários cenários e aplicação de outros algoritmos de localização com melhor precisão;
-Análise da escalabilidade de um sistema num prédio com vários pisos.
+\label{secção:introdução:contribuições}
+(a escrever no fim)
 
 \section{Organização da Dissertação}
-\label{sec:intro:organizacao}
-Esta dissertação encontra-se organizada nos seguintes seis capítulos:
-\begin{enumerate}
-	\item \nameref{chap:intro}
-	\item \nameref{chap:ea}
-	\item \nameref{chap:conclusoes}
-\end{enumerate}
-
-O \autoref{chap:intro} inclui a introdução ao projecto, assim como os seus objectivos, contribuições do trabalho desenvolvido e a presente explicação da organização da dissertação.
-
-O \autoref{chap:ea} ...
-
-Finalmente, no \autoref{chap:conclusoes} são tiradas as conclusões do trabalho efectuado, fazendo-se também referências ao trabalho futuro que pode ser feito sobre o apresentado nesta dissertação.
+\label{secção:introdução:organização}
+(a escrever no fim)
+%Esta dissertação encontra-se organizada nos seguintes seis capítulos:
+%\begin{enumerate}
+%	\item \nameref{capítulo:introdução}
+%	\item \nameref{chap:ea}
+%	\item \nameref{chap:conclusoes}
+%\end{enumerate}
+%
+%O \autoref{capítulo:introdução} inclui a introdução ao projecto, assim como os seus objectivos, contribuições do trabalho desenvolvido e a presente explicação da organização da dissertação.
+%
+%O \autoref{chap:ea} ...
+%
+%Finalmente, no \autoref{chap:conclusoes} são tiradas as conclusões do trabalho efectuado, fazendo-se também referências ao trabalho futuro que pode ser feito sobre o apresentado nesta dissertação.
 
 \cleardoublepage
