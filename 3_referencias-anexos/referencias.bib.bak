@@ -1,50 +1,6 @@
 % This file was created with JabRef 2.7b.
 % Encoding: Cp1252
 
-@INPROCEEDINGS{20,
-  author = {Heinzelman, Wendi Rabiner and Kulik, Joanna and Balakrishnan, Hari},
-  title = {Adaptive Protocols for Information Dissemination in Wireless Sensor
-	Networks.},
-  booktitle = {MOBICOM},
-  year = {1999},
-  editor = {Kodesh, Harel and Bahl, Victor and Imielinski, Tomasz and Steenstrup,
-	Martha},
-  pages = {174-185},
-  publisher = {ACM},
-  added-at = {2012-05-18T00:00:00.000+0200},
-  biburl = {http://www.bibsonomy.org/bibtex/2a0847cd763c66995052be1fcf553a98a/dblp},
-  crossref = {conf/mobicom/1999},
-  ee = {http://doi.acm.org/10.1145/313451.313529},
-  interhash = {629bbddcbe7b532cd65146293333ca5d},
-  intrahash = {a0847cd763c66995052be1fcf553a98a},
-  isbn = {1-58113-142-9},
-  keywords = {dblp},
-  timestamp = {2012-05-18T00:00:00.000+0200},
-  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom1999.html#HeinzelmanKB99}
-}
-
-@INPROCEEDINGS{conf/mobicom/IntanagonwiwatGE00,
-  author = {Intanagonwiwat, Chalermek and Govindan, Ramesh and Estrin, Deborah},
-  title = {Directed diffusion: a scalable and robust communication paradigm
-	for sensor networks.},
-  booktitle = {MOBICOM},
-  year = {2000},
-  editor = {Pickholtz, Raymond L. and Das, Sajal K. and Cáceres, Ramón and Garcia-Luna-Aceves,
-	J. J.},
-  pages = {56-67},
-  publisher = {ACM},
-  added-at = {2012-05-18T00:00:00.000+0200},
-  biburl = {http://www.bibsonomy.org/bibtex/2c786218c852bc65491a50f52edc306f2/dblp},
-  crossref = {conf/mobicom/2000},
-  ee = {http://doi.acm.org/10.1145/345910.345920},
-  interhash = {8a3b3ed659ce0d5b35aacea1c63efa46},
-  intrahash = {c786218c852bc65491a50f52edc306f2},
-  isbn = {1-58113-197-6},
-  keywords = {dblp},
-  timestamp = {2012-05-18T00:00:00.000+0200},
-  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom2000.html#IntanagonwiwatGE00}
-}
-
 @INPROCEEDINGS{3,
   author = {Aghajan, Hamid K. and Augusto, Juan Carlos and Wu, Chen and McCullagh,
 	Paul J. and Walkden, Julie-Ann},
@@ -81,6 +37,45 @@
   keywords = {sensor},
   timestamp = {2008-03-25T04:43:47.000+0100},
   url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1024422}
+}
+
+@INCOLLECTION{27,
+  author = {Amundson, Isaac and Koutsoukos, Xenofon},
+  title = {A Survey on Localization for Mobile Wireless Sensor Networks},
+  booktitle = {Mobile Entity Localization and Tracking in GPS-less Environnments},
+  publisher = {Springer Berlin / Heidelberg},
+  year = {2009},
+  editor = {Fuller, Richard and Koutsoukos, Xenofon},
+  volume = {5801},
+  series = {Lecture Notes in Computer Science},
+  pages = {235-254},
+  note = {10.1007/978-3-642-04385-7_16},
+  abstract = {Over the past decade we have witnessed the evolution of wireless sensor
+	networks, with advancements in hardware design, communication protocols,
+	resource efficiency, and other aspects. Recently, there has been
+	much focus on mobile sensor networks, and we have even seen the development
+	of small-profile sensing devices that are able to control their own
+	movement. Although it has been shown that mobility alleviates several
+	issues relating to sensor network coverage and connectivity, many
+	challenges remain. Among these, the need for position estimation
+	is perhaps the most important. Not only is localization required
+	to understand sensor data in a spatial context, but also for navigation,
+	a key feature of mobile sensors. In this paper, we present a survey
+	on localization methods for mobile wireless sensor networks. We provide
+	taxonomies for mobile wireless sensors and localization, including
+	common architectures, measurement techniques, and localization algorithms.
+	We conclude with a description of real-world mobile sensor applications
+	that require position estimation.},
+  added-at = {2010-10-13T11:03:44.000+0200},
+  affiliation = {Vanderbilt University Institute for Software Integrated Systems (ISIS)
+	Department of Electrical Engineering and Computer Science Nashville
+	TN 37235 USA},
+  biburl = {http://www.bibsonomy.org/bibtex/2ce562653d1ce3edaf4a83970aa0e0a8c/kw},
+  interhash = {66ae491f753da8f1e91d8af4832d7ef6},
+  intrahash = {ce562653d1ce3edaf4a83970aa0e0a8c},
+  keywords = {wlanpos},
+  timestamp = {2010-10-13T11:03:44.000+0200},
+  url = {http://dx.doi.org/10.1007/978-3-642-04385-7_16}
 }
 
 @ARTICLE{18,
@@ -148,6 +143,67 @@
   timestamp = {2012.10.23}
 }
 
+@INPROCEEDINGS{24,
+  author = {Heinzelman, Wendi Rabiner and Chandrakasan, Anantha and Balakrishnan,
+	Hari},
+  title = {Energy-Efficient Communication Protocol for Wireless Microsensor
+	Networks.},
+  booktitle = {HICSS},
+  year = {2000},
+  added-at = {2002-01-03T00:00:00.000+0100},
+  biburl = {http://www.bibsonomy.org/bibtex/2e0272bbe167741cadd0d914ea5b7bb9a/dblp},
+  date = {2002-01-03},
+  description = {dblp},
+  ee = {http://computer.org/proceedings/hicss/0493/04938/04938020abs.htm},
+  interhash = {b4bf0ccab7d1215c814d31c14403c9eb},
+  intrahash = {e0272bbe167741cadd0d914ea5b7bb9a},
+  keywords = {dblp},
+  timestamp = {2002-01-03T00:00:00.000+0100},
+  url = {http://dblp.uni-trier.de/db/conf/hicss/hicss2000-8.html#HeinzelmanCB00}
+}
+
+@INPROCEEDINGS{20,
+  author = {Heinzelman, Wendi Rabiner and Kulik, Joanna and Balakrishnan, Hari},
+  title = {Adaptive Protocols for Information Dissemination in Wireless Sensor
+	Networks.},
+  booktitle = {MOBICOM},
+  year = {1999},
+  editor = {Kodesh, Harel and Bahl, Victor and Imielinski, Tomasz and Steenstrup,
+	Martha},
+  pages = {174-185},
+  publisher = {ACM},
+  added-at = {2012-05-18T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2a0847cd763c66995052be1fcf553a98a/dblp},
+  ee = {http://doi.acm.org/10.1145/313451.313529},
+  interhash = {629bbddcbe7b532cd65146293333ca5d},
+  intrahash = {a0847cd763c66995052be1fcf553a98a},
+  isbn = {1-58113-142-9},
+  keywords = {dblp},
+  timestamp = {2012-05-18T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom1999.html#HeinzelmanKB99}
+}
+
+@INPROCEEDINGS{21,
+  author = {Intanagonwiwat, Chalermek and Govindan, Ramesh and Estrin, Deborah},
+  title = {Directed diffusion: a scalable and robust communication paradigm
+	for sensor networks.},
+  booktitle = {MOBICOM},
+  year = {2000},
+  editor = {Pickholtz, Raymond L. and Das, Sajal K. and Cáceres, Ramón and Garcia-Luna-Aceves,
+	J. J.},
+  pages = {56-67},
+  publisher = {ACM},
+  added-at = {2012-05-18T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2c786218c852bc65491a50f52edc306f2/dblp},
+  ee = {http://doi.acm.org/10.1145/345910.345920},
+  interhash = {8a3b3ed659ce0d5b35aacea1c63efa46},
+  intrahash = {c786218c852bc65491a50f52edc306f2},
+  isbn = {1-58113-197-6},
+  keywords = {dblp},
+  timestamp = {2012-05-18T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom2000.html#IntanagonwiwatGE00}
+}
+
 @INPROCEEDINGS{14,
   author = {Intille, Stephen S. and Larson, Kent and Beaudin, J. S. and Nawyn,
 	J. and Tapia, E. Munguia and Kaushik, P.},
@@ -168,6 +224,22 @@
   keywords = {unread},
   location = {Portland, OR, USA},
   timestamp = {2009-10-15T01:51:59.000+0200}
+}
+
+@INCOLLECTION{23,
+  author = {Johnson, David B. and Maltz, David A. and Broch, Josh},
+  title = {Ad hoc networking},
+  booktitle = {In Ad Hoc Networking, edited by Charles E. Perkins, Chapter 5},
+  publisher = {Addison-Wesley Longman Publishing Co., Inc.},
+  year = {2001},
+  chapter = {DSR: the dynamic source routing protocol for multihop wireless ad
+	hoc networks},
+  pages = {139--172},
+  address = {Boston, MA, USA},
+  acmid = {374552},
+  isbn = {0-201-30976-9},
+  numpages = {34},
+  url = {http://dl.acm.org/citation.cfm?id=374547.374552}
 }
 
 @INPROCEEDINGS{10,
@@ -219,6 +291,45 @@
   year = {2006}
 }
 
+@PROCEEDINGS{25,
+  title = {{PEGASIS: Power-efficient gathering in sensor information systems}},
+  year = {2002},
+  volume = {3},
+  abstract = {{Sensor webs consisting of nodes with limited battery power and wireless
+	communications are deployed to collect useful information from the
+	field. Gathering sensed information in an energy efficient manner
+	is critical to operate the sensor network for a long period of time.
+	In W. Heinzelman et al. (Proc. Hawaii Conf. on System Sci., 2000),
+	a data collection problem is defined where, in a round of communication,
+	each sensor node has a packet to be sent to the distant base station.
+	If each node transmits its sensed data directly to the base station
+	then it will deplete its power quickly. The LEACH protocol presented
+	by W. Heinzelman et al. is an elegant solution where clusters are
+	formed to fuse data before transmitting to the base station. By randomizing
+	the cluster heads chosen to transmit to the base station, LEACH achieves
+	a factor of 8 improvement compared to direct transmissions, as measured
+	in terms of when nodes die. In this paper, we propose PEGASIS (power-efficient
+	gathering in sensor information systems), a near optimal chain-based
+	protocol that is an improvement over LEACH. In PEGASIS, each node
+	communicates only with a close neighbor and takes turns transmitting
+	to the base station, thus reducing the amount of energy spent per
+	round. Simulation results show that PEGASIS performs better than
+	LEACH by about 100 to 300\% when 1\%, 20\%, 50\%, and 100\% of nodes
+	die for different network sizes and topologies.}},
+  author = {Lindsey, S. and Raghavendra, C. S.},
+  booktitle = {Aerospace Conference Proceedings, 2002. IEEE},
+  citeulike-article-id = {1598083},
+  citeulike-linkout-0 = {http://dx.doi.org/10.1109/AERO.2002.1035242},
+  citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1035242},
+  doi = {10.1109/AERO.2002.1035242},
+  journal = {Aerospace Conference Proceedings, 2002. IEEE},
+  keywords = {cluster, routing, wsn},
+  pages = {3-1125--3-1130 vol.3},
+  posted-at = {2008-01-13 14:01:34},
+  priority = {3},
+  url = {http://dx.doi.org/10.1109/AERO.2002.1035242}
+}
+
 @ARTICLE{8,
   author = {Otto, Chris and Milenkovi\'{c}, Aleksandar and Sanders, Corey and
 	Jovanov, Emil},
@@ -239,6 +350,21 @@
   numpages = {20},
   publisher = {Rinton Press, Incorporated},
   url = {http://dl.acm.org/citation.cfm?id=2010498.2010502}
+}
+
+@INPROCEEDINGS{22,
+  author = {Perkins, C. and Belding-Royer, E. and Das, S.},
+  title = {Ad hoc On-Demand Distance Vector (AODV) Routing},
+  booktitle = {EXPERIMENTAL RFC 3561},
+  year = {2003},
+  month = {July},
+  added-at = {2011-02-14T16:52:54.000+0100},
+  biburl = {http://www.bibsonomy.org/bibtex/2573d8ee58981e5579f371c08c0813c76/fohv},
+  date-modified = {2006-08-22 11:43:34 +0200},
+  interhash = {5dd5b7c03b27d29d62677fc3a78d65e1},
+  intrahash = {573d8ee58981e5579f371c08c0813c76},
+  keywords = {imported},
+  timestamp = {2011-02-14T16:52:54.000+0100}
 }
 
 @ARTICLE{15,
@@ -342,6 +468,13 @@
   month = {September},
   booktitle = {PhD Thesis},
   number = {CMU-RI-TR-05-42}
+}
+
+@TECHREPORT{26,
+  author = {Yan Yu and Ramesh Govindan and Deborah Estrin},
+  title = {Geographical and Energy Aware Routing: a recursive data dissemination
+	protocol for wireless sensor networks},
+  year = {2001}
 }
 
 @comment{jabref-meta: selector_publisher:}
