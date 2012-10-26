@@ -1,0 +1,125 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Literature Review
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fancychapter{Trabalho Relacionado}
+\label{chap:3}
+
+\section{Monitorização Doméstica de Idosos}
+\label{chap:3:sec:2}
+Em \cite{16} faz-se uma análise de aspectos fundamentais na monitorização doméstica de idosos ouvindo os profissionais de cuidados de saúde. São também neste mesmo trabalho sugeridas diversas propriedades monitorizáveis e feita uma análise global da rede de cuidados de saúde.
+
+\subsection{Necessidades nos Cuidados de Saúde}
+\label{chap:3:sec:2.1}
+
+No estudo intitulado \textit{``The Activities of Daily Living Study''} em \cite{16} são examinados questionários (91) feitos a profissionais de saúde que prestam cuidados de monitorização ao domicílio. Pretende-se determinar a forma como a tecnologia pode ajudar pessoas idosas a envelhecer em casa, tendo em conta os profissionais de saúde, a necessidade de autonomia do idoso e as necessidades da família e amigos.
+
+Designam-se \acs{CM}s (Case Managers) aos profissionais de saúde que prestam cuidados ao domicílio (ex:enfermeiros,médicos). Os \acs{CM}s interagem de forma activa com as pessoas idosas presencialmente ou por telefone. Avaliam a habilidade do idoso e a sua predisposição para a introdução de novos equipamentos. Uma parte significativa da monitorização do \acs{CM} são as chamadas \acs{ADL}s (Activities of Daily Living), uma lista de actividades que permite medir a função cognitiva e física do idoso (Tabela \ref{tab:1:adls}).
+
+\begin{table}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/02_adls.png}
+  \caption{Índice de independência nas \acs{ADL}s \cite{17}.}
+  \label{tab:1:adls}
+\end{table}
+
+Esta lista permite definir numa escala de 0-muito dependente a 6-independente, o grau de dependência do idoso. São também apresentados desafios à introdução de novas tecnologias pelos \acs{CM}s, nomeadamente:
+
+\begin{itemize}
+\item Receio de perda do emprego por parte dos \acs{CM}s;
+\item Problemas de aceitação da nova tecnologia por parte dos idosos, visto que estes têm tendência a esconder informação com receio de irem para a um lar de idosos;
+\item Problemas de privacidade;
+\end{itemize}
+
+O processo de integração de um sistema de monitorização apenas pode ser um sucesso se os profissionais de saúde estiverem activamente envolvidos na sua implementação.
+
+São identificadas diversos problemas de saúde nos idosos, sendo os mais comuns a fraqueza, diabetes, surdez, perda de visão, deficiência nutricional e demência moderada.
+
+\begin{table}[!htb]
+  \centering
+  \includegraphics[width=0.95\textwidth]{img/02_elder_tech_acceptance.png}
+  \caption{Uso de tecnologia pelos Idosos \cite{16}.}
+  \label{tab:3:elderTechAccept}
+\end{table}
+
+Na Tabela \ref{tab:3:elderTechAccept} o estudo identifica as tecnologias e a sua aceitação por parte dos idosos. A comunicação e a segurança são identificados claramente como muito valorizados, através dos botões de emergência e sistemas de segurança, enquanto que a tecnologia de monitorização coloca mais incerteza e desconfiança aos idosos. 
+
+\subsection{Necessidades na Monitorização}
+\label{chap:3:sec:2.2}
+
+Com base nos resultados do estudo referenciado na Secção \ref{chap:3:sec:2.1} o trabalho \cite{16} faz uma análise de diversas temáticas de utilização de um sistema de monitorização. 
+
+\textbf{Localização doméstica}. Determinar se o idoso se levantou pela manhã e os seus padrões de movimento são também apontadas como duas informações importantes. Uma granularidade menor que a divisão pode por isso ser importante sendo necessária uma maior precisão do sistema. 
+
+\textbf{Agendamento de visitas ao domicílio}. Saber se o idoso está ou não em casa é apontado pelos \acs{CM}s como um factor de melhoria no agendamento de visitas ao domicílio.
+
+\textbf{Visitas ao Hospital e Socialização}. A integração do sistema de monitorização doméstico com outro baseado em GPS e integrado no sistema de saúde permitiria para todos os intervenientes no sistema saber onde estava um idoso a qualquer momento para além do ambiente doméstico.
+
+\textbf{Número de ocupantes da casa}. Sabendo os padrões de ocupação da casa é possível perceber quais os momentos em que os idosos têm menos apoio familiar. Em casos mais agudos esta monitorização permitiria determinar se era ou não seguro para o idoso continuar em sua casa durante uma determinada altura do dia.
+
+\textbf{Animais de estimação}. A maioria dos clientes dos \acs{CM}s entrevistados tinham animais de estimação o que pode ser um problema para sistemas baseados em sensores de pressão.
+
+\textbf{Oportunidades de instrumentação}. São apresentadas diversas oportunidades de instrumentação sem grande necessidade da mudança de hábitos como a aplicação de sensores a bengalas, andarilhos ou cadeiras de rodas. O facto de existir uma baixa partilha deste tipo de objectos indica que seriam uma boa hipótese de monitorização não-intrusiva. 
+
+\textbf{Privacidade}. É bastante refutada a utilização de câmaras, microfones ou \acs{PDA}s enquanto que os sensores de movimento poderiam ser alternativas viáveis.
+
+\begin{table}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/02_adls_monit_rank.png}
+  \caption{Classificação das \acs{ADL}s por importância, dificuldade em monitorizar e top 10 das mais úteis \cite{16}.}
+  \label{tab:4:adlsMonitRank}
+\end{table}
+
+\textbf{Escolha das \acs{ADL}s a monitorizar}. Na Tabela \ref{tab:4:adlsMonitRank} é feita uma classificação das \acs{ADL}s. O maior valor acrescentado está naquelas que são mais difíceis de obter mas mais importantes para serem conhecidas pelo \acs{CM}.
+
+\textbf{Atenção à actividade das famílias ou assistentes}. É importante perceber se existe de facto um apoio real dos familiares ou outros assistentes ao idoso, para além de saber que o mesmo está acompanhado.
+
+\textbf{Monitorização do uso de equipamentos}. A inclusão nos equipamentos de saúde de sensores que analisem o estado do equipamento ou a força exercida pelo idoso no mesmo, poderiam ajudar a determinar melhor o ponto em que é necessário passar de uma bengala para um andarilho ou de um andarilho para uma cadeira de rodas.
+
+\section{Localização em Redes de Sensores Wireless}
+\label{chap:3:sec:3}
+
+\section{Encaminhamento em Redes de Sensores Wireless}
+\label{chap:3:sec:4}
+Com a redução do custo dos sensores wireless tornou-se possível construir \acs{WSN}s com centenas ou milhares de nós. A falta de um esquema global de endereçamento, as condicionantes energéticas ou a possibilidade existirem nós que se movimentam com modificações na topologia da rede recorrentes, fazem surgir a necessidade de encontrar um protocolo de encaminhamento adequado.
+
+\subsection{Desafios e Decisões de Design}
+\label{chap:3:sec:4.1}
+Em \cite{18} são abordados os diversos desafios no design de protocolos de encaminhamento.
+
+Uma \acs{WSN} apresenta diversas restrições tais como fornecimento de energia limitado pelo uso de bateria, processamento limitado ou largura de banda reduzida devido a rádios relativamente simples.
+
+\textbf{Instalação dos nós}. A forma como os nós são instalados depende do tipo de aplicação e pode ser determinística ou aleatória. Se for aleatória a distribuição não é uniforme o que pode requerer \textit{clustering}. A distância de transmissão é reduzida o que obriga a que a comunicação seja feita através de vários nós.
+
+\textbf{Tolerância a falhas}. Alguns sensores podem falhar devido à falta de energia, dano físico ou interferência. Essas falhas não podem por isso condicionar impedir a comunicação e devem existir protocolos \acs{MAC} e de encaminhamento que consigam detectar essa situação e reformular a topologia da rede.
+
+\textbf{Modelo de aquisição de dados}. A forma como é feita a aquisição de dados é dependente da aplicação e pode ser orientada ao tempo, para aplicações de monitorização periódica ou ao evento para e à \textit{query}, para nós que reagem a mudanças na medição de parâmetros ou a um pedido feito pela \acs{BS}. 
+
+\textbf{Homogeneidade dos nós ou ligações}. Os nós podem ter todos iguais capacidades sendo a rede homogénea ou então podem ter capacidades diferenciadas, havendo nós mais básicos e outros mais complexos.
+
+\textbf{Escalabilidade}. Devido ao elevado número de nós possível numa \acs{WSN} qualquer protocolo de encaminhamento deve ser escalável reagindo de forma automática à adição ou remoção de nós da rede.
+
+\textbf{Dinâmica da rede}. A maior parte das arquitecturas assume que os nós estão fixos. No entanto para aplicações em que a topologia muda a estabilidade dos caminhos torna-se um assunto importante e algum tipo de actualização periódica ou redescoberta de novos caminhos torna-se necessário.
+
+\textbf{Agregação de dados}. Os dados de vários sensores podem ser agregados para que o número de transmissões sofra uma redução. A agregação pode ser feita com remoção de duplicados, valores mínimos, valores máximos e valores médios. 
+
+\textbf{\acs{QoS}} (\textit{Quality of Service}). Em algumas aplicações os dados têm de ser entregues com sucesso após um determinado limite de tempo após a sua obtenção, caso contrário perdem significado ou introduzem erros desnecessários no sistema. Este limite de tempo pode ser gerido de forma dinâmica conforme a qualidade da transmissão.
+
+\subsection{Protocolos de Encaminhamento}
+\label{chap:3:sec:4.2}
+Os protocolos nas \acs{WSN}s podem ser classificados conforme a sua estrutura em \textit{flat-routing} onde todos os nós têm as mesmas capacidades e papéis na rede, \textit{hierarchical-routing} em que existem nós com capacidades diferenciadas e papéis diferentes e \textit{location-based routing} onde a posição dos nós é parte integrante do protocolo de encaminhamento.
+
+\title{\textbf{Flat-routing}}
+
+O \acs{SPIN} (\textit{Sensor Protocols for Information via Negotiation}) \cite{20} surge com a necessidade de resolver três problemas nos métodos clássicos de envio de mensagens (\textit{Flooding} e \textit{Gossiping}), a implosão causada pela recepção de várias mensagens repetidas vindas de vários nós diferentes, a sobreposição resultante da dos dados obtidos por sensores próximos e a falta de adaptação aos recursos existentes no nó. Na Figura \ref{fig:1:spin} está um exemplo onde são utilizadas os três tipos de mensagens ADV (\textit{advertisment}), REQ (\textit{request} e DATA. Este protocolo permite poupar energia e reduzir o envio de informação redundante mas não dá garantias de entrega de dados.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.75\textwidth]{img/02_spin.png}
+  \caption{Protocolo SPIN \cite{20}. O nó A pretende enviar uma mensagem para o nó B e envia um ADV (a). B está pronto para receber e envia para A um REQ (b). A recebe o REQ e envia uma mensagem DATA para B (c). B continua o processo da mesma forma para os seus nós vizinhos.}
+  \label{fig:1:spin}
+\end{figure}
+
+O \acs{DD} \cite{21} introduz um método de procura de caminhos.
+
+% Ensure that the next chapter starts in a odd page
+\cleardoublepage

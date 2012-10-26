@@ -1,6 +1,50 @@
 % This file was created with JabRef 2.7b.
 % Encoding: Cp1252
 
+@INPROCEEDINGS{20,
+  author = {Heinzelman, Wendi Rabiner and Kulik, Joanna and Balakrishnan, Hari},
+  title = {Adaptive Protocols for Information Dissemination in Wireless Sensor
+	Networks.},
+  booktitle = {MOBICOM},
+  year = {1999},
+  editor = {Kodesh, Harel and Bahl, Victor and Imielinski, Tomasz and Steenstrup,
+	Martha},
+  pages = {174-185},
+  publisher = {ACM},
+  added-at = {2012-05-18T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2a0847cd763c66995052be1fcf553a98a/dblp},
+  crossref = {conf/mobicom/1999},
+  ee = {http://doi.acm.org/10.1145/313451.313529},
+  interhash = {629bbddcbe7b532cd65146293333ca5d},
+  intrahash = {a0847cd763c66995052be1fcf553a98a},
+  isbn = {1-58113-142-9},
+  keywords = {dblp},
+  timestamp = {2012-05-18T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom1999.html#HeinzelmanKB99}
+}
+
+@INPROCEEDINGS{conf/mobicom/IntanagonwiwatGE00,
+  author = {Intanagonwiwat, Chalermek and Govindan, Ramesh and Estrin, Deborah},
+  title = {Directed diffusion: a scalable and robust communication paradigm
+	for sensor networks.},
+  booktitle = {MOBICOM},
+  year = {2000},
+  editor = {Pickholtz, Raymond L. and Das, Sajal K. and Cáceres, Ramón and Garcia-Luna-Aceves,
+	J. J.},
+  pages = {56-67},
+  publisher = {ACM},
+  added-at = {2012-05-18T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2c786218c852bc65491a50f52edc306f2/dblp},
+  crossref = {conf/mobicom/2000},
+  ee = {http://doi.acm.org/10.1145/345910.345920},
+  interhash = {8a3b3ed659ce0d5b35aacea1c63efa46},
+  intrahash = {c786218c852bc65491a50f52edc306f2},
+  isbn = {1-58113-197-6},
+  keywords = {dblp},
+  timestamp = {2012-05-18T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom2000.html#IntanagonwiwatGE00}
+}
+
 @INPROCEEDINGS{3,
   author = {Aghajan, Hamid K. and Augusto, Juan Carlos and Wu, Chen and McCullagh,
 	Paul J. and Walkden, Julie-Ann},
@@ -23,6 +67,38 @@
   keywords = {dblp},
   timestamp = {2007-07-03T00:00:00.000+0200},
   url = {http://dblp.uni-trier.de/db/conf/icost/icost2007.html#AghajanAWMW07}
+}
+
+@ARTICLE{19,
+  author = {Ian F. Akyildiz and Weilian Su and Yogesh Sankarasubramaniam and
+	Erdal Cayirci},
+  title = {A survey on sensor networks},
+  year = {2002},
+  added-at = {2008-03-25T04:43:47.000+0100},
+  biburl = {http://www.bibsonomy.org/bibtex/21dc15de32fdb023025f7c85af0c71d5a/yangzhen},
+  interhash = {0db24af92855ac8fad443bb80d3cbd12},
+  intrahash = {1dc15de32fdb023025f7c85af0c71d5a},
+  keywords = {sensor},
+  timestamp = {2008-03-25T04:43:47.000+0100},
+  url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1024422}
+}
+
+@ARTICLE{18,
+  author = {Ayaz, Muhammad and Baig, Imran and Abdullah, Azween and Faye, Ibrahima},
+  title = {A survey on routing techniques in underwater wireless sensor networks.},
+  journal = {J. Network and Computer Applications},
+  year = {2011},
+  volume = {34},
+  pages = {1908-1927},
+  number = {6},
+  added-at = {2011-10-25T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/26b5499b3155a2a07260145df3dc995eb/dblp},
+  ee = {http://dx.doi.org/10.1016/j.jnca.2011.06.009},
+  interhash = {ca3861ea328eb9062ce351d2f4ed81c0},
+  intrahash = {6b5499b3155a2a07260145df3dc995eb},
+  keywords = {dblp},
+  timestamp = {2011-10-25T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/journals/jnca/jnca34.html#AyazBAF11}
 }
 
 @ARTICLE{12,

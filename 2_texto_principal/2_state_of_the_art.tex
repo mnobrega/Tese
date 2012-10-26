@@ -1,12 +1,9 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Literature Review
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fancychapter{Trabalho Relacionado}
+\fancychapter{Estado da Arte}
 \label{chap:2}
-\textcolor{red}{TODO: pequena introdução para cap 2}
 
-\section{Estado da Arte}
-\label{chap:2:sec:1}
 A geração actual de casas inteligentes tem tido uma maior evolução na inteligência artificial do sistema central, em detrimento dos sistemas de monitorização e controlo. A casa inteligente actual consiste em vários electrodomésticos e outros dispositivos, com sensores, actuadores e/ou monitores biomédicos, usados pelos residentes numa base diária. Em alguns casos a casa é monitorizada recorrendo a tecnologias áudio e vídeo, sendo que estes sistemas apresentam uma excelente forma de monitorização mas têm algumas desvantagens:
 
 \begin{itemize}
@@ -24,8 +21,8 @@ Três grupos de tecnologias emergem por entre a bibliografia revista:
 \item Monitorização com Sensores Domésticos.
 \end{itemize}
 
-\subsection{Monitorização com Sinal Vídeo ou Áudio}
-\label{chap:2:sec:1.1}
+\section{Monitorização com Sinal Vídeo ou Áudio}
+\label{chap:2:sec:1}
 Em \cite{2} através de um sensor wireless equipado com um acelerómetro e transportado pela pessoa, são detectadas possíveis quedas. Por forma a minimizar o número de falsos alarmes, são usadas câmaras que cobrem o espaço, que analisam a posição da pessoa e são activadas de acordo com a localização do nó móvel. Essa localização é obtida através de triangulação baseada nas posições conhecidas dos nós fixos e a potência recebida do nó móvel. É também apresentada a possibilidade de efectuar transmissão de voz utilizando o rádio IEEE 802.15.4, uma vez que já existem rádios com largura de banda necessária para efectuar transmissão de voz.
 
 \begin{figure}[!htb]
@@ -61,8 +58,8 @@ Embora cada aplicação tenha as suas mais-valias e a precisão dos sistemas onde o
 
 A grande preocupação nos trabalhos identificados permanece na detecção de quedas e na fiabilidade dessa detecção.
 
-\subsection{Monitorização com Sensores \textit{Wearable}}
-\label{chap:2:sec:1.2}
+\section{Monitorização com Sensores \textit{Wearable}}
+\label{chap:2:sec:2}
 Com a evolução dos sensores wireless aparecem cada vez mais soluções que permitem fazer uma monitorização contínua do estado de saúde de uma pessoa, independentemente da sua localização ou actividade. A redução do tamanho dos sensores permite idealizar a criação de vestuário com sensores embutidos, suficiente leve e confortável para poder ser usado diariamente. Para além da monitorização há também a possibilidade de administrar medicamentos, recorrendo a actuadores, automaticamente ou de forma manual por um profissional de saúde de forma remota.
 
 Em \cite{8} é abordada a \acs{BSN}(\textit{Body Sensor Network}) como solução para a detecção precoce de problemas cardíacos. Através de um conjunto de sensores equipados com medidor de temperatura, medidor de pulso, acelerómetro e até sensores capazes de obter um electrocardiograma\footnote{Representação gráfica da actividade eléctrica do coração} (ECG), um electromiograma\footnote{Representação do potencial eléctrico gerado pelas células dos músculos} (EMG) ou um electroencefalograma\footnote{Representação da actividade do cérebro, obtida por pequenos sinais eléctricos chamados impulsos} (EEG). O sistema abordado tem um nó coordenador para onde todos os outros enviam informação e é usada a norma IEEE 802.15.4, que com suficiente largura de banda permite a transmissão da informação necessária.
@@ -105,8 +102,8 @@ No trabalho \cite{10} é analisada a coexistência entre \acs{WLAN} e \textit{ZigB
 
 Uma das principais desvantagens abordada na pesquisa efectuada é o facto de ter de existir de forma contínua um contacto com o corpo do idoso, de vários sensores, o que pode causar desconforto. Muitos idosos poderão não estar predispostos para usar uma \acs{BSN} durante um tempo prolongado. Existe também a possibilidade de interferência com \textit{pacemakers} ou outros equipamentos médicos que tenham sido colocados no idoso.
 
-\subsection{Monitorização com Sensores Domésticos}
-\label{chap:2:sec:1.3}
+\section{Monitorização com Sensores Domésticos}
+\label{chap:2:sec:3}
 
 Neste tipo de monitorização recorre-se a sensores instalados em electrodomésticos e outros dispositivos utilizados pelos residentes. São obtidos padrões comportamentais através da correlação com a utilização dos diversos aparelhos numa casa. Uma das maiores vantagens deste tipo de monitorização é a privacidade, uma vez que a informação fornecida por cada sensor não contém qualquer identificação da pessoa que o acciona. Usam-se dispositivos do dia-a-dia o que não implica mudanças de comportamento, como por exemplo com a utilização dos sensores \textit{Wearable} e as \acs{BSN}. Esta abordagem é chamada de \textit{artefact computing model} e representa um paradigma de mudança na interacção pessoa-máquina na sua forma explícita para uma forma implícita.
 
@@ -136,58 +133,14 @@ No artigo \cite{15} aborda-se a prestação de cuidados de saúde aos idosos num co
 
 Em \cite{14} é abordado o \textit{PlaceLab}. Situado em Cambrige é um laboratório vivo para estudo das tecnologias ubíquas. Está optimizado para moradias 1 habitantes. Foram criadas para este laboratório 15 divisões e em cada foram colocadas redes de 25 a 30 sensores. 
 
-O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético e o carregamento feito usando um campo electromagnético instalado num pires. É utilizada a tecnologia \acs{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acs{CAN}(Car Area Network) integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:7:mediacup})
+O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético e o carregamento feito usando um campo electromagnético instalado num pires. É utilizada a tecnologia \acs{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acs{CAN}(Car Area Network) integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:6:mediacup})
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.75\textwidth]{img/02_mediacup.png}
   \caption{Infraestrutura de rede \textit{Mediacup} \cite{12} que integra \acs{IR}, \acs{CAN} e \acs{LAN}.}
-  \label{fig:7:mediacup}
+  \label{fig:6:mediacup}
 \end{figure}
-
-\section{Monitorização Doméstica de Idosos}
-\label{chap:2:sec:2}
-
-No estudo intitulado \textit{``The Activities of Daily Living Study''} em \cite{16} são feitas perguntas a profissionais de saúde que prestam cuidados de monitorização ao domicílio. Pretende-se determinar a forma como a tecnologia pode ajudar pessoas idosas a envelhecer em casa, respeitando os profissionais de saúde, a necessidade de autonomia do idoso e as necessidades da família e amigas que poderão sofrer o impacto com novas tecnologias instaladas.
-
-Designam-se \acs{CM}s (Case Managers) aos profissionais de saúde que prestam cuidados ao domicílio (ex:enfermeiros,médicos). Os \acs{CM}s interagem de forma activa com as pessoas idosas presencialmente ou por telefone. Avaliam a habilidade do idoso e a sua predisposição para a introdução de novos equipamentos. Uma parte significativa da monitorização do \acs{CM} são as chamadas \acs{ADL}s (Activities of Daily Living), uma lista de actividades que permite medir a função cognitiva e física do idoso (Tabela \ref{tab:3:adls}).
-
-\begin{table}[!htb]
-  \centering
-  \includegraphics[width=1\textwidth]{img/02_adls.png}
-  \caption{Índice de independência nas \acs{ADL}s \cite{17}}
-  \label{tab:3:adls}
-\end{table}
-
-Esta lista permite definir numa escala de 0-muito dependente a 6-independente, o grau de dependência do idoso. São também apresentados desafios à introdução de novas tecnologias pelos \acs{CM}s, nomeadamente:
-
-\begin{itemize}
-\item Receio de perda do emprego por parte dos \acs{CM}s;
-\item Problemas de aceitação da nova tecnologia por parte dos idosos, visto que estes têm tendência a esconder informação com receio de irem para a um lar de idosos;
-\item Problemas de privacidade;
-\end{itemize}
-
-O processo de integração de um sistema de monitorização apenas pode ser um sucesso se os profissionais de saúde estiverem activamente envolvidos na sua implementação.
-
-Na Tabela \ref{tab:4:cmsTech} o estudo mostra a forma como os \acs{CM}s usam a tecnologia.
-
-\begin{table}[!htb]
-  \centering
-  \includegraphics[width=0.9\textwidth]{img/02_cms_tech.png}
-  \caption{Uso de tecnologia pelos \acs{CM}s \cite{16}}
-  \label{tab:4:cmsTech}
-\end{table}
-
-
-
-\section{IEEE 802.15.4 e ZigBee}
-\label{chap:2:sec:3}
-Tecnologia ZigBee 802.15.4 e protocolo de encaminhamento AODV; 
-
-\section{Algoritmos de Localização}
-\label{chap:2:sec:4}
-Diversas opções disponíveis. Vantagens e desvantagens; Tabela comparativa;
-Descrição matemática do HORUS; O esquema que eu vou usar difere na medida em que o cálculo é feito na base station e não no mobile node
 
 % Ensure that the next chapter starts in a odd page
 \cleardoublepage
