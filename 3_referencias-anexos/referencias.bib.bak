@@ -81,6 +81,22 @@
   url = {http://dblp.uni-trier.de/db/journals/jnca/jnca34.html#AyazBAF11}
 }
 
+@INPROCEEDINGS{28,
+  author = {Bahl, Paramvir and Padmanabhan, Venkata N.},
+  title = {RADAR: An In-Building RF-Based User Location and Tracking System},
+  booktitle = {INFOCOM},
+  year = {2000},
+  pages = {775-784},
+  added-at = {2012-06-01T12:51:44.000+0200},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  biburl = {http://www.bibsonomy.org/bibtex/23fdc80f55964ed4e8a3c676858686d74/joe.duerr},
+  ee = {http://www.ieee-infocom.org/2000/papers/589.pdf},
+  interhash = {0c5fa8f4e70a667260674f35a2fce303},
+  intrahash = {3fdc80f55964ed4e8a3c676858686d74},
+  keywords = {localization wifi},
+  timestamp = {2012-06-01T12:51:44.000+0200}
+}
+
 @ARTICLE{12,
   author = {Beigl, Michael and Gellersen, Hans-Werner and Schmidt, Albrecht},
   title = {Mediacups: experience with design and use of computer-augmented everyday
@@ -112,6 +128,21 @@
   journal = {Department of Economic and Social Affairs New York},
   owner = {mnobrega},
   timestamp = {2012.10.21}
+}
+
+@INPROCEEDINGS{30,
+  author = {Gwon, Youngjune and Jain, Ravi and Kawahara, Toshiro},
+  title = {Robust Indoor Location Estimation of Stationary and Mobile Users},
+  booktitle = {INFOCOM},
+  year = {2004},
+  added-at = {2012-06-01T13:13:53.000+0200},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  biburl = {http://www.bibsonomy.org/bibtex/2abca76cb4258ae1df223774051b23a44/joe.duerr},
+  ee = {http://www.ieee-infocom.org/2004/Papers/21_4.PDF},
+  interhash = {08e75d05576f4bc45a8152ceb41831d6},
+  intrahash = {abca76cb4258ae1df223774051b23a44},
+  keywords = {indoor localization robust stationary},
+  timestamp = {2012-06-01T13:13:53.000+0200}
 }
 
 @INPROCEEDINGS{5,
@@ -292,6 +323,27 @@
   posted-at = {2008-01-13 14:01:34},
   priority = {3},
   url = {http://dx.doi.org/10.1109/AERO.2002.1035242}
+}
+
+@ARTICLE{29,
+  author = {Lorincz, Konrad and Welsh, Matt},
+  title = {MoteTrack: a robust, decentralized approach to RF-based location
+	tracking.},
+  journal = {Personal and Ubiquitous Computing},
+  year = {2007},
+  volume = {11},
+  pages = {489-503},
+  number = {6},
+  added-at = {2007-09-21T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2fd0afc1acfe911a3385433bdf226362b/dblp},
+  date = {2007-09-21},
+  description = {dblp},
+  ee = {http://dx.doi.org/10.1007/s00779-006-0095-2},
+  interhash = {35d9dd994dcf2d5a9276f6994a25e459},
+  intrahash = {fd0afc1acfe911a3385433bdf226362b},
+  keywords = {dblp},
+  timestamp = {2007-09-21T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/journals/puc/puc11.html#LorinczW07}
 }
 
 @ARTICLE{8,

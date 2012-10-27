@@ -62,7 +62,7 @@ A grande preocupação nos trabalhos identificados permanece na detecção de quedas
 \label{chap:2:sec:2}
 Com a evolução dos sensores wireless aparecem cada vez mais soluções que permitem fazer uma monitorização contínua do estado de saúde de uma pessoa, independentemente da sua localização ou actividade. A redução do tamanho dos sensores permite idealizar a criação de vestuário com sensores embutidos, suficiente leve e confortável para poder ser usado diariamente. Para além da monitorização há também a possibilidade de administrar medicamentos, recorrendo a actuadores, automaticamente ou de forma manual por um profissional de saúde de forma remota.
 
-Em \cite{8} é abordada a \acs{BSN}(\textit{Body Sensor Network}) como solução para a detecção precoce de problemas cardíacos. Através de um conjunto de sensores equipados com medidor de temperatura, medidor de pulso, acelerómetro e até sensores capazes de obter um electrocardiograma\footnote{Representação gráfica da actividade eléctrica do coração} (ECG), um electromiograma\footnote{Representação do potencial eléctrico gerado pelas células dos músculos} (EMG) ou um electroencefalograma\footnote{Representação da actividade do cérebro, obtida por pequenos sinais eléctricos chamados impulsos} (EEG). O sistema abordado tem um nó coordenador para onde todos os outros enviam informação e é usada a norma IEEE 802.15.4, que com suficiente largura de banda permite a transmissão da informação necessária.
+Em \cite{8} é abordada a \acf{BSN} como solução para a detecção precoce de problemas cardíacos. Através de um conjunto de sensores equipados com medidor de temperatura, medidor de pulso, acelerómetro e até sensores capazes de obter um electrocardiograma\footnote{Representação gráfica da actividade eléctrica do coração} (ECG), um electromiograma\footnote{Representação do potencial eléctrico gerado pelas células dos músculos} (EMG) ou um electroencefalograma\footnote{Representação da actividade do cérebro, obtida por pequenos sinais eléctricos chamados impulsos} (EEG). O sistema abordado tem um nó coordenador para onde todos os outros enviam informação e é usada a norma IEEE 802.15.4, que com suficiente largura de banda permite a transmissão da informação necessária.
 
 \begin{figure}[!htb]
   \centering
@@ -74,9 +74,9 @@ Em \cite{8} é abordada a \acs{BSN}(\textit{Body Sensor Network}) como solução pa
 A aplicação corre em TinyOS, open-source e com uma gestão de energia eficiente.
 É referida a estrutura modular do sistema operativo que permite escolher componentes conforme a sua aplicação, o que facilita bastante a utilização de diferentes tipos de sensores. 
 
-De referir o grupo de estudo IEEE 802.15 TG6\footnote{http://www.ieee802.org/15/pub/TG6.html} que pretende estabelecer a norma para as \acs{BAN}s (\textit{Body Area Networks}), que define um protocolo de comunicação para dispositivos de baixa potência que operem dentro, em ou à volta do corpo humano.
+De referir o grupo de estudo IEEE 802.15 TG6\footnote{http://www.ieee802.org/15/pub/TG6.html} que pretende estabelecer a norma para as \acfp{BAN}, que define um protocolo de comunicação para dispositivos de baixa potência que operem dentro, em ou à volta do corpo humano.
 
-Em \cite{9} é feita uma discussão sobre o tipo de antena e protocolo \acs{MAC} para \acs{WBAN}s, bem como sobre diversas aplicações para este tipo de redes. Na Figura \ref{fig:5:wban} podemos observar que o tráfego é categorizado em 3 categorias: \textit{On-demand} iniciado pelo médico ou nó coordenador para obter uma determinada informação de um ou mais sensores, \textit{Emergency} iniciado pelos nós quando ultrapassam um determinado \textit{threshold} e \textit{Normal} que não apresenta qualquer elemento temporal crítico. 
+Em \cite{9} é feita uma discussão sobre o tipo de antena e protocolo \acf{MAC} para \acfp{WBAN}, bem como sobre diversas aplicações para este tipo de redes. Na Figura \ref{fig:5:wban} podemos observar que o tráfego é categorizado em 3 categorias: \textit{On-demand} iniciado pelo médico ou nó coordenador para obter uma determinada informação de um ou mais sensores, \textit{Emergency} iniciado pelos nós quando ultrapassam um determinado \textit{threshold} e \textit{Normal} que não apresenta qualquer elemento temporal crítico. 
 
 \begin{figure}[!htb]
   \centering
@@ -85,7 +85,7 @@ Em \cite{9} é feita uma discussão sobre o tipo de antena e protocolo \acs{MAC} p
   \label{fig:5:wban}
 \end{figure}
 
-É referido o impacto do corpo na propagação do sinal através da constante dieléctrica alta que este possui bem como através da condutividade parcial do tecido muscular que pode absorver parte do sinal, factores que se tornam ainda mais significativos quando as antenas são de muito pequena dimensão. Outro aspecto relevante referido neste trabalho é o facto de não existir no IEEE 802.15.4 um mecanismo fiável para o envio das mensagens \textit{On-demand} e \textit{Emergency}. Como possível solução para este problema é apontada a utilização das IEEE 802.15.4 \acs{GTS}(Guaranteed Time Slots) para lidar com eventos críticos.
+É referido o impacto do corpo na propagação do sinal através da constante dieléctrica alta que este possui bem como através da condutividade parcial do tecido muscular que pode absorver parte do sinal, factores que se tornam ainda mais significativos quando as antenas são de muito pequena dimensão. Outro aspecto relevante referido neste trabalho é o facto de não existir no IEEE 802.15.4 um mecanismo fiável para o envio das mensagens \textit{On-demand} e \textit{Emergency}. Como possível solução para este problema é apontada a utilização das IEEE 802.15.4 \acf{GTS} para lidar com eventos críticos.
 
 Por fim, o trabalho \cite{9} indica através da Tabela \ref{tab:1:sensor_apps} um conjunto de possíveis aplicações para sensores. Doenças cardiovasculares, detecção de doenças oncológicas, sistemas de tele-medicina são algumas das aplicações mencionadas.
 
@@ -96,7 +96,7 @@ Por fim, o trabalho \cite{9} indica através da Tabela \ref{tab:1:sensor_apps} um
   \label{tab:1:sensor_apps}
 \end{table}
 
-No trabalho \cite{10} é analisada a coexistência entre \acs{WLAN} e \textit{ZigBee} que operam na mesma frequência de 2.4GHz. A problemática de um número elevado de módulos \acs{WLAN}, com potência de transmissão mais elevada,  impossibilitar a comunicação entre módulos \textit{ZigBee} é abordada. É sugerida como solução a implementação de um algoritmo implementado na \acs{WSN} que força a que, quando não existem frequências disponíveis, a \acs{WLAN} seja obrigada a abandonar o canal deixando assim espaço para o sistema \textit{ZigBee} comunicar. 
+No trabalho \cite{10} é analisada a coexistência entre \acfp{WLAN} e \textit{ZigBee} que operam na mesma frequência de 2.4GHz. A problemática de um número elevado de módulos \acs{WLAN}, com potência de transmissão mais elevada,  impossibilitar a comunicação entre módulos \textit{ZigBee} é abordada. É sugerida como solução a implementação de um algoritmo implementado na \acf{WSN} que força a que, quando não existem frequências disponíveis, a \acs{WLAN} seja obrigada a abandonar o canal deixando assim espaço para o sistema \textit{ZigBee} comunicar. 
 
 \cite{11} propõe um projecto que integra tecnologias \acs{WSN} com redes públicas de comunicação por forma a construir um sistema eficiente de cuidados de saúde para idosos em casa. O sistema apresenta quatro funcionalidades principais: monitorização interior, monitorização exterior, actividade e decisão com base no estado de saúde. É feita a medição e colecção de parâmetros do corpo e da casa e enviada para um servidor central através de várias redes disponíveis.
 
@@ -133,7 +133,7 @@ No artigo \cite{15} aborda-se a prestação de cuidados de saúde aos idosos num co
 
 Em \cite{14} é abordado o \textit{PlaceLab}. Situado em Cambrige é um laboratório vivo para estudo das tecnologias ubíquas. Está optimizado para moradias 1 habitantes. Foram criadas para este laboratório 15 divisões e em cada foram colocadas redes de 25 a 30 sensores. 
 
-O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético e o carregamento feito usando um campo electromagnético instalado num pires. É utilizada a tecnologia \acs{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acs{CAN}(Car Area Network) integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:6:mediacup})
+O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético e o carregamento feito usando um campo electromagnético instalado num pires. É utilizada a tecnologia \acf{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acf{CAN} integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:6:mediacup})
 
 \begin{figure}[!htb]
   \centering
