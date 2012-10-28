@@ -199,6 +199,26 @@
   url = {http://dblp.uni-trier.de/db/conf/mobicom/mobicom1999.html#HeinzelmanKB99}
 }
 
+@INPROCEEDINGS{32,
+  author = {Hill, Jason L. and Szewczyk, Robert and Woo, Alec and Hollar, Seth
+	and Culler, David E. and Pister, Kristofer S. J.},
+  title = {System Architecture Directions for Networked Sensors.},
+  booktitle = {ASPLOS},
+  year = {2000},
+  editor = {Rudolph, Larry and Gupta, Anoop},
+  pages = {93-104},
+  publisher = {ACM Press},
+  added-at = {2011-12-23T00:00:00.000+0100},
+  biburl = {http://www.bibsonomy.org/bibtex/207f20615e20ea6c42a19875950b6fe97/dblp},
+  ee = {http://doi.acm.org/10.1145/356989.356998},
+  interhash = {d4a239dd0d39c90bd95817c4af2c852f},
+  intrahash = {07f20615e20ea6c42a19875950b6fe97},
+  isbn = {1-58113-317-0},
+  keywords = {dblp},
+  timestamp = {2011-12-23T00:00:00.000+0100},
+  url = {http://dblp.uni-trier.de/db/conf/asplos/asplos2000.html#HillSWHCP00}
+}
+
 @INPROCEEDINGS{21,
   author = {Intanagonwiwat, Chalermek and Govindan, Ramesh and Estrin, Deborah},
   title = {Directed diffusion: a scalable and robust communication paradigm
@@ -307,6 +327,28 @@
   year = {2006}
 }
 
+@INPROCEEDINGS{34,
+  author = {Köpke, A. and Swigulski, M. and Wessel, K. and Willkomm, D. and Haneveld,
+	P. T. Klein and Parker, T. E. V. and Visser, O. W. and Lichte, Hermann
+	S. and Valentin, Stefan},
+  title = {Simulating wireless and mobile networks in OMNeT++ the MiXiM vision.},
+  booktitle = {SimuTools},
+  year = {2008},
+  editor = {Molnár, Sándor and Heath, John R. and Dalle, Olivier and Wainer,
+	Gabriel A.},
+  pages = {71},
+  publisher = {ICST},
+  added-at = {2009-05-15T00:00:00.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2e88f42b1987b7b6cccac17c630c53ee0/dblp},
+  ee = {http://doi.acm.org/10.1145/1416222.1416302},
+  interhash = {0ae22c0211a4738346cb4ff06e0038fa},
+  intrahash = {e88f42b1987b7b6cccac17c630c53ee0},
+  isbn = {978-963-9799-20-2},
+  keywords = {dblp},
+  timestamp = {2009-05-15T00:00:00.000+0200},
+  url = {http://dblp.uni-trier.de/db/conf/simutools/simutools2008.html#KopkeSWWHPVLV08}
+}
+
 @PROCEEDINGS{25,
   title = {{PEGASIS: Power-efficient gathering in sensor information systems}},
   year = {2002},
@@ -383,6 +425,29 @@
   timestamp = {2011-02-14T16:52:54.000+0100}
 }
 
+@PHDTHESIS{31,
+  author = {Rehim, Moustafa Amin Abdel Azim Yousief Abdel},
+  title = {HORUS: A WLAN-BASED INDOOR LOCATION DETERMINATION SYSTEM},
+  school = {University of Maryland},
+  year = {2004},
+  month = {April},
+  added-at = {2010-08-18T16:35:06.000+0200},
+  biburl = {http://www.bibsonomy.org/bibtex/2069f109ef4ff5d4c8244d62a7d7011ee/cscholz},
+  editor = {Agrawala, Ashok K.},
+  interhash = {e5d47ead70060825baeeb049dc3f5468},
+  intrahash = {069f109ef4ff5d4c8244d62a7d7011ee},
+  keywords = {localization},
+  timestamp = {2010-08-18T16:35:06.000+0200},
+  url = {http://www.lib.umd.edu/drum/handle/1903/1364}
+}
+
+@INPROCEEDINGS{35,
+  author = {Sommer, Christoph and Eckhoff, David and German, Reinhard and Dressler,
+	Falko},
+  title = {A Computationally Inexpensive Empirical Model of IEEE 802.11p Radio
+	Shadowing in Urban Environments}
+}
+
 @ARTICLE{15,
   author = {Stanford, Vincent M.},
   title = {Pervasive Computing: Applications - Using Pervasive Computing to
@@ -455,6 +520,21 @@
   keywords = {dblp},
   timestamp = {2011-11-08T00:00:00.000+0100},
   url = {http://dblp.uni-trier.de/db/journals/ijcns/ijcns2.html#UllahKUSHK09}
+}
+
+@ARTICLE{33,
+  author = {Varga, András},
+  title = {The OMNeT++ Discrete Event Simulation System},
+  journal = {Proceedings of the European Simulation Multiconference (ESM'2001)},
+  year = {2001},
+  month = {June},
+  added-at = {2007-12-04T05:18:34.000+0100},
+  biburl = {http://www.bibsonomy.org/bibtex/20caae4bb5091409dc6ad42d3ab2cff66/lm77},
+  description = {Dissertation},
+  interhash = {d23e0f5548ed4165717a178b39068090},
+  intrahash = {0caae4bb5091409dc6ad42d3ab2cff66},
+  keywords = {imported},
+  timestamp = {2007-12-04T05:18:34.000+0100}
 }
 
 @ARTICLE{17,

@@ -1,0 +1,64 @@
+% hier zunächst die benötigten packages
+\usepackage{color}
+\usepackage{listings}
+
+\renewcommand{\lstlistingname}{Listagem}
+
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{forestGreen}{RGB}{34,139,34}
+\definecolor{orangeRed}{RGB}{255,69,0}
+
+\lstdefinelanguage{bpel}{
+morekeywords={name,linkName,isolated,parallel,partnerLink,operation,portType,inputVariable,createInstance,
+variable,element,location,importType,partnerLinkType,myRole,messageType,properties,level,outputVariable,
+xmlns,version,encoding}
+}
+\lstdefinelanguage{xaml}{	morekeywords={TypeArguments,Name,Default,DisplayName,OperationName,ServiceContractName,Key,AddressUri,
+CanCreateInstance, LogName, Message, MessageNumber, Expression,CorrelationHandle,Request}
+}
+
+\lstdefinelanguage{xml}{
+	basicstyle=\small,
+	sensitive=false,
+}
+
+\lstdefinestyle{workflowStyle}{
+	language=XML,
+	alsolanguage=bpel,
+	alsolanguage=xaml,
+	%Formatting
+	basicstyle=\scriptsize,
+	sensitive=true,
+	showstringspaces=false,
+	numbers=left,
+	numberstyle=\tiny,
+	tabsize=4,
+	numbersep=3pt,
+	extendedchars=true,
+	xleftmargin=2em,
+	lineskip=1pt,
+	breaklines,
+	captionpos=t,
+	%Coloring
+	backgroundcolor=\color{lightgray},
+	morekeywords={BooleanExpression},
+	alsoletter={:,<,>,/,?},
+	morestring=[b]{"},
+	morecomment=[s]{<!--}{-->},keywordstyle=\color{forestGreen},
+	identifierstyle=\color{blue}\ttfamily,
+	stringstyle=\color{orangeRed}\ttfamily,
+	commentstyle=\color{forestGreen}\ttfamily
+}
+
+
+\lstnewenvironment{workflow-code}[2]{
+	\lstset{
+		caption=#1,
+		label=#2,
+		style=workflowStyle, 
+		captionpos=b,
+		xleftmargin=2em,
+		xrightmargin=2em
+	}
+}{}

@@ -3,24 +3,182 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \fancychapter{Ambiente de Trabalho}
-\label{chap:ps}
-Pequena introdução.
+\label{chap:4}
+As \acsp{WSN} são compostas por inúmeros sensores wireless munidos de reduzidas capacidades de processamento, comunicação e armazenamento. Antes da implementação de aplicações que recorram a sensores wireless e respectiva arquitectura base (por exemplo, o TinyOS \cite{32}) em aplicações reais, torna-se necessário avaliar a eficiência e robustez das mesmas, recorrendo a simulações que englobem tanto a componente aplicacional do nó como a rede no seu todo. 
 
-\section{Escolha da Framework}
-\label{sec:ps:sec1}
-Diversas opções disponíveis; Vantagens e desvantagens de cada; Fundamentação da escolha
+Nesta dissertação sugere-se a criação de um ambiente de trabalho que resulta da utilização conjunta de três sistemas: a \acf{OMNeT++} \cite{33}, uma \textit{framework} base de simulação por módulos,  o \acf{MiXiM} \cite{34}, uma união de várias \textit{frameworks} para \acs{OMNeT++}, vocacionadas para a simulação de sensores wireless e um componente de simulação de obstáculos para o MiXiM \cite{35}.
 
-\section{Sensores Wireless}
-\label{sec:ps:sec2}
-Explicação das soluções existentes na simulação e a forma como se aplicam à realidade; 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/04_framework_overview.png}
+  \caption{Representação modular do ambiente de trabalho.}
+  \label{fig:1:frameworkOverview}
+\end{figure}
 
-\section{Propagação e Decisão}
-\label{sec:ps:sec3}
-Explicação dos diversos modelos existentes e do escolhido
+\section{Objective Modular network Test-bed (OMNeT++)}
+\label{chap:4:sec:1}
+O \acs{OMNeT++}\footnote{http://http://www.omnetpp.org/} é uma plataforma de simulação baseada em módulos, escrita em C++ e com um IDE baseado em Eclipse. Cada módulo pode ser do tipo simples ou composto. Os módulos compostos são constituídos por módulos simples ou por outros módulos compostos criando assim uma estrutura hierárquica de dependência.Todos os módulos assentam sobre um módulo de sistema, responsável pela realização da simulação. A comunicação entre módulos é feita através do envio de mensagens, que podem ser tão especializadas quanto o necessário, enviadas por canais de comunicação de entrada e saída. Na Figura \ref{fig:2:omnet} está um diagrama exemplificativo desta arquitectura.
 
-\section{Obstáculos}
-\label{sec:ps:sec4}
-Explicação da solução implementada e valores a utilizar
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/04_omnet.png}
+  \caption{Estrutura modular do OMNeT++.}
+  \label{fig:2:omnet}
+\end{figure}
+
+A topologia de cada módulo e a forma como interliga com outros, é descrita utilizando a linguagem \acf{NED} sendo posteriormente a implementação feita em C++. É um utilizado um ficheiro de configuração (ex: omnetpp.ini) que permite criar diversos cenários possíveis definindo para cada um, por exemplo, parâmetros dos módulos, tempo de simulação, \textit{seed} para números aleatórios, etc. Esta solução permite a utilização de apenas um executável para diversas cenários.
+
+Na Figura \ref{fig:3:omnetInternal} é possível observar a estrutura interna de um executável \acs{OMNeT++}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/04_omnet_internal.png}
+  \caption{Arquitectura lógica de um executável OMNeT++ \cite{33}.}
+  \label{fig:3:omnetInternal}
+\end{figure}
+
+A \textit{Model Component Library} contém o código compilado dos módulos simples e compostos. Os módulos são instanciados e o \textit{Simulation Model} é construído pelo \textit{Simulation Kernel} (SIM) no início da execução. A simulação é então executada num ambiente definido pelo utilizador que pode ser um dos disponibilizados no \acs{OMNeT++} (\textit{Tkenv} ou \textit{Cmdenv}) ou outro (ambiente criado pelo utilizador ou embebido noutra aplicação). Para cada ambiente podem escolhidos ficheiros de configuração (*.ini) e cenários definidos em cada ficheiro de configuração. O ambiente \textit{Cmdenv} corre na linha de comandos de forma rápida enquanto que o ambiente \textit{Tkenv} fornece um ambiente gráfico capaz de animar de forma automática o percurso das mensagens ou as posições dos nós (Figura \ref{fig:4:omnetTkenv}).
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/04_omnet_tkenv.png}
+  \caption{Ambiente de simulação Tkenv no OMNeT++ \cite{33}.}
+  \label{fig:4:omnetTkenv}
+\end{figure}
+
+O \acs{OMNeT++} foi a plataforma base escolhida para este trabalho pelas seguintes razões:
+
+\begin{itemize}
+\item A partilha dos resultados deste trabalho com a comunidade \acs{OMNeT++}, promovendo a continuidade do trabalho efectuado nesta dissertação;
+\item A reutilização e combinação de módulos já construídos;
+\item A orientação por objectos que permite uma flexível extensão das classes base;
+\item A existência de um ambiente gráfico automático para uma melhor visualização e \textit{debug} da simulação;
+\item A biblioteca extensa incluída que oferece suporte para estatística, colecção de dados, apresentação gráfica, números aleatórios e estruturas de dados;
+\item A possibilidade simular vários cenários mudando apenas parâmetros num ficheiro de configuração, sem necessidade de nova compilação.
+\end{itemize}
+
+\section{Mixed Simulator (MiXiM) para OMNeT++}
+\label{chap:4:sec:2}
+O \acs{MiXiM}\footnote{http://mixim.sourceforge.net/} resulta da combinação de quatro \textit{frameworks}: a \acf{MF} que introduz suporte à mobilidade, o \acf{ChSim} que adiciona modelos detalhados de propagação, o MAC Simulator e a Positif Framework que adicionam o \acs{MAC}. Esta plataforma foi criada especificamente para simulação de redes wireless introduzindo várias novidades úteis na simulação de \acsp{WSN}, tais como:
+
+\begin{itemize}
+\item Módulos para sensores wireless com diversas camadas e simulação de bateria;
+\item \acsp{NIC} de sensores wireless existentes no mercado (Texas Instruments CC1100 e CC2420);
+\item Novos modelos de propagação de sinal, como por exemplo o \textit{Two-Ray Ground Path Loss} ou o \textit{Log-normal Shadowing};
+\item A possibilidade de ter na mesma simulação vários canais para diferentes frequências o que permite ter na mesma simulação comunicação WI-FI e \acs{GSM}.
+\item A decisão da qualidade do sinal e sua recepção feita pelo nó receptor;
+\item Novos módulos de mobilidade.
+\end{itemize}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/04_mixim.png}
+  \caption{Simulação de uma rede no MiXiM \cite{34}.}
+  \label{fig:5:mixim}
+\end{figure}
+
+Na Figura \ref{fig:5:mixim} temos a estrutura do \acs{MiXiM} que pode ser dividido em dois tipos de módulos:
+
+\begin{itemize}
+\item Módulos de Simulação: módulo \textit{world} responsável pela configuração do ambiente (dimensões da área de trabalho, gestão de parâmetros globais) e \textit{ConnectionManager} responsável pela gestão das ligações entre nós. De notar que o MiXiM suporte vários nós de ligação, tantos como os canais de transmissão existentes;
+\item Módulos de Nó: módulos com vários sub-módulos que implementam cada uma das camadas lógicas e físicas presentes num nó de uma rede wireless.
+\end{itemize}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/04_mixim_node_module.png}
+  \caption{Módulo de nó no MiXiM \cite{34}.}
+  \label{fig:6:miximNode}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.90\textwidth]{img/04_mixim_logic_layers.png}
+  \caption{Divisão lógica da \textit{framework} MiXiM.}
+  \label{fig:7:miximLogicLayers}
+\end{figure}
+
+Na Figura \ref{fig:6:miximNode} observa-se em detalhe o módulo de nó onde estão presentes as camadas lógicas de um sensor wireless, o \acs{NIC} constituído pelas \acs{PHY} e \acs{MAC}, a camada \textit{Network} (Netw) e a camada de aplicação. Existem ainda paralelamente vários sub-módulos, nomeadamente o \textit{mobility} que trata da posição e movimentação do nó na área de trabalho, o \textit{battery} que simula o consumo de energia, o \textit{arp} que trata do endereçamento e o \textit{utility} que serve para efeitos utilitários na partilha de informação durante a simulação.
+
+O \acs{MiXiM} pode ser dividido de forma lógica numa plataforma base e numa biblioteca de protocolos conforme se pode observar na Figura \ref{fig:7:miximLogicLayers}. A plataforma base tem todos componentes necessários para criar uma simulação. A biblioteca de protocolos tem diversas extensões da plataforma base que permitem diversificar a quantidade de protocolos e modelos existente.
+
+Importa analisar como funciona a camada \acs{PHY} no \acs{MiXiM}. A potência do sinal é influenciada pelo canal de propagação, influência que pode ser modelada por atenuações causadas por efeitos de \textit{path loss}\footnote{Atenuação causada pelo ar.}, \textit{shadowing}\footnote{Atenuação causada por obstáculos.} e \textit{fading}\footnote{Atenuação causada pela multi-propagação de um sinal derivada de diversas reflexões.}. Para além disso também a frequência do sinal, a potência de envio e o \textit{bit-rate} (modulação e codificação) no tempo, espaço e frequência podem afectar a potência do sinal recebido.
+
+Para modelar este complexo processo o MiXiM implementa uma classe especial de sinal que é associada a cada mensagem e implementa a camada \acs{PHY} tal como esquematizado na Figura \ref{fig:8:miximPhy}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.90\textwidth]{img/04_mixim_phy.png}
+  \caption{Camada PHY do MiXiM \cite{34}.}
+  \label{fig:8:miximPhy}
+\end{figure}
+
+Quando recebe uma mensagem vinda do exterior (\textit{AirFrame}), a camada \acs{PHY} envia a mensagem para o modelo analógico que irá calcular a atenuação do sinal e para o \textit{Decider} que verifica se o sinal é ruído com base na potência recebida e calcula os bit-errors. Depois deste momento a camada \acs{PHY} calcula o atraso de propagação e de transmissão da mensagem cabendo à camada \acs{MAC} determinar com base nos \textit{bit errors} se mensagem é válida ou não.
+
+
+\section{Simulação de Obstáculos para MiXiM}
+\label{chap:4:sec:3}
+Embora esteja referida em \cite{34}, a simulação de obstáculos, como parte integrante do MiXiM, esta nunca chegou a ser implementada. Assim foi necessário procurar uma solução que permitisse simular a existência de obstáculos no ambiente de trabalho.
+
+O trabalho \cite{35} implementa a simulação de obstáculos no MiXiM e a sua representação no ambiente Tkenv. O modelo descrito não contempla efeitos de reflexão ou difracção e pretende ser computacionalmente rápido. A configuração dos obstáculos é feita através de um ficheiro XML. Na \lstlistingname{} \ref{list:1:obstaclesXML} está o código XML necessário para desenhar o obstáculo da Figura \ref{fig:9:miximWithObstacles}.
+
+\begin{workflow-code}{Exemplo de configuração XML de obstáculos.}{list:1:obstaclesXML}
+<obstacles>
+   <poly id="wall#0" type="brickWall20cm" color="#F00" shape="12.8,10 13,10 13,15 12.8,15" />
+</obstacles>
+\end{workflow-code}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.90\textwidth]{img/04_mixim_with_obstacles.png}
+  \caption{Simulação de uma rede MiXiM com obstáculos.}
+  \label{fig:9:miximWithObstacles}
+\end{figure}
+
+
+Para melhor perceber a solução encontrada analisa-se a base matemática do modelo.
+
+Sabendo que a potência recebida de um sinal é dada por:
+
+\begin{equation}
+	P_r[dBm] = P_t[dBm] + G_t[dB] + G_r[dB] - \sum{L_x[dB]}
+\end{equation}
+
+onde \begin{math}P\end{math} é potência, \begin{math}G\end{math} é ganho e \begin{math}L_x\end{math} são os termos que traduzem as perdas. No MiXiM as perdas já são calculadas como descrito na secção anterior pela camada \acs{PHY} mas não contemplam as perdas provocadas por obstáculos. 
+
+É então sugerido um termo para a potência provocada por obstáculos:
+
+\begin{equation}
+	L_{obs}[dB] = \beta{n} + \gamma{d_m}
+\end{equation}
+
+Os termos \begin{math}\beta{}\end{math} e \begin{math}\gamma{}\end{math} são calculados com base nos resultados obtidos experimentalmente e representam a atenuação por metro e a atenuação por parede respectivamente. Para o trabalho \cite{35} os valores obtidos foram \begin{math}\beta{}\approx{9dB}\end{math} e \begin{math}\gamma{}\approx{0.4dB/m}\end{math}. 
+
+Devido à não utilização de nós reais neste trabalho, que permitissem chegar a valores reais, optou-se por considerar, com base no Tabela \ref{tab:1:attenuationPerInch} do manual da \textit{3Com Wireless Antenas}\footnote{http://www.scribd.com/doc/32613170/3Com\%C2\%AE-Wireless-Antennas}, os seguintes valores:
+
+\begin{table}[!htb]
+	\centering
+\begin{tabular}{ |c|c|c|}
+	\hline
+  	Profundidade(cm) & \begin{math}\beta{}\end{math}(dBm)  & \begin{math}\gamma{}\end{math}(m)\\
+  	\hline
+  	20 & 106.3 & 0 \\
+  	10 & 26.575 & 0 \\
+  	\hline
+\end{tabular}
+	\caption{Valores de atenuação por metro e por parede usados neste trabalho.}
+	\label{tab:1:attenuationValues}
+\end{table}
+
+\begin{table}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/04_attenuation_per_inch.png}
+  \caption{Atenuação de materiais de construção comuns para frequências de 5GHz e 2.4 GHz.}
+  \label{tab:1:attenuationPerInch}
+\end{table}
+
+
+
 
 % Ensure that the next chapter starts in a odd page
 \cleardoublepage
