@@ -9,35 +9,267 @@
 
 \section{Sistema de Monitorização EMoS}
 \label{chap:5:sec:1}
-Propõe-se nesta tese o \acf{EMoS}, uma solução simulada para o problema da monitorização de pessoas em ambiente doméstico. O \acs{EMoS} é uma rede \acs{WSN} constituída por diversos nós wireless colocados de forma homogénea numa casa.Embora o sistema possa efectuar a monitorização de todo o tipo de pessoas, neste trabalho será focada a monitorização de idosos ou pessoas com necessidades especiais.
+Propõe-se nesta tese o \acf{EMoS}, uma solução simulada para o problema da monitorização de pessoas em ambiente doméstico. O \acs{EMoS} é uma rede \acs{WSN} constituída por diversos nós wireless colocados de forma homogénea numa casa. Embora o sistema possa efectuar a monitorização de todo o tipo de pessoas, neste trabalho é focada a monitorização de idosos ou pessoas com necessidades especiais. 
 
-O sistema é caracterizado pelos seguintes tipos de dispositivo:
+São sugeridas opções de hardware comercialmente disponível para cada componente do sistema pretendendo-se desta forma ir para além da simples simulação e obter parâmetros reais para a configuração da mesma. Alguns aspectos de hardware mencionados não serão simulados por limitação de tempo na execução deste trabalho e também por não corresponderem ao âmbito estabelecido no Capítulo \ref{chap:1:sec:2}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.95\textwidth]{img/05_emos_overview.png}
+  \caption{Esquema modular do \textit{Elder Monitorization System} (EMoS).}
+  \label{fig:1:emosOverview}
+\end{figure}
+
+O sistema \acs{EMoS} (Figura \ref{fig:1:emosOverview}) é caracterizado pelos seguintes tipos de dispositivo:
 
 \begin{itemize}
-\item Nó Móvel (\acf{MN})
-\item Nó Estático (\acf{SN}
-\item Estação Base (\acf{BS})
+\item Nó Móvel (\acf{MN}): Monitorização de pessoas e calibração do sistema;
+\item Nó Fixo (\acf{SN}): Envio de \textit{beacons} para localização, comunicação e monitorização doméstica;
+\item Nó Base (\acf{BN}): Gestão central do sistema recebendo os dados de monitorização ou pedidos do utilizador e enviando mensagens para a rede \acs{WSN} ou para o exterior através de uma \acs{LAN}.
 \end{itemize}
 
-\title{\textbf{Nó Móvel}}
+Os nós estáticos estão ligados à rede eléctrica e enviam periodicamente  mensagens de assinatura em modo \textit{broadcast}. No caso dos nós \textit{SN8}, \textit{SN9}, \textit{SN12} e \textit{SN13}, pode existir também envio de mensagens para outros nós estáticos ou para o nó base. Isto pode acontecer quando por exemplo, é detectado gás no caso do \textit{SN12}, quando é ligado/desligado o fogão no caso do \textit{SN13} ou quando alguém se deita/levanta numa das camas onde estão os sensores \textit{SN8} e \textit{SN9}.
 
-O nó móvel é um sensor wireless 
+O nó de base recebe informação dos nós estáticos ou do exterior através da \acs{LAN} e toma decisões com base nessa informação. Pode, por exemplo, avisar num monitor que existe alguma anomalia na casa, enviar uma mensagem para o nó móvel ou para um nó fixo, ou comunicar com o exterior caso seja necessário. 
+
+O nó móvel pode funcionar em dois modos: calibração e normal. No modo de calibração limita-se a receber assinaturas dos nós fixos e a registar essa informação, gerando no um ficheiro XML com o mapa rádio do casa. No modo normal recebe de igual forma as assinaturas, mas periodicamente envia de volta para o nó estático mais próximo, um conjunto de médias das potências recebidas. O nó estático por sua vez envia esta informação para o nó base que irá calcular a localização do nó móvel.
+
+Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} para comunicar e apresentam uma estrutura interna idêntica (Figura \ref{fig:2:emonsNodeInternal}). O sistema é perfeitamente escalável, sendo possível adicionar-se vários outros nós móveis. No caso de existir um número muito elevado de nós móveis é possível criar novos nós base associados a \textit{clusters} de nós fixos, que comuniquem através da LAN para eliminar sobreposições.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.80\textwidth]{img/05_emos_node_internal.png}
+  \caption{Estrutura interna de um nó no sistema EMoS.}
+  \label{fig:2:emonsNodeInternal}
+\end{figure}
+
+Neste trabalho foi criada uma camada \textit{Network} comum para todos os nós e uma camada \textit{Application} por cada tipo de nó que implementa cada u dos tipos descritos. Nas próximas secções é feita uma exposição detalhada de todo o sistema.
+
+\subsection{Nó Móvel (MN)}
+\label{chap:5:sec:1.1}
+
+O nó móvel é um sensor equipado com rádios \acs{IEEE} 802.15.4 e Bluetooth, um acelerómetro, um botão de pânico e capacidade de armazenamento em cartão \acs{SD}. O facto de ter dois tipos de rádio permite-lhe comunicar com ambas as redes \acs{BSN} para monitorização local biomédica e \acs{WSN}. Está instalado num objecto de uso diário, como uma bengala, um andarilho ou uma cadeira de rodas e possui baterias recarregáveis. O carregamento é feito no sítio habitual de apoio da bengala ou então por ligação com as baterias de uma cadeira de rodas eléctrica.
+
+A rede \acs{BSN} é composta por um electrocardiógrafo e um medidor de pressão arterial ambos equipados com Bluetooth, que efectuam monitorização contínua. Quando detectam uma situação anómala comunicam a mesma ao nó móvel. Na simulação este comportamento é recreado com um temporizador aleatório no nó móvel que simula a comunicação vinda da \acs{BSN} ao nível da aplicação.
+
+Como solução de hardware sugere-se a utilização do módulo \textit{Waspmote} (Figura \ref{fig:3:waspMote}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:4:waspXBee}), da \textit{Libelium}\footnote{http://www.libelium.com/products/waspmote} que permite a utilização de dois tipos de rádio, tem acelerómetro integrado, micro\acs{SD} e pins para obtenção do \acs{RSSI}. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.50\textwidth]{img/05_wasp_mote.png}
+  \caption{Módulo \textit{Waspmote} da \textit{Libelium}.}
+  \label{fig:3:waspMote}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.40\textwidth]{img/05_wasp_xbee.png}
+  \caption{Rádio \textit{XBee} IEEE 802.15.4 usado no módulo \textit{Waspmote}.}
+  \label{fig:4:waspXBee}
+\end{figure}
+
+O rádio \textit{XBee} simulado terá os seguintes parâmetros obtidos do  manual  \footnote{http://ftp1.digi.com/support/documentation/90000982\_H.pdf}): 
+
+\begin{table}[!htb]
+	\centering
+\begin{tabular}{ |l|r|}
+	\hline
+  	Parâmetro & Valor \\
+  	\hline
+  	Modulation & O-QPSK \\
+  	Receiver Sensitivity & -92 dbM  \\
+  	Transmit Power	& 1mW \\
+  	Sleep Current & <10 uA \\
+  	Current Consumption RX & 50 mA \\
+  	Current Consumption TX (P=0dBm) & 45 mA \\
+  	\hline
+\end{tabular}
+	\caption{Parâmetros do rádio \textit{XBee} da \textit{Digi}.}
+	\label{tab:1:xbeeNICParameters}
+\end{table}
+
+\subsection{Nó Fixo (SN)}
+\label{chap:5:sec:1.2}
+
+O nó fixo está equipado com rádio \acs{IEEE} 802.15.4. Ficará ligado à rede eléctrica dada a necessidade de estar periodicamente a enviar assinaturas em \textit{broadcast}. O hardware escolhido para a implementação deste nó será o \textit{MicaZ} com rádio \textit{Texas Instruments CC2420} da \textit{Crossbow}\footnote{http://www.xbow.com/} (Figura \ref{fig:5:micaz}).
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.35\textwidth]{img/05_micaz.png}
+  \caption{Módulo \textit{Micaz} da \textit{Crossbow}.}
+  \label{fig:5:micaz}
+\end{figure}
+
+A escolha deste nó é motivada pelo baixo custo do mesmo e o facto de ser o nó que estará presente em maior número na rede.
+
+O rádio \textit{Texas Instruments CC2420} tem os seguintes parâmetros obtidos do manual\footnote{http://www.ti.com/lit/gpn/cc2420};
+\begin{table}[!htb]
+	\centering
+\begin{tabular}{ |l|r|}
+	\hline
+  	Parâmetro & Valor \\
+  	\hline
+  	Modulation & O-QPSK \\
+  	Receiver Sensitivity & -95 dBm  \\
+  	Transmit Power & 1.1mW \\
+  	Sleep Current & 0.02 uA \\
+  	Current Consumption RX & 18.8 mA \\
+  	Current Consumption TX (P=0dBm) & 17.4 mA \\
+  	\hline
+\end{tabular}
+	\caption{Parâmetros do rádio \textit{Texas Instruments CC2420}.}
+	\label{tab:2:CC2420NICParameters}
+\end{table}
+
+\subsection{Nó Base (BN)}
+\label{chap:5:sec:1.3}
+
+O nó base tem como função efectuar toda a gestão centralizada da informação gerada por cada um dos sensores. Dada a grande necessidade de rapidez de processamento, espaço de armazenamento e comunicação com o exterior, optou-se por usar um \acs{PC} ligado a uma \acs{LAN} que está por sua vez ligada à Internet. Assim o hardware para a implementação física deste nó e que fará a ponte entre o \acs{PC} e a rede \acs{WSN}, será o \textit{Waspmote Gateway}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:4:waspXBee}), da \textit{Libelium}. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.40\textwidth]{img/05_waspmote_gateway.png}
+  \caption{Módulo \textit{Waspmote Gateway} da \textit{Libelium}.}
+  \label{fig:6:waspmoteGateway}
+\end{figure}
+
+Este nó usa o mesmo rádio que o \textit{Waspmote}, com parâmetros para simulação já registados na Tabela \ref{tab:1:xbeeNICParameters}.
+
+\section{Camada NIC}
+\label{chap:5:sec:2}
+Esta camada é constituída pelo \acs{MAC} e \acs{PHY}. 
+
+Tal como descrito na Secção \ref{chap:4:sec:2} a camada \acs{PHY} do \acs{MiXiM} tem um conjunto de modelos analógicos e um \textit{decider} que calculam as diversas atenuações e \textit{bit-errors} do sinal. Para o simulação deste sistema optou-se por usar um conjunto de três modelos analógicos que vão introduzir atenuação no sinal recebido.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_analogue_models.png}
+  \caption{Sistema linear correspondente à aplicação dos modelos analógicos à potência do sinal recebido pelo nó.}
+  \label{fig:7:analogueModels}
+\end{figure}
+
+Optou-se por usar o modelo \textit{Breakpoint Path Loss}, um modelo empírico que permite recriar a atenuação de um sinal a longas distâncias, onde a partir da \textit{BreakPoint distance} o sinal sofre uma atenuação com declive superior e o \textit{Log Normal Shadowing} que permite simular as perdas provocadas pelas diversas reflexões existentes dentro de um edifício. Para simular a existência de obstáculos é utilizado o \textit{Simple Obstacle Shadowing} que tal como descrito na Secção \ref{chap:4:sec:3} permite recriar a atenuação causada pelas paredes da habitação. Dada a falta de dados reais que permitam inferir os parâmetros do modelo, utilizaremos parâmetros de configurações usadas nos exemplos do MiXiM para simulação de redes \acs{WSN}.
+
+%Assim para o modelo \textit{Breakpoint Path Loss} dado por:
+%
+%\begin{equation}
+%	P_L = L_0 + 10\alpha{}\log{d}
+%\end{equation}
+%
+%Temos \begin{math}\alpha{}=2\end{math},\begin{math}L_0=40.2\end{math}dB para \begin{math}d<8\end{math}m e \begin{math}\alpha{}=3.3\end{math}, \begin{math}L_0=58.8\end{math}dB para \begin{math}d>=8.0\end{math}.
+%
+%Por sua vez para o modelo \textit{Log Normal Shadowing} dado por:
+%
+%\begin{equation}
+%	G = -normal(\bar{x},\sigma{})
+%\end{equation}
+
+Paralelamente à atenuação do sinal há também o cálculo dos \textit{bit-errors} da mensagem levada a cabo pelo bloco \textit{decider}. Este foi configurado com uma probabilidade de erro de \begin{math}BER=1\times{10^{-8}}\end{math} e modulação O-QPSK.
+
+O ficheiro de configuração da camada \acs{NIC} está disponível no Anexo \ref{annex:a}.
 
 
-\section{Ficheiros XML de Configuração}
-\label{sec:im:sec2}
+\section{Camada Network : \textit{AODVRoute}}
+\label{chap:5:sec:3}
 
-\section{Network Layer}
-\label{sec:im:sec3}
+A tecnologia ZigBee é hoje bastante usada nas redes \acs{WSN} com vários produtos para as mais diversas áreas. O ZigBee usa como primeiro protocolo na camada \textit{Network} o \acf{AODV} e seguidamente quando este falha um protocolo hierárquico. Assim por forma a garantir uma compatibilidade do sistema desenvolvido com o ZigBee optou-se por implementar este protocolo no \acs{MiXiM}. 
 
-\subsection{\textit{Ad hoc On-Demand Vector Routing}}
-\label{chap:4:sec:4.1}
+O \acs{AODV} é um protocolo \textit{on-demand} que permite descobrir um caminho apenas quando este é necessário, recuperar caminhos perdidos e reutilizar caminhos já encontrados. Achou-se por isso conveniente implementá-lo no \acs{MiXiM} para ser usado no \acs{EMoS}. Este usa caminhos bidireccionais, o que significa que quando é feita a descoberta de um novo caminho são sempre gerados dois, acelerando o processo de procura de novos caminhos. A utilização de contadores sequenciais impede e formação de loops em todo o processo e é feita manutenção sobre os caminhos para eliminar os que deixaram de ser usados durante um determinado espaço de tempo.
 
-\section{Application Layer}
-\label{sec:im:sec4}
+Neste trabalho foi implementada uma versão do \acs{AODV} que apenas contém as funcionalidades necessárias para descoberta de um novo caminho ou para a recuperação de um caminho perdido. O \textit{multicast} bem como a reparação local de caminhos perdidos (\textit{local-repair}\footnote{reparação que ocorre localmente quando um nó intermédio falha no encaminhamento da mensagem.} não foram implementadas. Ao módulo implementado foi dado o nome de \textit{AODVRoute}.
 
-\subsection{HORUS}
-\label{chap:5:sec:5.1}
+\subsection{Tipos de Mensagens}
+\label{chap:5:sec:3.1}
+O \acs{AODV} funciona utilizando pelo menos três tipos de mensagens para descobrir o caminho de um nó A para um nó B.
+
+\begin{itemize}
+\item \acf{RREQ};
+\item \acf{RREP};
+\item \acf{RERR}.
+\end{itemize}
+
+Pode ainda existir um quarto tipo de mensagem, opcional, o \acf{RREP-ACK}, utilizado quando existe o perigo de existirem ligações unidireccionais que impeçam a chegada de um \acs{RREP}, mas que não será referido neste trabalho.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_aodv_msg_types.png}
+  \caption{Tipos de mensagens do AODVRoute.}
+  \label{fig:11:aodvMsgTypes}
+\end{figure}
+
+Na Figura \ref{fig:11:aodvMsgTypes} estão as mensagens criadas no \acs{MiXiM}. A criação de mensagens no \acs{OMNeT++} é relativamente simples uma vez que todo o \textit{boilerplate code} é gerado automaticamente. Assim é necessário apenas definir ficheiros do tipo \textit{msg} com os parâmetros necessários. Cada uma das mensagens definidas para este módulo estende a mensagem \textit{NetwPkt}, uma mensagem genérica para a camada \textit{Netw} com endereços de emissor e receptor e \acf{TTL}. Para além dos campos herdados existem também os seguintes para cada tipo de mensagem:
+
+\begin{itemize}
+\item \textit{AODVRouteRequest} : endereços e números de sequência para o nós emissor e receptor, o \textit{RREQ\_ID} que é obtido de um contador existente para o efeito no nó emissor e o contador de saltos que permite perceber em que ponto do caminho está o \acs{RREQ};
+\item \textit{AODVRouteResponse} : endereços de emissor e receptor, número de sequência do nó de receptor e número de saltos até ao receptor;
+\item \textit{AODVRouteError} : endereço do nó de destino que não foi encontrado. 
+\end{itemize}
+
+\subsection{Estruturas de dados}
+\label{chap:5:sec:3.2}
+
+Foram criadas três estruturas de dados neste novo módulo:
+
+\begin{itemize}
+\item \textit{pktMap} : utilizada para guardar os pacotes que vieram da camada \acs{APP} por nó de destino, num \acs{FIFO} quando para estes ainda não existe um caminho encontrado;
+\item \textit{RREQVector} : utilizada para guardar os pacotes \acs{RREQ} recebidos;
+\item \textit{routeMap} :utilizada para guardar as rotas em cada nó e a lista de precursores\footnote{Precursor de um caminho, é um nó que antecede o nó actual no caminho e só existe depois de ter enviado pelo menos uma mensagem pelo nó actual.} dessa rota.
+\end{itemize}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_aodv_pkt_map.png}
+  \caption{PktMap - estrutura para a gestão dos pacotes de aplicação em espera.}
+  \label{fig:8:aodvPktMap}
+\end{figure}
+
+Na Figura \ref{fig:8:aodvPktMap} observamos a estrutura PktMap. Este mapa de pares do tipo de endereços e filas de pacotes, guarda para cada nó de destino os pacotes em espera de um caminho para o seu destino final. Cada elemento da fila tem como parâmetros o endereço do nó de destino, o tempo de vida do elemento (\begin{math}t_0+t\end{math}) e o pacote que foi enviado da camada \acs{APP}. Esta estrutura é sujeita a uma manutenção periódica que elimina os todos os elementos para os quais \begin{math}t_{sim}>lifetime\end{math}. O tempo de vida é suficientemente curto para que não exista uma disparidade grande entre o momento que foi encontrado um caminho e a nova posição do nó móvel.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_aodv_rreq_vector.png}
+  \caption{RREQVector - estrutura que guarda os RREQs recebidos num nó.}
+  \label{fig:9:aodvRREQVec}
+\end{figure}
+
+Na Figura \ref{fig:9:aodvRREQVec} observamos a \textit{RREQVec}, estrutura que guarda a chave pares \textit{RREQ\_ID} e \textit{srcAddr}, por forma a distinguir univocamente todos os \acp{RREQ} recebidos de um determinado nó evitando assim o envio de um \acs{RREQ} que já foi anteriormente enviado.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_aodv_route_map.png}
+  \caption{RouteMap - estrutura que guarda os caminhos encontrados para nós destino.}
+  \label{fig:10:aodvPktMap}
+\end{figure}
+
+Finalmente na Figura \ref{fig:10:aodvPktMap} temos a estrutura \textit{RouteMap} que guarda a informação dos caminhos encontrados em cada nó. Estão presentes em cada \textit{routeMapElement}, o nó final de destino do caminho, o número de sequência conhecido do destino, o próximo nó do caminho, o número de nós entre o nó actual e o nó de destino, o tempo de vida do caminho usado para garantir que os caminhos que deixaram de ser usados não ficam a ocupar espaço no limitado armazenamento disponível e uma lista de nós precursores que servirá para para enviar um \acs{RERR} de volta para todos os nós que anteriormente usaram o caminho que deixou de existir.
+
+\subsection{Modo de Funcionamento}
+\label{chap:5:sec:3.3}
+
+Neste trabalho a camada de aplicação poderá gerar vários tipos de mensagens. Essas mensagens poderão ser em \textit{broadcast} no caso das mensagens de assinatura enviadas pelos nós fixos ou \textit{unicast} quando existe um nó que pretende comunicar com outro. Todos os nós do sistema \acs{EMoS} podem comunicar uns com os outros, no entanto, nem sempre de forma directa. Sendo a camada \textit{Network} comum a todos os nós o comportamento é idêntico para todos. 
+
+Suponhamos que a camada de aplicação de um nó fixo pretende enviar uma mensagem para o base, informando, por exemplo que o existe uma fuga de gás. A partir desse momento à mensagem de aplicação é anexada informação de controlo (\textit{NetwControlInfo}), contendo o endereço \textit{Network} do nó de destino, sendo enviada para a camada abaixo.
+
+
+
+\section{Camada Application}
+\label{chap:5:sec:4}
+
+\subsection{HORUS Modificado}
+\label{chap:5:sec:4.1}
+
+\subsection{Módulo de Nó Móvel}
+\label{chap:5:sec:4.2}
+
+\subsection{Módulo de Nó Fixo}
+\label{chap:5:sec:4.3}
+
+\subsection{Módulo de Nó Base}
+\label{chap:5:sec:4.4}
+
+\section{Mobilidade}
+\label{chap:5:sec:5}
+
 
 % Ensure that the next chapter starts in a odd page
 \cleardoublepage
