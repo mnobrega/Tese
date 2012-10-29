@@ -7,7 +7,7 @@
 
 \section{Sistema de Monitorização EMoS}
 \label{chap:5:sec:1}
-Propõe-se nesta tese o \acf{EMoS}, uma solução simulada para o problema da monitorização de pessoas em ambiente doméstico. O \acs{EMoS} é uma rede \acs{WSN} constituída por diversos nós wireless colocados de forma homogénea numa casa. Embora o sistema possa efectuar a monitorização de todo o tipo de pessoas, neste trabalho é focada a monitorização de idosos ou pessoas com necessidades especiais. 
+Propõe-se nesta tese o \acf{EMoS}, uma solução simulada para o problema da monitorização de pessoas em ambiente doméstico. O \acs{EMoS} é uma rede \acs{WSN} constituída por diversos nós com comunicação wireless colocados de forma homogénea numa casa. Embora o sistema possa efectuar a monitorização de todo o tipo de pessoas, neste trabalho é focada a monitorização de idosos ou pessoas com necessidades especiais. 
 
 São sugeridas opções de hardware comercialmente disponível para cada componente do sistema pretendendo-se desta forma ir para além da simples simulação e obter parâmetros reais para a configuração da mesma. Alguns aspectos de hardware mencionados não serão simulados por limitação de tempo na execução deste trabalho e também por não corresponderem ao âmbito estabelecido no Capítulo \ref{chap:1:sec:2}.
 
@@ -262,53 +262,146 @@ Portanto quando não existe caminho para o nó pretendido de destino o nó de orige
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.9\textwidth]{img/05_aodv_flow_02.png}
-  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \caption{Fluxograma de chegada de um \textit{RREQ} vindo da camada \textit{MAC}.}
   \label{fig:13:aodvFlux2}
 \end{figure}
 
 
-Dado que o nó guarda todos os \acs{RREQ} que recebe no RouteVector, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de no para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no RouteMap o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino é incrementado o contador do nó para garantir que não haverá mais nenhum caminho a se sobrepor.  
+Dado que o nó guarda todos os \acs{RREQ} que recebe no \textit{RouteVector}, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de no para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no \textit{RouteMap} o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino é incrementado o contador do nó para garantir que não haverá mais nenhum caminho que se sobreponha.  
 
 Então, assim que o caminho é encontrado existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem o nó pode então ir buscar ao pktMap a p?oxima mensagem a enviar para aquele endereço de destino.
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.7\textwidth]{img/05_aodv_flow_03.png}
-  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \caption{Fluxograma de chegada de um \textit{RREP} vindo da camada \textit{MAC}.}
   \label{fig:14:aodvFlux3}
 \end{figure}
 
-Quando ocorre um erro, ou seja, existe uma mensagem que é entregue mas o \acs{MAC} não recebe uma resposta de confirmação \acs{ACK} é necessário tomar medidas para que a origem seja informada que aquele caminho já não é válido. Assim são criados \acs{RERR} que viajam pelos precursores até atingir nó de origem. Na Figura \ref{fig:15:aodvFlux4} podemos ver a primeira fase quando a falha na entrega da mensagem ocorre. Nesse momento o nó procura todos os caminhos que estejam no \textit{RouteMap} e elimina-os, enviando depois um \acs{RERR} para cada um dos precursores. Na Figura \ref{fig:16:aodvFlux5}  temos o comportamento dos nós intermédios e destino (origem do caminho eliminado). De notar que a mensagem vai sendo apagada, nó a nó, quando para cada percurso na árvore já não existem mais percursores.
+Quando ocorre um erro, ou seja, existe uma mensagem que é entregue mas o \acs{MAC} não recebe uma resposta de confirmação \acs{ACK} é necessário tomar medidas para que a origem seja informada que aquele caminho já não é válido. Assim são criados \acs{RERR} que viajam pelos precursores até atingir nó de origem. Na Figura \ref{fig:15:aodvFlux4} podemos ver a primeira fase quando a falha na entrega da mensagem ocorre. Nesse momento o nó procura todos os caminhos que estejam no \textit{RouteMap} e elimina-os, enviando depois um \acs{RERR} para cada um dos precursores.
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.34\textwidth]{img/05_aodv_flow_04.png}
-  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \includegraphics[width=0.33\textwidth]{img/05_aodv_flow_04.png}
+  \caption{Fluxograma de chegada de uma mensagem de controlo com o pacote cuja entrega falhou no \textit·{MAC}.}
   \label{fig:15:aodvFlux4}
 \end{figure}
 
+Na Figura \ref{fig:16:aodvFlux5}  temos o comportamento dos nós intermédios e destino (origem do caminho eliminado). De notar que a mensagem vai sendo apagada, nó a nó, quando para cada percurso na árvore já não existem mais percursores.
+
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.73\textwidth]{img/05_aodv_flow_05.png}
-  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \includegraphics[width=0.68\textwidth]{img/05_aodv_flow_05.png}
+  \caption{Fluxograma da chegada de um \textit{RERR} vindo da camada \textit{MAC}.}
   \label{fig:16:aodvFlux5}
 \end{figure}
 
 
 
-\section{Camada Application}
+\section{Camada \textit{Application} : Localização}
 \label{chap:5:sec:4}
+
+O sistema \acs{EMoS} usa para a localização o método \textit{HORUS} \cite{31} com algumas modificações que serão descritas na Secção \ref{chap:5:sec:4.1}. É um processo probabilístico com precisão elevada, razão pela qual foi escolhido para este trabalho. O processo  foi implementando completamente ao nível da camada de aplicação e é constituído por duas fases distintas:
+
+\begin{itemize}
+\item Fase \textit{Offline} : fase onde é obtido o mapa rádio e criados os \textit{clusters}. O nó móvel (\acs{MN}) é configurado em modo de calibração e guarda numa estrutura de dados, as assinaturas recebidas vindas dos diversos nós fixos que estão à distância de recepção. No fim da simulação são criados dois ficheiros \textit{XML} que guardam posições ou \textit{clusters}. Esses ficheiros serão posteriormente interpretados pelo nó base.
+\item Fase \textit{Online} : fase em que os nó móveis enviam periodicamente mensagens com um conjunto de médias das potências recebidas dos vários nós fixos para o nó base. Utilizando o mapa rádio entretanto criado o nó base efectua o cálculo da posição seleccionando primeiramente um \textit{cluster} de posições e depois calculando a probabilidade de cada posição.
+\end{itemize}
 
 \subsection{HORUS Modificado}
 \label{chap:5:sec:4.1}
 
-\subsection{Módulo de Nó Móvel}
+O sistema \textit{HORUS} usado no \acs{EMoS} difere do apresentado pelo seu autor em \cite{31}, na medida em que o cálculo da posição não é feito no nó móvel mas sim no nó base, sendo a correlação entre amostras a única operação que permanece no dispositivo móvel. Esta opção de arquitectura deveu-se às seguintes razões:
+
+\begin{itemize}
+\item Poupança de bateria no nó móvel;
+\item Fraca capacidade de processamento do nó móvel;
+\item Necessidade de centralização das posições de vários nós móveis num único sítio podendo assim ser feita a correlação de resultados vindos de todos os nós;
+\item Complexidade do sistema de localização.
+\end{itemize}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_horus_mod.png}
+  \caption{Componentes do sistema HORUS modificado e fluxo de informação.}
+  \label{fig:17:horusMod}
+\end{figure}
+
+\title{\textbf{\textit{Fase Offline}}}
+
+Na Figura \ref{fig:17:horusMod} é descrito de forma global e modular todo o sistema de localização implementado. Na fase \textit{offline} o nó móvel recolhe para cada posição da casa uma séries de mostras (\textit{Raw Data}),pares (nodeAddress,RSSI) obtidos a partir da informação de controlo enviada pela camada \textit{Network}. Esta informação vai sendo guardada, sem qualquer tratamento, para todas as posições registadas. 
+
+Depois de concluída a amostragem de todo o espaço a informação é agrupada por posição no \textit{Radio Map Builder} e correlacionada efectuando para cada posição e para cada nó, o cálculo da média e do desvio padrão, das potências recebidas no \textit{Correlation Modeler}. 
+
+Por fim é feita a criação de \textit{clusters} no módulo \textit{Clustering}. O processo decorre ordenando por potência recebida as amostras para cada posição e depois escolhendo as \begin{math}n\end{math} primeiras como chave da posição. Para cada chave diferente é criado um novo \textit{cluster}. De notar que a chave (1000,1001) é igual à chave (1001,1000) não havendo o conceito de ordenação na chave. Neste trabalho considerou-se \begin{math}n=2\end{math} por ser um valor apontado no trabalho \cite{31} como tendo bons resultados num sistema real.
+
+Para efeitos de simulação este comportamento foi emulado usando o módulo de mobilidade \textit{TractorMobility} disponibilizado pelo \acs{MiXiM} e descrito na Secção \ref{chap:5:sec:5}.Foram registadas posições separadas na horizontal por 1 metro e na vertical por 2 metros para toda a área de trabalho, em períodos de 40 segundos. Após cada mudança de posição, o nó móvel simulado calcula a média e o desvio padrão dos valores de \acs{RSSI} recebidos e guarda numa estrutura de dados de posições  \textit{radioMap} (ver Secção \ref{chap:5:sec:4.2}). Quando a simulação termina o \textit{radioMap} é transformado num ficheiro XML e são criados os \textit{clusters} da forma descrita no parágrafo anterior, que também são transformados num ficheiro XML.
+
+\title{\textbf{\textit{Fase Online}}}
+
+Nesta fase o nó móvel recolhe e guarda assinaturas dos nós fixos durante um determinado tempo. Após esse momento usa o \textit{Correlation Handler} para efectuar uma média por nó fixo, das diversas potências recebidas. Esse resultado é enviado para o nó com o o maior valor de \acs{RSSI} detectado até esse momento. O nó fixo reconhece o tipo de mensagem e envia directamente ou através de outros nós fixos, a mensagem para o nó base.  
+
+O nó base contém os ficheiros XML gerados na fase \textit{offline} e como tal possui toda a informação necessária para determinar a probabilidade do nó estar numa determinada posição. Inicialmente a estimativa é discreta (\textit{Discrete-Space Estimator}) e apenas são determinadas posições para o nó móvel que constam no mapa rádio. 
+
+Nesse momento o nó fixo analisa o sinal recebido e determina a chave da amostra (neste caso os dois nós com maior \acs{RSSI}). Com a essa chave obtém o \textit{cluster} correspondente e as posições associadas. Para cada posição é calculada a densidade de probabilidade da distribuição normal (Ver Secção \ref{chap:5:sec:4.2}). A posição com maior valor é a posição obtida à saída do \textit{Discrete-Space Estimator}.
+
+Uma vez que existem diversas posições onde o nó móvel poderá estar, que não estão registadas no mapa rádio é necessária uma estimação no espaço contínua. É essa precisamente a função do \textit{Continuous-Space Estimator} que irá através de duas técnicas: centro de massa das posições e média temporal do espaço físico, determinar uma posição estimada da posição real do nó.
+
+\subsection{Modelo Matemático}
 \label{chap:5:sec:4.2}
 
-\subsection{Módulo de Nó Fixo}
+\subsection{Estruturas de Dados e Ficheiros XML}
 \label{chap:5:sec:4.3}
+São definidas duas estruturas de dados no \textit{HORUS} modificado.
 
-\subsection{Módulo de Nó Base}
+Na Figura \ref{fig:18:horusModRadioMap} temos a estrutura de dados escolhida para guardar as posições obtidas à saída do \textit{Correlation Modeler}. O resultado são é um conjunto de posições, onde para cada posição existem várias funções de densidade de probabilidade para cada nó, \acfp{PDF} caracterizadas pelos seus valores de média e desvio padrão.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/05_horus_mod_radio_map.png}
+  \caption{Estrutura de dados para armazenamento das posições obtidas na fase \textit{offline}.}
+  \label{fig:18:horusModRadioMap}
+\end{figure}
+
+Na Figura \ref{fig:19:horusModRadioMapClusters} está representada a estrutura de dados utilizada para guardar os \textit{clusters}. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.5\textwidth]{img/05_horus_mod_radio_map_clusters.png}
+  \caption{Estrutura de dados para armazenamento dos \textit{clusters} obtidos na fase \textit{offline}.}
+  \label{fig:19:horusModRadioMapClusters}
+\end{figure}
+
+Estas estruturas estão presentes no nó móvel e no nó fixo e servem para guardar em memória o conteúdo que será escrito/lido dos ficheiros XML.Nesta simulação são, por isso, usados dois tipos de ficheiro XML para guardar o mapa rádio de posições e os \textit{clusters}. Estes ficheiros são gerados quando termina a simulação do modo \textit{offline} e carregados pelo nó base quando começa a simulação do modo \textit{online}.
+
+Na Listagem 
+
+\begin{workflow-code}{Exemplo de configuração XML de obstáculos.}<?xml version="1.0" encoding="UTF-8"?>
+<radioMap maxPositionPDFsSize="4">
+  <position x="2" y="2">
+    <staticNodePDF address="1000" mean="-6.86524" stdDev="-2.39173"/>
+    <staticNodePDF address="1005" mean="-19.6319" stdDev="-15.9808"/>
+    <staticNodePDF address="1001" mean="-21.0037" stdDev="-19.5426"/>
+    <staticNodePDF address="1006" mean="-22.8628" stdDev="-19.3251"/>
+  </position>
+  <position x="4" y="2">
+    <staticNodePDF address="1000" mean="-8.58641" stdDev="-7.49053"/>
+    <staticNodePDF address="1006" mean="-18.8375" stdDev="-16.4028"/>
+    <staticNodePDF address="1005" mean="-19.2409" stdDev="-17.7517"/>
+    <staticNodePDF address="1001" mean="-19.2659" stdDev="-19.1632"/>
+  </position>
+  <position x="3" y="2">
+    <staticNodePDF address="1000" mean="31.6669" stdDev="33.1443"/>
+    <staticNodePDF address="1005" mean="-22.0094" stdDev="-19.9634"/>
+    <staticNodePDF address="1006" mean="-22.8608" stdDev="-21.7965"/>
+    <staticNodePDF address="1001" mean="-23.1735" stdDev="-21.8065"/>
+  </position>
+\end{workflow-code}
+
+
+
+
+\subsection{Fase \textit{Mode de Funcionamento}}
 \label{chap:5:sec:4.4}
 
 \section{Mobilidade}
