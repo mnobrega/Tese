@@ -17,7 +17,20 @@ Nesta dissertação sugere-se a criação de um ambiente de trabalho que resulta da 
 
 \section{Objective Modular network Test-bed (OMNeT++)}
 \label{chap:4:sec:1}
-O \acs{OMNeT++}\footnote{http://http://www.omnetpp.org/} é uma plataforma de simulação baseada em módulos, escrita em C++ e com um IDE baseado em Eclipse. Cada módulo pode ser do tipo simples ou composto. Os módulos compostos são constituídos por módulos simples ou por outros módulos compostos criando assim uma estrutura hierárquica de dependência.Todos os módulos assentam sobre um módulo de sistema, responsável pela realização da simulação. A comunicação entre módulos é feita através do envio de mensagens, que podem ser tão especializadas quanto o necessário, enviadas por canais de comunicação de entrada e saída. Na Figura \ref{fig:2:omnet} está um diagrama exemplificativo desta arquitectura.
+O \acs{OMNeT++}\footnote{http://http://www.omnetpp.org/} é uma plataforma de simulação baseada em módulos, escrita em C++ e com um IDE baseado em Eclipse. 
+
+O \acs{OMNeT++} foi a plataforma base escolhida para este trabalho pelas seguintes razões:
+
+\begin{itemize}
+\item A partilha dos resultados deste trabalho com a comunidade \acs{OMNeT++}, promovendo a continuidade do trabalho efectuado nesta dissertação;
+\item A reutilização e combinação de módulos já construídos;
+\item A orientação por objectos que permite uma flexível extensão das classes base;
+\item A existência de um ambiente gráfico automático para uma melhor visualização e \textit{debug} da simulação;
+\item A biblioteca extensa incluída que oferece suporte para estatística, colecção de dados, apresentação gráfica, números aleatórios e estruturas de dados;
+\item A possibilidade simular vários cenários mudando apenas parâmetros num ficheiro de configuração, sem necessidade de nova compilação.
+\end{itemize}
+
+Cada módulo pode ser do tipo simples ou composto. Os módulos compostos são constituídos por módulos simples ou por outros módulos compostos criando assim uma estrutura hierárquica de dependência.Todos os módulos assentam sobre um módulo de sistema, responsável pela realização da simulação. A comunicação entre módulos é feita através do envio de mensagens, que podem ser tão especializadas quanto o necessário, enviadas por canais de comunicação de entrada e saída. Na Figura \ref{fig:2:omnet} está um diagrama exemplificativo desta arquitectura.
 
 \begin{figure}[!htb]
   \centering
@@ -45,17 +58,6 @@ A \textit{Model Component Library} contém o código compilado dos módulos simples
   \caption{Ambiente de simulação Tkenv no OMNeT++ \cite{33}.}
   \label{fig:4:omnetTkenv}
 \end{figure}
-
-O \acs{OMNeT++} foi a plataforma base escolhida para este trabalho pelas seguintes razões:
-
-\begin{itemize}
-\item A partilha dos resultados deste trabalho com a comunidade \acs{OMNeT++}, promovendo a continuidade do trabalho efectuado nesta dissertação;
-\item A reutilização e combinação de módulos já construídos;
-\item A orientação por objectos que permite uma flexível extensão das classes base;
-\item A existência de um ambiente gráfico automático para uma melhor visualização e \textit{debug} da simulação;
-\item A biblioteca extensa incluída que oferece suporte para estatística, colecção de dados, apresentação gráfica, números aleatórios e estruturas de dados;
-\item A possibilidade simular vários cenários mudando apenas parâmetros num ficheiro de configuração, sem necessidade de nova compilação.
-\end{itemize}
 
 \section{Mixed Simulator (MiXiM) para OMNeT++}
 \label{chap:4:sec:2}

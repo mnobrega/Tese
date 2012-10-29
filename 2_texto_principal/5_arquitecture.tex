@@ -4,8 +4,6 @@
 
 \fancychapter{Arquitectura do Sistema}
 \label{chap:5}
-%TODO
-\textcolor{red}{TODO: Pequeno resumo do capítulo}
 
 \section{Sistema de Monitorização EMoS}
 \label{chap:5:sec:1}
@@ -56,7 +54,7 @@ Como solução de hardware sugere-se a utilização do módulo \textit{Waspmote} (Fig
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.50\textwidth]{img/05_wasp_mote.png}
+  \includegraphics[width=0.57\textwidth]{img/05_wasp_mote.png}
   \caption{Módulo \textit{Waspmote} da \textit{Libelium}.}
   \label{fig:3:waspMote}
 \end{figure}
@@ -248,7 +246,53 @@ Finalmente na Figura \ref{fig:10:aodvPktMap} temos a estrutura \textit{RouteMap}
 
 Neste trabalho a camada de aplicação poderá gerar vários tipos de mensagens. Essas mensagens poderão ser em \textit{broadcast} no caso das mensagens de assinatura enviadas pelos nós fixos ou \textit{unicast} quando existe um nó que pretende comunicar com outro. Todos os nós do sistema \acs{EMoS} podem comunicar uns com os outros, no entanto, nem sempre de forma directa. Sendo a camada \textit{Network} comum a todos os nós o comportamento é idêntico para todos. 
 
-Suponhamos que a camada de aplicação de um nó fixo pretende enviar uma mensagem para o base, informando, por exemplo que o existe uma fuga de gás. A partir desse momento à mensagem de aplicação é anexada informação de controlo (\textit{NetwControlInfo}), contendo o endereço \textit{Network} do nó de destino, sendo enviada para a camada abaixo.
+Suponhamos que a camada de aplicação de um nó fixo pretende enviar uma mensagem para o nó base, informando que o existe uma fuga de gás. A partir desse momento à mensagem de aplicação é anexada informação de controlo (\textit{NetwControlInfo}), contendo o endereço \textit{Network} do nó de destino, sendo enviada para a camada abaixo. A mensagem segue então o fluxograma da Figura \ref{fig:12:aodvFlux1}. De notar que o caso em que o endereço de destino é igual ao do próprio nó, decorre de um erro de atribuição do endereço final na camada de aplicação. A incrementação da sequência do nó é feita para o caso de ainda existir \acp{RREQ} perdidos no ambiente.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/05_aodv_flow_01.png}
+  \caption{Fluxograma de chegada da mensagem de aplicação à camada \textit{Network}.}
+  \label{fig:12:aodvFlux1}
+\end{figure}
+
+Cada nó guarda também um registo, para cada nó com o qual já tenha comunicado um registo do número de sequência desse nó. Este valor é colocado no \acs{RREQ} para que, caso seja encontrado um caminho mais recente, este pedido seja ignorado.
+
+Portanto quando não existe caminho para o nó pretendido de destino o nó de origem gera o \acs{RREQ} que é enviado em modo \textit{broadcast} para o resto da rede. Na Figura \ref{fig:13:aodvFlux2} está a recepção de outro nó do pacote enviado pelo nó de origem. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/05_aodv_flow_02.png}
+  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \label{fig:13:aodvFlux2}
+\end{figure}
+
+
+Dado que o nó guarda todos os \acs{RREQ} que recebe no RouteVector, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de no para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no RouteMap o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino é incrementado o contador do nó para garantir que não haverá mais nenhum caminho a se sobrepor.  
+
+Então, assim que o caminho é encontrado existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem o nó pode então ir buscar ao pktMap a p?oxima mensagem a enviar para aquele endereço de destino.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{img/05_aodv_flow_03.png}
+  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \label{fig:14:aodvFlux3}
+\end{figure}
+
+Quando ocorre um erro, ou seja, existe uma mensagem que é entregue mas o \acs{MAC} não recebe uma resposta de confirmação \acs{ACK} é necessário tomar medidas para que a origem seja informada que aquele caminho já não é válido. Assim são criados \acs{RERR} que viajam pelos precursores até atingir nó de origem. Na Figura \ref{fig:15:aodvFlux4} podemos ver a primeira fase quando a falha na entrega da mensagem ocorre. Nesse momento o nó procura todos os caminhos que estejam no \textit{RouteMap} e elimina-os, enviando depois um \acs{RERR} para cada um dos precursores. Na Figura \ref{fig:16:aodvFlux5}  temos o comportamento dos nós intermédios e destino (origem do caminho eliminado). De notar que a mensagem vai sendo apagada, nó a nó, quando para cada percurso na árvore já não existem mais percursores.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.34\textwidth]{img/05_aodv_flow_04.png}
+  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \label{fig:15:aodvFlux4}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.73\textwidth]{img/05_aodv_flow_05.png}
+  \caption{Fluxograma de chegada de um RREQ vindo da camada MAC.}
+  \label{fig:16:aodvFlux5}
+\end{figure}
 
 
 
