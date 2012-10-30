@@ -13,7 +13,7 @@ São sugeridas opções de hardware comercialmente disponível para cada componente 
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.95\textwidth]{img/05_emos_overview.png}
+  \includegraphics[width=1\textwidth]{img/05_emos_overview.png}
   \caption{Esquema modular do \textit{Elder Monitorization System} (EMoS).}
   \label{fig:1:emosOverview}
 \end{figure}
@@ -203,7 +203,7 @@ Na Figura \ref{fig:11:aodvMsgTypes} estão as mensagens criadas no \acs{MiXiM}. A
 \item \textit{AODVRouteError} : endereço do nó de destino que não foi encontrado. 
 \end{itemize}
 
-\subsection{Estruturas de dados}
+\subsection{Estruturas de Dados}
 \label{chap:5:sec:3.2}
 
 Foram criadas três estruturas de dados neste novo módulo:
@@ -349,6 +349,89 @@ Uma vez que existem diversas posições onde o nó móvel poderá estar, que não estã
 
 \subsection{Modelo Matemático}
 \label{chap:5:sec:4.2}
+
+O sistema \textit{HORUS} é um método probabilístico.Neste trabalho optou-se pela parametrização do sinal recebido, que permite obter uma distribuição normal que se ajusta ao histograma das potências recebidas tal como podemos ver na Figura \ref{fig:23:horusNormal}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/05_horus_normal.png}
+  \caption{Exemplo de parametrização da distribuição de potência do sinal recebido \cite{31}.}
+  \label{fig:23:horusNormal}
+\end{figure}
+
+A função densidade de probabilidade da distribuição normal é dada por:
+
+\begin{equation}
+fdp(q) = \frac{1}{\sigma{}\sqrt{2\pi{}}}e^\frac{-(q-\mu)^2}{2\sigma{}^2}
+\label{eq1}
+\end{equation}
+
+Para \begin{math}n\end{math} amostras recebidas por um nó fixo \begin{math}i\end{math} os parâmetros de  \eqref{eq1} são obtidos, calculando a média e o desvio padrão das amostras obtidas, usando as equações \ref{eq2} e \ref{eq3}.
+
+\begin{equation}
+\mu{} = \frac{1}{n}\sum_{j=1}^{n} s_i(j)\
+\label{eq2}\
+\end{equation}
+
+\begin{equation}
+\sigma{} = \sqrt{\frac{1}{n}\sum_{j=1}^{n}(s_i(j)-\mu{})^2}
+\label{eq3}
+\end{equation}
+
+onde \begin{math}s_i(j)\end{math} é a amostra \begin{math}j\end{math} proveniente do nó fixo \begin{math}i\end{math}.
+
+O facto de se aproximar as amostras a uma função densidade de probabilidade permite uma poupança significativa de espaço de armazenamento, uma vez que deixa de ser necessário guardar os valores das potências recebidas. Para cada par (nó,posição) passa por isso a ser necessário guardar apenas a média e desvio padrão da função. Esta abordagem permite também obter valores de probabilidade para potências de sinal que não tenham sido medidas e filtrar possíveis anomalias registadas durante a fase \textit{offline}. 
+
+Na fase \textit{online} é necessário calcular a probabilidade de um nó estar numa determinada posição. Assim é necessário para um vector \begin{math}s=(s_1,...,s_k)\end{math} encontrar a posição \begin{math}x\end{math} que maximiza a probabilidade \begin{math}P(x/s)\end{math}. Para obter esta probabilidade usando a função densidade de probabilidade entretanto guardada recorremos à equação:
+
+\begin{equation}
+P(s_i/x) =  P(s_i<=0.5) = \int_{s_i-0.5}^{s_i+0.5} fdp(q) dq
+\label{eq4}
+\end{equation}
+
+Dado que queremos evitar a utilização de algoritmos numéricos, computacionalmente pesados, para a resolução do integral, optou-se neste trabalho, por transformar, a função densidade de probabilidade encontrada para cada nó estático, numa função de distribuição normal standard, cujos valores podem ser tabelados. Para efeitos da simulação criou-se, por isso, um ficheiro XML que contém os valores necessários.
+
+Assim sabendo que:
+
+\begin{equation}
+P(X<=x) = P(\frac{X-\mu{}}{\sigma{}} <= \frac{x-\mu{}}{\sigma{}}) = P(Z<=z)
+\end{equation}
+
+onde \begin{math}Z\end{math} é uma variável normal aleatória standard, podemos calcular a probabilidade da \eqref{eq4} como:
+
+\begin{equation}
+P(s_i<=0.5) = P(Z<=\frac{s_i+0.5-\mu{}}{\sigma{}_i})
+\end{equation}
+
+onde com os valores tabelados rapidamente chegamos a um resultado.
+
+Para um amostra que contenha vários nós estáticos, a probabilidade conjunta é dada pela multiplicação das probabilidades individuais calculadas para cada nó:
+
+\begin{equation}
+P = \prod_{j=1}^{n} P_i
+\end{equation}
+
+Obtida uma posição usando o \textit{Discrete-Space Estimator} torna-se necessário ainda usar o \textit{Continous-Space Estimator} para chegar a um valor mais próximo da localização real.
+
+A primeira técnica é o centro de massa de \begin{math}N\end{math} posições obtidas. A posição estimada no espaço contínuo \begin{math}(x,y)\end{math} é obtida a partir das seguintes equações, considerando o espaço bi-dimensional utilizado neste trabalho:
+
+\begin{equation}
+x = \frac{\sum_{j=1}^{min(N,P)} x_iP_i}{\sum{}P_i}
+\end{equation}
+\begin{equation}
+y = \frac{\sum_{j=1}^{min(N,P)} y_iP_i}{\sum{}P_i}
+\end{equation}
+
+Onde \begin{math}P\end{math} é o número de posições encontradas para um determinado nó móvel.
+
+A segunda técnica consiste em fazer uma média temporal das \begin{math}K\end{math} posições encontradas numa localização anterior para o mesmo nó, dada pelas equações:
+
+\begin{equation}
+x = \frac{\sum_{j=1}^{K} x_i}{K}
+\end{equation}
+\begin{equation}
+y = \frac{\sum_{j=1}^{K} y_i}{K}
+\end{equation}
 
 \subsection{Estruturas de Dados e Ficheiros XML}
 \label{chap:5:sec:4.3}
