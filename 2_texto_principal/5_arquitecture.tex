@@ -133,7 +133,7 @@ O nó base tem como função efectuar toda a gestão centralizada da informação gera
 
 Este nó usa o mesmo rádio que o \textit{Waspmote}, com parâmetros para simulação já registados na Tabela \ref{tab:1:xbeeNICParameters}.
 
-\section{Camada NIC}
+\section{Camada \textit{NIC}}
 \label{chap:5:sec:2}
 Esta camada é constituída pelo \acs{MAC} e \acs{PHY}. 
 
@@ -167,7 +167,7 @@ Paralelamente à atenuação do sinal há também o cálculo dos \textit{bit-errors} d
 O ficheiro de configuração da camada \acs{NIC} está disponível no Anexo \ref{list:a1:xmlNIC}.
 
 
-\section{Camada Network : \textit{AODVRoute}}
+\section{Camada \textit{Network} : \textit{AODVRoute}}
 \label{chap:5:sec:3}
 
 A tecnologia ZigBee é hoje bastante usada nas redes \acs{WSN} com vários produtos para as mais diversas áreas. O ZigBee usa como primeiro protocolo na camada \textit{Network} o \acf{AODV} e seguidamente quando este falha um protocolo hierárquico. Assim por forma a garantir uma compatibilidade do sistema desenvolvido com o ZigBee optou-se por implementar este protocolo no \acs{MiXiM}. 
@@ -433,6 +433,8 @@ x = \frac{\sum_{j=1}^{K} x_i}{K}
 y = \frac{\sum_{j=1}^{K} y_i}{K}
 \end{equation}
 
+Neste trabalho serão usados os valores de base \begin{math}N=6\end{math} e \begin{math}K=10\end{math} referenciados em \cite{31} como valores com bons resultados numa situação real. Serão no entanto, obtidos resultados na simulação, de more a aferir quais os valores que dão origem a melhores resultados.
+
 \subsection{Estruturas de Dados e Ficheiros XML}
 \label{chap:5:sec:4.3}
 São definidas duas estruturas de dados no \textit{HORUS} modificado.
@@ -446,13 +448,13 @@ Estas estruturas estão presentes no nó móvel e no nó fixo e servem para guardar 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=1\textwidth]{img/05_horus_mod_radio_map.png}
-  \caption{Estrutura de dados para armazenamento das posições obtidas na fase \textit{offline}.}
+  \caption{Estrutura de dados para armazenamento das posições do mapa rádio obtidas na fase \textit{offline}.}
   \label{fig:18:horusModRadioMap}
 \end{figure}
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.5\textwidth]{img/05_horus_mod_radio_map_clusters.png}
+  \includegraphics[width=0.4\textwidth]{img/05_horus_mod_radio_map_clusters.png}
   \caption{Estrutura de dados para armazenamento dos \textit{clusters} obtidos na fase \textit{offline}.}
   \label{fig:19:horusModRadioMapClusters}
 \end{figure}
@@ -482,9 +484,9 @@ São então seleccionados os endereços dos dois primeiros nós estáticos da amostra
 
 Se a probabilidade for maior que zero então é guardada numa lista. Uma vez percorridos todas as posições se ainda não houver na lista pelo menos uma posição, decrementa-se o valor de N e torna-se a obter as posições do \textit{cluster} para novo cálculo. Se N chegar a zero então o processo acaba sem conseguir determinar uma posição para o nó móvel. Se houver uma posição então é efectuada a estimação de espaço contínuo através do centro de massa das posições e é calculada a média temporal de espaço contínuo com as últimas posições calculadas em amostras anteriores.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.85\textwidth]{img/05_horus_flow_02.png}
+  \includegraphics[width=0.80\textwidth]{img/05_horus_flow_02.png}
   \caption{Fluxograma do modo de funcionamento do nó base na localização.}
   \label{fig:21:horusFlow02}
 \end{figure}
