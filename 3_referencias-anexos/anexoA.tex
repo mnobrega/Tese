@@ -1,0 +1,134 @@
+%XML CONFIG NIC
+\begin{annex-code}{Ficheiro XML de conciguração da camada \acs{NIC}.}{list:a1:xmlNIC}
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- ANALOGUE MODELS -->
+	<AnalogueModels>
+		<AnalogueModel type="BreakpointPathlossModel">
+		    <!-- IEEE 802.15.4 path loss channel model -->
+	    	<parameter name="alpha1" type="double" value="2"/>
+	    	<parameter name="L01" type="double" value="40.2"/>
+	    	<parameter name="breakpointDistance" type="double" value="8.0"/>
+	    	<parameter name="alpha2" type="double" value="3.3"/>
+	    	<parameter name="L02" type="double" value="58.8"/>
+	    	<parameter name="carrierFrequency" type="double" value="2.4E+9"/>
+	    </AnalogueModel>
+		<!-- we add a log-normal shadowing effect on top of the IEEE 802.15.4 path loss --> 
+		<AnalogueModel type="LogNormalShadowing">
+			<parameter name="mean" type="double" value="0.0"/>
+			<parameter name="stdDev" type="double" value="6"/>
+			<parameter name="interval" type="double" value="1"/>
+		</AnalogueModel>
+		<!-- we add obstacle shadowing on top of the log-normal shadowing effect -->
+		<AnalogueModel type="SimpleObstacleShadowing">
+	    	<parameter name="carrierFrequency" type="double" value="2.4E+9"/>
+	    </AnalogueModel>
+	</AnalogueModels>
+	<Decider type="Decider802154Narrow">
+		<!--Length of Start Frame Delimiter (used to compute probability of successful synchronization)-->
+		<parameter name="sfdLength" type="long" value="8"/>
+		
+		<!--minimum possible bit error rate (BER floor)-->
+		<parameter name="berLowerBound" type="double" value="1e-8"/>
+		
+		<!--modulation type-->
+		<parameter name="modulation" type="string" value="oqpsk16"/>
+	</Decider>
+</root>
+\end{annex-code}
+
+%XML CONFIG radio MAP
+\begin{annex-code}{Exemplo de ficheiro XML com mapa rádio para carregamento no nó móvel.}{list:a1:xmlRadioMap}
+<?xml version="1.0" encoding="UTF-8"?><radioMap maxPositionPDFsSize="4">
+  <position x="2" y="2">
+    <staticNodePDF address="1000" mean="-6.86524" stdDev="-2.39173"/>
+    <staticNodePDF address="1005" mean="-19.6319" stdDev="-15.9808"/>
+    <staticNodePDF address="1001" mean="-21.0037" stdDev="-19.5426"/>
+    <staticNodePDF address="1006" mean="-22.8628" stdDev="-19.3251"/>
+  </position>
+  <position x="4" y="2">
+    <staticNodePDF address="1000" mean="-8.58641" stdDev="-7.49053"/>
+    <staticNodePDF address="1006" mean="-18.8375" stdDev="-16.4028"/>
+    <staticNodePDF address="1005" mean="-19.2409" stdDev="-17.7517"/>
+    <staticNodePDF address="1001" mean="-19.2659" stdDev="-19.1632"/>
+  </position>
+  <position x="3" y="2">
+    <staticNodePDF address="1000" mean="31.6669" stdDev="33.1443"/>
+    <staticNodePDF address="1005" mean="-22.0094" stdDev="-19.9634"/>
+    <staticNodePDF address="1006" mean="-22.8608" stdDev="-21.7965"/>
+    <staticNodePDF address="1001" mean="-23.1735" stdDev="-21.8065"/>
+  </position>
+  <position x="6" y="2">
+    <staticNodePDF address="1001" mean="-10.6905" stdDev="-6.60051"/>
+    <staticNodePDF address="1000" mean="-15.8409" stdDev="-15.7502"/>
+    <staticNodePDF address="1006" mean="-18.4932" stdDev="-17.3782"/>
+    <staticNodePDF address="1005" mean="-19.1748" stdDev="-18.4118"/>
+  </position>
+  <position x="5" y="2">
+    <staticNodePDF address="1000" mean="-13.661" stdDev="-11.7475"/>
+    <staticNodePDF address="1001" mean="-15.1687" stdDev="-13.708"/>
+    <staticNodePDF address="1006" mean="-23.314" stdDev="-20.5445"/>
+    <staticNodePDF address="1005" mean="-23.8983" stdDev="-22.9379"/>
+  </position>
+  <position x="7" y="2">
+    <staticNodePDF address="1001" mean="-9.56809" stdDev="-8.91176"/>
+    <staticNodePDF address="1000" mean="-16.7335" stdDev="-15.6741"/>
+    <staticNodePDF address="1006" mean="-17.5364" stdDev="-15.7507"/>
+    <staticNodePDF address="1002" mean="-17.5544" stdDev="-15.1108"/>
+  </position>
+</radioMap>
+\end{annex-code}
+
+\begin{annex-code}{Exemplo de ficheiro XML com \textit{clusters} de posições para carregamento no nó móvel.}{list:a1:xmlRadioMapCluster}
+<?xml version="1.0" encoding="UTF-8"?>
+<radioMapClusters clusterKeySize="1">
+  <cluster>
+    <clusterKey>
+      <staticNode address="1001"/>
+    </clusterKey>
+    <position x="6" y="2"/>
+    <position x="7" y="2"/>
+    <position x="8" y="2"/>
+    <position x="9" y="2"/>
+    <position x="10" y="2"/>
+    <position x="11" y="4"/>
+    <position x="10" y="4"/>
+    <position x="9" y="4"/>
+    <position x="8" y="4"/>
+    <position x="7" y="4"/>
+    <position x="6" y="4"/>
+    <position x="10" y="6"/>
+  </cluster>
+  <cluster>
+    <clusterKey>
+      <staticNode address="1000"/>
+    </clusterKey>
+    <position x="2" y="2"/>
+    <position x="3" y="2"/>
+    <position x="4" y="2"/>
+    <position x="5" y="2"/>
+    <position x="5" y="4"/>
+    <position x="4" y="4"/>
+    <position x="3" y="4"/>
+    <position x="2" y="4"/>
+    <position x="2" y="5"/>
+    <position x="2" y="6"/>
+    <position x="3" y="6"/>
+  </cluster>
+</radioMapClusters>
+\end{annex-code}
+
+\begin{annex-code}{Exemplo de ficheiro XML de configuração do módulo \textit{TurtleMobility} do MiXiM.}{list:a1:xmlTurtleMobility}
+<movement>
+	<set speed="10" angle="180"/>
+	<repeat n="4">
+		<forward d="50"/>
+		<turn angle="90"/>
+    </repeat>
+    <repeat>
+		<set speed="uniform(10,20)"/>
+        <turn angle="uniform(-30,30)"/>
+        <forward t="uniform(0.1,1)"/>
+    </repeat>
+</movement>
+\end{annex-code}

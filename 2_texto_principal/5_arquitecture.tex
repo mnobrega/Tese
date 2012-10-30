@@ -26,11 +26,11 @@ O sistema \acs{EMoS} (Figura \ref{fig:1:emosOverview}) é caracterizado pelos seg
 \item Nó Base (\acf{BN}): Gestão central do sistema recebendo os dados de monitorização ou pedidos do utilizador e enviando mensagens para a rede \acs{WSN} ou para o exterior através de uma \acs{LAN}.
 \end{itemize}
 
-Os nós estáticos estão ligados à rede eléctrica e enviam periodicamente  mensagens de assinatura em modo \textit{broadcast}. No caso dos nós \textit{SN8}, \textit{SN9}, \textit{SN12} e \textit{SN13}, pode existir também envio de mensagens para outros nós estáticos ou para o nó base. Isto pode acontecer quando por exemplo, é detectado gás no caso do \textit{SN12}, quando é ligado/desligado o fogão no caso do \textit{SN13} ou quando alguém se deita/levanta numa das camas onde estão os sensores \textit{SN8} e \textit{SN9}.
+Os nós fixos estão ligados à rede eléctrica e enviam periodicamente  mensagens de assinatura em modo \textit{broadcast}. No caso dos nós \textit{SN8}, \textit{SN9}, \textit{SN12} e \textit{SN13}, pode existir também envio de mensagens para outros nós fixos ou para o nó base. Isto pode acontecer quando por exemplo, é detectado gás no caso do \textit{SN12}, quando é ligado/desligado o fogão no caso do \textit{SN13} ou quando alguém se deita/levanta numa das camas onde estão os sensores \textit{SN8} e \textit{SN9}.
 
-O nó de base recebe informação dos nós estáticos ou do exterior através da \acs{LAN} e toma decisões com base nessa informação. Pode, por exemplo, avisar num monitor que existe alguma anomalia na casa, enviar uma mensagem para o nó móvel ou para um nó fixo, ou comunicar com o exterior caso seja necessário. 
+O nó de base recebe informação dos nós fixos ou do exterior através da \acs{LAN} e toma decisões com base nessa informação. Pode, por exemplo, avisar num monitor que existe alguma anomalia na casa, enviar uma mensagem para o nó móvel ou para um nó fixo, ou comunicar com o exterior caso seja necessário. 
 
-O nó móvel pode funcionar em dois modos: calibração e normal. No modo de calibração limita-se a receber assinaturas dos nós fixos e a registar essa informação, gerando no um ficheiro XML com o mapa rádio do casa. No modo normal recebe de igual forma as assinaturas, mas periodicamente envia de volta para o nó estático mais próximo, um conjunto de médias das potências recebidas. O nó estático por sua vez envia esta informação para o nó base que irá calcular a localização do nó móvel.
+O nó móvel pode funcionar em dois modos: calibração e normal. No modo de calibração limita-se a receber assinaturas dos nós fixos e a registar essa informação, gerando no um ficheiro XML com o mapa rádio do casa. No modo normal recebe de igual forma as assinaturas, mas periodicamente envia de volta para o nó fixo mais próximo, um conjunto de médias das potências recebidas. O nó fixo por sua vez envia esta informação para o nó base que irá calcular a localização do nó móvel.
 
 Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} para comunicar e apresentam uma estrutura interna idêntica (Figura \ref{fig:2:emonsNodeInternal}). O sistema é perfeitamente escalável, sendo possível adicionar-se vários outros nós móveis. No caso de existir um número muito elevado de nós móveis é possível criar novos nós base associados a \textit{clusters} de nós fixos, que comuniquem através da LAN para eliminar sobreposições.
 
@@ -164,7 +164,7 @@ Optou-se por usar o modelo \textit{Breakpoint Path Loss}, um modelo empírico que
 
 Paralelamente à atenuação do sinal há também o cálculo dos \textit{bit-errors} da mensagem levada a cabo pelo bloco \textit{decider}. Este foi configurado com uma probabilidade de erro de \begin{math}BER=1\times{10^{-8}}\end{math} e modulação O-QPSK.
 
-O ficheiro de configuração da camada \acs{NIC} está disponível no Anexo \ref{annex:a}.
+O ficheiro de configuração da camada \acs{NIC} está disponível no Anexo \ref{list:a1:xmlNIC}.
 
 
 \section{Camada Network : \textit{AODVRoute}}
@@ -331,7 +331,7 @@ O sistema \textit{HORUS} usado no \acs{EMoS} difere do apresentado pelo seu auto
 
 Na Figura \ref{fig:17:horusMod} é descrito de forma global e modular todo o sistema de localização implementado. Na fase \textit{offline} o nó móvel recolhe para cada posição da casa uma séries de mostras (\textit{Raw Data}),pares (nodeAddress,RSSI) obtidos a partir da informação de controlo enviada pela camada \textit{Network}. Esta informação vai sendo guardada, sem qualquer tratamento, para todas as posições registadas. 
 
-Depois de concluída a amostragem de todo o espaço a informação é agrupada por posição no \textit{Radio Map Builder} e correlacionada efectuando para cada posição e para cada nó, o cálculo da média e do desvio padrão, das potências recebidas no \textit{Correlation Modeler}. 
+Depois de concluída a amostragem de todo o espaço a informação é agrupada por posição no \textit{Radio Map Builder} e correlacionada efectuando para cada posição e para cada nó, o cálculo da média e do desvio padrão, das potências recebidas no \textit{Correlation Modeler}. Em cada posição posição é mantido um número máximo configurável de nós registados, sendo todos os outros removidos, pretendendo-se com isto garantir que na fase \textit{Online} as amostras recebidas são cruzadas com amostras do mesmo tamanho para cada posição.
 
 Por fim é feita a criação de \textit{clusters} no módulo \textit{Clustering}. O processo decorre ordenando por potência recebida as amostras para cada posição e depois escolhendo as \begin{math}n\end{math} primeiras como chave da posição. Para cada chave diferente é criado um novo \textit{cluster}. De notar que a chave (1000,1001) é igual à chave (1001,1000) não havendo o conceito de ordenação na chave. Neste trabalho considerou-se \begin{math}n=2\end{math} por ser um valor apontado no trabalho \cite{31} como tendo bons resultados num sistema real.
 
@@ -343,7 +343,7 @@ Nesta fase o nó móvel recolhe e guarda assinaturas dos nós fixos durante um dete
 
 O nó base contém os ficheiros XML gerados na fase \textit{offline} e como tal possui toda a informação necessária para determinar a probabilidade do nó estar numa determinada posição. Inicialmente a estimativa é discreta (\textit{Discrete-Space Estimator}) e apenas são determinadas posições para o nó móvel que constam no mapa rádio. 
 
-Nesse momento o nó fixo analisa o sinal recebido e determina a chave da amostra (neste caso os dois nós com maior \acs{RSSI}). Com a essa chave obtém o \textit{cluster} correspondente e as posições associadas. Para cada posição é calculada a densidade de probabilidade da distribuição normal (Ver Secção \ref{chap:5:sec:4.2}). A posição com maior valor é a posição obtida à saída do \textit{Discrete-Space Estimator}.
+Nesse momento o nó fixo analisa o sinal recebido, verifica se estão presentes um número mínimo de nós fixos e determina a chave da amostra (neste caso os dois nós com maior \acs{RSSI}). Com a essa chave obtém o \textit{cluster} correspondente e as posições associadas. Para cada posição é calculada a densidade de probabilidade da distribuição normal (Ver Secção \ref{chap:5:sec:4.2}). A posição com maior valor é a posição obtida à saída do \textit{Discrete-Space Estimator}.
 
 Uma vez que existem diversas posições onde o nó móvel poderá estar, que não estão registadas no mapa rádio é necessária uma estimação no espaço contínua. É essa precisamente a função do \textit{Continuous-Space Estimator} que irá através de duas técnicas: centro de massa das posições e média temporal do espaço físico, determinar uma posição estimada da posição real do nó.
 
@@ -356,14 +356,16 @@ São definidas duas estruturas de dados no \textit{HORUS} modificado.
 
 Na Figura \ref{fig:18:horusModRadioMap} temos a estrutura de dados escolhida para guardar as posições obtidas à saída do \textit{Correlation Modeler}. O resultado são é um conjunto de posições, onde para cada posição existem várias funções de densidade de probabilidade para cada nó, \acfp{PDF} caracterizadas pelos seus valores de média e desvio padrão.
 
+Na Figura \ref{fig:19:horusModRadioMapClusters} está representada a estrutura de dados utilizada para guardar os \textit{clusters}. 
+
+Estas estruturas estão presentes no nó móvel e no nó fixo e servem para guardar em memória o conteúdo que será escrito/lido dos ficheiros XML.Nesta simulação são, por isso, usados dois tipos de ficheiro XML para guardar o mapa rádio de posições e os \textit{clusters}. Estes ficheiros são gerados quando termina a simulação do modo \textit{offline} e carregados pelo nó base quando começa a simulação do modo \textit{online}. No Anexo \ref{list:a1:xmlRadioMap} está um exemplo de um ficheiro XML de posições rádio e no Anexo \ref{list:a1:xmlRadioMapCluster} pode ser consultado um exemplo de um ficheiro XML de clusters.
+
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=1\textwidth]{img/05_horus_mod_radio_map.png}
   \caption{Estrutura de dados para armazenamento das posições obtidas na fase \textit{offline}.}
   \label{fig:18:horusModRadioMap}
 \end{figure}
-
-Na Figura \ref{fig:19:horusModRadioMapClusters} está representada a estrutura de dados utilizada para guardar os \textit{clusters}. 
 
 \begin{figure}[!htb]
   \centering
@@ -372,41 +374,53 @@ Na Figura \ref{fig:19:horusModRadioMapClusters} está representada a estrutura de
   \label{fig:19:horusModRadioMapClusters}
 \end{figure}
 
-Estas estruturas estão presentes no nó móvel e no nó fixo e servem para guardar em memória o conteúdo que será escrito/lido dos ficheiros XML.Nesta simulação são, por isso, usados dois tipos de ficheiro XML para guardar o mapa rádio de posições e os \textit{clusters}. Estes ficheiros são gerados quando termina a simulação do modo \textit{offline} e carregados pelo nó base quando começa a simulação do modo \textit{online}.
-
-Na Listagem 
-
-\begin{workflow-code}{Exemplo de configuração XML de obstáculos.}<?xml version="1.0" encoding="UTF-8"?>
-<radioMap maxPositionPDFsSize="4">
-  <position x="2" y="2">
-    <staticNodePDF address="1000" mean="-6.86524" stdDev="-2.39173"/>
-    <staticNodePDF address="1005" mean="-19.6319" stdDev="-15.9808"/>
-    <staticNodePDF address="1001" mean="-21.0037" stdDev="-19.5426"/>
-    <staticNodePDF address="1006" mean="-22.8628" stdDev="-19.3251"/>
-  </position>
-  <position x="4" y="2">
-    <staticNodePDF address="1000" mean="-8.58641" stdDev="-7.49053"/>
-    <staticNodePDF address="1006" mean="-18.8375" stdDev="-16.4028"/>
-    <staticNodePDF address="1005" mean="-19.2409" stdDev="-17.7517"/>
-    <staticNodePDF address="1001" mean="-19.2659" stdDev="-19.1632"/>
-  </position>
-  <position x="3" y="2">
-    <staticNodePDF address="1000" mean="31.6669" stdDev="33.1443"/>
-    <staticNodePDF address="1005" mean="-22.0094" stdDev="-19.9634"/>
-    <staticNodePDF address="1006" mean="-22.8608" stdDev="-21.7965"/>
-    <staticNodePDF address="1001" mean="-23.1735" stdDev="-21.8065"/>
-  </position>
-\end{workflow-code}
-
-
-
-
-\subsection{Fase \textit{Mode de Funcionamento}}
+\subsection{Modo de Funcionamento}
 \label{chap:5:sec:4.4}
+Na camada de aplicação dos nós pertencentes ao \acs{EMoS} é definido o papel do nó da rede. Cada nó tem a sua camada própria, o que em termos reais corresponderia a um programa em \textit{nesC} a ser executado sobre o \textit{TinyOS}. 
+
+O nó móvel e o nó base, têm ambos um papel fulcral na localização. Apresentam-se por isso nas Figuras \ref{fig:20:horusFlow01} e \ref{fig:21:horusFlow02} os fluxogramas correspondentes ao funcionamento da camada de aplicação desses nós no contexto da localização.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/05_horus_flow_01.png}
+  \caption{Fluxograma do modo de funcionamento do nó móvel na localização.}
+  \label{fig:20:horusFlow01}
+\end{figure}
+
+No fluxograma da Figura \ref{fig:20:horusFlow01} observamos o comportamento do nó móvel. Este nó está permanentemente a receber e guardar, mensagens de assinatura vindas dos nós fixos espalhados pela casa. 
+
+No ramo esquerdo do fluxograma podemos observar o que acontece quando uma assinatura de um nó fixo é recebida. Se o nó móvel estiver em modo de calibração, utilizado durante a fase \textit{offline}, o nó verifica se houve mudança de posição e se existem nós estáticos suficientes para considerar a posição válida. Caso tal aconteça são calculados os parâmetros da função densidade de probabilidade normal correspondente às potências amostradas, calculando-se a média e o desvio padrão e o resultado é guardado no mapa rádio. Pelo contrário se estivermos na fase \textit{online} são apenas registados os valores do endereço e potência de sinal recebidos.
+
+Quando não está no modo de calibração, o nó móvel usa um conceito de agendamento do \acs{OMNeT++} que permite agendar eventos, através de mensagens que são enviadas, num determinado tempo da simulação, para o próprio nó. Assim este conceito é usado para enviar periodicamente mensagens para o nó base para que este possa calcular a posição do nó móvel. Este comportamento está exemplificado na ramo direito do fluxograma.
+
+Por sua vez na Figura \ref{fig:21:horusFlow02} temos um fluxograma do modo de funcionamento do nó base. Este nó recebe de um nó móvel, por intermédio de um ou mais nós fixos, uma mensagem que contém as médias das potências de nós fixos, recebidas pelo nó móvel durante um determinado espaço de tempo. Assim quando o nó base recebe esta mensagem, ordena por potência de forma descendente e selecciona apenas os N primeiros, em que N representa o número de nós estáticos presentes em cada posição do mapa rádio. 
+
+São então seleccionados os endereços dos dois primeiros nós estáticos da amostra que constituem a chave da amostra. Com a chave são obtidas as posições do \textit{cluster} cuja chave é igual à chave da amostra. Percorrendo então todas as posição obtidas é calculada para cada, a probabilidade do nó móvel estar nessa posição. 
+
+Se a probabilidade for maior que zero então é guardada numa lista. Uma vez percorridos todas as posições se ainda não houver na lista pelo menos uma posição, decrementa-se o valor de N e torna-se a obter as posições do \textit{cluster} para novo cálculo. Se N chegar a zero então o processo acaba sem conseguir determinar uma posição para o nó móvel. Se houver uma posição então é efectuada a estimação de espaço contínuo através do centro de massa das posições e é calculada a média temporal de espaço contínuo com as últimas posições calculadas em amostras anteriores.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/05_horus_flow_02.png}
+  \caption{Fluxograma do modo de funcionamento do nó base na localização.}
+  \label{fig:21:horusFlow02}
+\end{figure}
 
 \section{Mobilidade}
 \label{chap:5:sec:5}
 
+Neste trabalho são usados dois modelos de mobilidade implementados no \acs{MiXiM}. São eles o \textit{TurtleMobility} e o \textit{TractorMobility}. 
+
+O \textit{TurtleMobility} permite criar um percurso com comandos introduzidos na simulação através dum ficheiro XML. Desta forma é simulado o movimento de uma pessoa dentro de uma casa de forma simples, flexível e sem ter de efectuar uma compilação do programa de cada vez que são feitas alterações ao movimento. Esta opção permite ainda que outra aplicação possa gerar um ficheiro XML com dados reais substituindo o ficheiro existente. No Anexo \ref{list:a1:xmlTurtleMobility} está um exemplo de um ficheiro XML de configuração do \textit{TurtleMobility}.
+
+Por sua vez o \textit{TractorMobility} usado especificamente para a criação do mapa de rádio da simulação, na fase \textit{offline}, permite criar de forma simples um percurso para a obtenção de pontos igualmente espaçados, criando uma malha sobre todo o ambiente de simulação. Na Figura \ref{fig:22:tractorMobility} é possível observar um exemplo do percurso disponibilizado neste modelo. De notar que numa situação real seria impossível construir um mapa rádio igual devido à existência de paredes a meio do percurso, mas para um cenário de simulação onde o objectivo é obter um mapa de rádio minimamente de forma dinâmica e rápida, a solução encontrada é perfeitamente aceitável.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/05_tractor_mobility.png}
+  \caption{Movimento do nó móvel durante a fase \textit{offline} usando o modelo \textit{TractorMobility} disponível no MiXiM.}
+  \label{fig:22:tractorMobility}
+\end{figure}
 
 % Ensure that the next chapter starts in a odd page
 \cleardoublepage
