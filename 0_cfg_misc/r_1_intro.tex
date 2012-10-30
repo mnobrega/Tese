@@ -3,7 +3,7 @@
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Up to, six, keywords.
+Sensor Networks, Elder Care, Routing Protocols, Indoor Location
 \end{IEEEkeywords}
 
 % For peer review papers, you can put extra information on the cover
@@ -32,7 +32,27 @@ Up to, six, keywords.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{I}{n} recent years, ...
+\IEEEPARstart{I}{n} recent years, the increase in life expectancy has been putting a lot of challenges regarding national development, sustainability of families and the ability of health care systems to provide for ageing populations. During recent years the number of people in the world above 60 years has increased from 200 million in 1950 to 670 million, an ageing group that represents already 20\% of the world's total population in developed countries \cite{1}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.50\textwidth]{img/01_demografia_pt.png}
+  \caption{Demographic pyramids for Portugal between 1950 and 2050\cite{1}.}
+  \label{fig:1:demog_pt}
+\end{figure}
+ 
+With the relocation of young people to the suburbs and the low birth rate, the number of elder people who live home alone is increasing. This  situation creates a huge anxiety in all the people involved, resulting many times in early institutionalization in caring homes or other elder care facilities. Also people with physical or mental disabilities present identical caring needs. For example, people with mild mental retardation usually achieve sufficient social and vocational capabilities for minimal self-support. Problems with these people occur because they have trouble getting in/out of bed on time. The lack of overview and planning skills to see that they have to go to bed on time in order to be able to go to work on time the next day.\\
+Creating a system able to monitor people in this situation would allow  specialized professionals to dedicate their work to other types of scenarios where a larger dependency would exist freeing costly and rare resources. As wireless sensor technology continues to evolve, devices integrating low-power, low-bandwidth radios and a modest amount of storage emerge with a considerable low cost. With a vast number of existing sensors, ubiquitous applications can emerge as a low cost alternative with huge added value for monitoring people in a home environment, providing a huge symbiosis between man and machine.\\
+This work suggests the development of a system, where one or more persons, carrying a node with wireless capabilities, move around an environment where other wireless sensors exist. The system should be able to identify each individual and allow for communication with a central base station in a bidirectional way.\\
+The rest of this paper is organized in the following manner.\\In Chapter 2 a research about the state-of-the-art solutions is made with reference to systems the employ video, wearable sensors and home appliances sensors to monitor people in a home environment.\\
+Chapter 3 talks about the related work, focusing on elder people needs in healthcare, through a study where interviews were made to \acp{CM}. This chapter also refers to the usage of wireless sensors for tracking and compares routing protocols.\\
+In chapter 4 the work environment for the simulation is presented together with the difficulties in getting a simulator that can achieve a high degree of accuracy while simulating movement, obstacles and wireless sensor networks.\\
+In chapter 5 the \acf{EMoS} is presented together with an evaluation of real hardware options commercially available, capable of implementing the system in real conditions.\\
+Chapter 6 discusses and analyses results from the simulation.\\
+Conclusions and future work are presented in chapter 7.
+
+
+
 
 % \hfill initials
 
