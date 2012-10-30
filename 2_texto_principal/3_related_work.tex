@@ -11,9 +11,11 @@ Em \cite{16} faz-se uma análise de aspectos fundamentais na monitorização domést
 \subsection{Necessidades nos Cuidados de Saúde}
 \label{chap:3:sec:1.1}
 
-No estudo intitulado \textit{``The Activities of Daily Living Study''} em \cite{16} são examinados questionários (91) feitos a profissionais de saúde que prestam cuidados de monitorização ao domicílio. Pretende-se determinar a forma como a tecnologia pode ajudar pessoas idosas a envelhecer em casa, tendo em conta os profissionais de saúde, a necessidade de autonomia do idoso e as necessidades da família e amigos.
+No estudo intitulado \textit{``The Activities of Daily Living Study''} em \cite{16} são examinados questionários (91) feitos a profissionais de saúde que prestam cuidados de monitorização ao domicílio. Pretende-se determinar a forma como a tecnologia pode ajudar pessoas idosas a envelhecer em casa com a colaboração dos profissionais de saúde, a necessidade de autonomia do idoso e as necessidades da família e amigos.
 
-Designam-se \acfp{CM} aos profissionais de saúde que prestam cuidados ao domicílio (ex:enfermeiros,médicos). Os \acsp{CM} interagem de forma activa com as pessoas idosas presencialmente ou por telefone. Avaliam a habilidade do idoso e a sua predisposição para a introdução de novos equipamentos. Uma parte significativa da monitorização do \acsp{CM} são as chamadas \acfp{ADL}, uma lista de actividades que permite medir a função cognitiva e física do idoso (Tabela \ref{tab:1:adls}).
+Designam-se \acfp{CM} aos profissionais de saúde que prestam cuidados ao domicílio (ex:enfermeiros,médicos). Os \acsp{CM} interagem de forma activa com as pessoas idosas, presencialmente ou por telefone. 
+
+Uma parte significativa da monitorização do \acsp{CM} são as chamadas \acfp{ADL}, uma lista de actividades que permite medir a função cognitiva e física do idoso (Tabela \ref{tab:1:adls}).
 
 \begin{table}[!htb]
   \centering
@@ -77,7 +79,7 @@ Com base nos resultados do estudo referenciado na Secção \ref{chap:3:sec:2.1} o 
 
 \section{Localização em Redes de Sensores Wireless}
 \label{chap:3:sec:2}
-A chave para obter uma localização fiável é representar de forma precisa os efeitos da degradação causada pelo canal de propagação no sinal. A propagação no mundo real sofre diversas perturbações causadas por obstruções, reflexões e pessoas ou objectos em movimento, o que torna esta representação um problema de elevada complexidade. Nesta secção enumeram-se o tipo de medições que permitem inferir uma localização e analisa-se bibliografia relacionada com o objectivo identificar algoritmos de localização distintos, as suas vantagens e desvantagens na aplicação ao objecto deste trabalho.
+A chave para obter uma localização fiável é representar de forma precisa os efeitos da degradação causada pelo canal de propagação no sinal. A propagação no mundo real sofre diversas perturbações causadas por obstruções, reflexões e pessoas ou objectos em movimento, o que torna esta representação um problema de elevada complexidade. Nesta secção enumeram-se os tipos de medições que permitem inferir uma localização e analisa-se bibliografia relacionada com o objectivo de identificar algoritmos de localização distintos, as suas vantagens e desvantagens na aplicação ao objecto deste trabalho.
 
 \subsection{Medidas de Localização}
 \label{chap:3:sec:2.1}
@@ -126,13 +128,13 @@ A partir da Figura \ref{fig:3:localizationClass} é possível, desde já, fazer alg
 
 \textbf{Entidade localizadora}: As entidades a localizar são os nós móveis e como tal deverá ser a rede a efectuar a localização para efectuar uma poupança de energia no nó móvel.
 
-\textbf{Segurança}: Embora se tenha optado por deixar esta questão fora do âmbito deste trabalho por limitações do simulador, um sistema de monitorização doméstica não poderia ser aberto pelas questões de privacidade abordadas na Secção \ref{chap:3:sec:1.2}.
+\textbf{Segurança}: Embora se tenha optado por deixar esta questão fora do âmbito deste trabalho por limitações do simulador, um sistema de monitorização doméstica não poderia ser aberto pelas questões de privacidade abordadas na Secção \ref{chap:3:sec:1.2}.\\
 
 Feitas algumas opções são analisados alguns trabalhos que se enquadram nas características escolhidas.
 
-O RADAR \cite{28}, é um método determinístico onde é feita a localização recorrendo a diversas \acfp{BS} numa \acs{WLAN}, apresenta segundo os autores uma precisão de 2.94 m em 50\% dos casos. Este esquema de localização usa a potência do sinal \acs{RF} de vários \acfp{AP} para triangular a posição do nó móvel. Tem uma fase \textit{offline} onde é construído um mapa rádio do local, em que o nó móvel envia pacotes (\textit{beacons}) para os nós fixos que registam cada amostra, sendo o conjunto de amostras reunido numa tabela com tuplos da forma \begin{math}(x,y,d,ss_i,snr_i)\end{math} para cada \begin{math}BS_i\end{math}.Posteriormente na fase \textit{online} é feita uma comparação entre os sinais recebidos e o mapa rádio que permite obter a coordenada mais próxima para a potência registada. Através do centróide das várias posições obtidas para cada {AP} obtém-se então a coordenada estimada do nó móvel.
+O RADAR \cite{28}, é um método determinístico onde é feita a localização recorrendo a diversas \acfp{BS} numa \acs{WLAN} e apresenta segundo os autores uma precisão de 2.94 m em 50\% dos casos. Este esquema de localização usa a potência do sinal \acs{RF} de vários \acfp{AP} para triangular a posição do nó móvel. Tem uma fase \textit{offline} onde é construído um mapa rádio do local, em que o nó móvel envia pacotes (\textit{beacons}) para os nós fixos que registam cada amostra, sendo o conjunto de amostras reunido numa tabela com tuplos da forma \begin{math}(x,y,d,ss_i,snr_i)\end{math} para cada \begin{math}BS_i\end{math}.Posteriormente na fase \textit{online} é feita uma comparação entre os sinais recebidos e o mapa rádio que permite obter a coordenada mais próxima para a potência registada. Através do centróide das várias posições obtidas para cada {AP} obtém-se então a coordenada estimada do nó móvel.
 
-Em \cite{29} temos o MoteTrack que, com base no trabalho RADAR, sugere um esquema para uma rede de sensores wireless. É indicada uma precisão de 2m em 50\% dos casos e de 3m em 80\% dos casos.Este sistema de localização foca a robustez, a distribuição do algoritmo e a precisão da localização.  Na Figura \ref{fig:4:motetrack} podemos observar o sistema MoteTrack. \textit{B1},  \textit{B2} e \textit{B3} são nós fixos e \textit{M} um nó móvel. Na fase \textit{offline} é feita uma recolha pelo nó móvel, para cada posição, de várias mensagens assinatura enviadas pelos nós fixos  \begin{math}B_i\end{math} dando origem a uma tabela de tuplos \begin{math}(x,y,B_i,P_i,RSSImedio)\end{math} que constitui o mapa rádio. Na fase \textit{online} o nó móvel recebe a assinatura do nó fixo e volta a enviar essa informação para o nó fixo para que este determine posição com base nas amostras que detém. Cada nó fixo devolve a sua estimativa para o nó móvel que calcula o centróide das diversas posições recebidas. 
+Em \cite{29} temos o MoteTrack que, com base no trabalho RADAR, sugere um esquema para uma rede de sensores wireless. É indicada uma precisão de 2m em 50\% dos casos e de 3m em 80\% dos casos.Este sistema de localização foca a robustez, a distribuição do algoritmo e a precisão da localização.  Na Figura \ref{fig:4:motetrack} podemos observar o sistema MoteTrack. \textit{B1},  \textit{B2} e \textit{B3} são nós fixos e \textit{M} um nó móvel. Na fase \textit{offline}, para cada posição, é feita uma recolha pelo nó móvel de várias mensagens assinatura enviadas pelos nós fixos  \begin{math}B_i\end{math}, dando origem a uma tabela de tuplos \begin{math}(x,y,B_i,P_i,RSSImedio)\end{math} que constitui o mapa rádio. Na fase \textit{online} o nó móvel recebe a assinatura do nó fixo durante um determinado tempo de amostragem. Após esse tempo devolve o resultado para o nó fixo de modo a que este determine posição com base nas amostras que detém. Cada nó fixo devolve a sua estimativa para o nó móvel que calcula o centróide das diversas posições recebidas. 
 
 \begin{figure}[!htb]
   \centering
@@ -141,7 +143,7 @@ Em \cite{29} temos o MoteTrack que, com base no trabalho RADAR, sugere um esquem
   \label{fig:4:motetrack}
 \end{figure}
  
-O HORUS \cite{31},um método probabilístico, apresenta uma precisão de 0.86 a 1.32m para 90\% dos casos. Num método probabilístico é guardada informação sobre as distribuições da potência do sinal em vez da média como num método determinístico. O objectivo do HORUS é atingir um alto nível de precisão e baixas necessidades de processamento. Usa, à semelhança do MoteTrack técnicas de \textit{clustering} para reduzir o espaço de procura quando tenta obter uma posição a partir do mapa rádio. O sistema é constituído também por uma fase \textit{offline} onde é feita a construção de um mapa rádio que é depois divido em \textit{clusters}. Na fase \textit{online} é feito no nó móvel o cálculo da posição recorrendo a várias filtros, que vão passo a passo melhorando a precisão da localização.
+O HORUS \cite{31},um método probabilístico, apresenta uma precisão de 0.86 a 1.32m para 90\% dos casos. Num método probabilístico é guardada informação sobre as distribuições da potência do sinal em vez da média como num método determinístico. O objectivo do HORUS é atingir um alto nível de precisão e baixas necessidades de processamento. À semelhança do MoteTrack, este método usa técnicas de \textit{clustering} para reduzir o espaço de procura quando tenta obter uma posição a partir do mapa rádio. O sistema é constituído também por uma fase \textit{offline} onde é feita a construção de um mapa rádio que é depois divido em \textit{clusters}. Na fase \textit{online} é feito no nó móvel o cálculo da posição recorrendo a várias filtros, que vão passo a passo melhorando a precisão da localização.
 
 \section{Encaminhamento em Redes de Sensores Wireless}
 \label{chap:3:sec:3}
@@ -155,19 +157,19 @@ Uma \acs{WSN} apresenta diversas restrições tais como fornecimento de energia li
 
 \textbf{Instalação dos nós}. A forma como os nós são instalados depende do tipo de aplicação e pode ser determinística ou aleatória. Se for aleatória a distribuição não é uniforme o que pode requerer \textit{clustering}. A distância de transmissão é reduzida o que obriga a que a comunicação seja feita através de vários nós.
 
-\textbf{Tolerância a falhas}. Alguns sensores podem falhar devido à falta de energia, dano físico ou interferência. Essas falhas não podem por isso condicionar impedir a comunicação e devem existir protocolos \acs{MAC} e de encaminhamento que consigam detectar essa situação e reformular a topologia da rede.
+\textbf{Tolerância a falhas}. Alguns sensores podem falhar devido à falta de energia, dano físico ou interferência. Essas falhas não podem por isso condicionar ou impedir a comunicação e devem existir protocolos \acs{MAC} e de encaminhamento que consigam detectar essa situação e reformular a topologia da rede.
 
 \textbf{Modelo de aquisição de dados}. A forma como é feita a aquisição de dados é dependente da aplicação e pode ser orientada ao tempo, para aplicações de monitorização periódica ou ao evento para e à \textit{query}, para nós que reagem a mudanças na medição de parâmetros ou a um pedido feito pela \acf{BS}. 
 
-\textbf{Homogeneidade dos nós ou ligações}. Os nós podem ter todos iguais capacidades sendo a rede homogénea ou então podem ter capacidades diferenciadas, havendo nós mais básicos e outros mais complexos.
+\textbf{Homogeneidade dos nós ou ligações}. Os nós podem ter todos capacidades iguais sendo a rede homogénea ou então podem ter capacidades diferenciadas, havendo nós mais básicos e outros mais complexos.
 
 \textbf{Escalabilidade}. Devido ao elevado número de nós possível numa \acs{WSN} qualquer protocolo de encaminhamento deve ser escalável reagindo de forma automática à adição ou remoção de nós da rede.
 
-\textbf{Dinâmica da rede}. A maior parte das arquitecturas assume que os nós estão fixos. No entanto para aplicações em que a topologia muda a estabilidade dos caminhos torna-se um assunto importante e algum tipo de actualização periódica ou redescoberta de novos caminhos torna-se necessário.
+\textbf{Dinâmica da rede}. A maior parte das arquitecturas assume que os nós estão fixos. No entanto para aplicações em que a topologia muda, a estabilidade dos caminhos torna-se um assunto importante, sendo necessário efectuar a actualização periódica ou redescoberta de novos caminhos.
 
 \textbf{Agregação de dados}. Os dados de vários sensores podem ser agregados para que o número de transmissões sofra uma redução. A agregação pode ser feita com remoção de duplicados, valores mínimos, valores máximos e valores médios. 
 
-\textbf{\acf{QoS}}. Em algumas aplicações os dados têm de ser entregues com sucesso após um determinado limite de tempo após a sua obtenção, caso contrário perdem significado ou introduzem erros desnecessários no sistema. Este limite de tempo pode ser gerido de forma dinâmica conforme a qualidade da transmissão.
+\textbf{\acf{QoS}}. Em algumas aplicações os dados têm de ser entregues com sucesso durante um determinado limite de tempo após a sua obtenção, caso contrário perdem significado ou introduzem erros desnecessários no sistema. Este limite de tempo pode ser gerido de forma dinâmica conforme a qualidade da transmissão.
 
 \subsection{Protocolos de Encaminhamento}
 \label{chap:3:sec:3.2}

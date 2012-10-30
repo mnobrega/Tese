@@ -43,7 +43,7 @@ Em \cite{3} e \cite{4} é feita a combinação da informação fornecida por redes de
 
 No trabalho \cite{5} é feita a aplicação de um sistema de monitorização num lar de idosos através de vídeo e áudio sem recurso a sensores portáteis. O trabalho referencia a insuficiência de profissionais em contraste com o rápido crescimento da população idosa e o pouco tempo que estes têm disponível para cada idoso. Emerge assim a necessidade de obter um conjunto de dados de forma autónoma e usado para detectar situações de perigo de atempadamente, como por exemplo a instabilidade do andar ou registos comportamentais que favorecem a prescrição de medicamentos psicotrópicos. Os grandes desafios indicados são a localização por vídeo, a correcta identificação e marcação das pessoas no campo de visão e a análise das suas actividades individuais.
 
-Partindo do conceito \textit{aging in place}, onde idosos vivem de forma independente e segura nas suas próprias casas, o trabalho \cite{6} apresenta, a monitorização de quedas mas também funcionalidades utilitárias como a detecção de objectos, calendário, vídeo-conferência e livro de endereços. Recorrendo a câmaras e a técnicas de \textit{machine learning} o sistema não necessita que o utilizador use um sensor. O sistema tem uma abordagem centralizada devido à forte exigência de processamento em tempo real e memória necessárias. A detecção de objectos é feita verificando mudanças na imagem ou procurando objectos de acordo com as suas características. 
+Partindo do conceito \textit{aging in place}, onde idosos vivem de forma independente e segura nas suas próprias casas, o trabalho \cite{6} apresenta, a monitorização de quedas mas também funcionalidades utilitárias como a detecção de objectos, calendário, vídeo-conferência e livro de endereços. Recorrendo a câmaras e a técnicas de \textit{machine learning} o sistema não necessita que o utilizador use um sensor. O sistema tem uma abordagem centralizada devido à forte exigência de processamento em tempo real e capacidade de memória. A detecção de objectos é feita verificando mudanças na imagem ou procurando objectos de acordo com as suas características. 
 
 \begin{figure}[!htb]
   \centering
@@ -96,7 +96,7 @@ Por fim, o trabalho \cite{9} indica através da Tabela \ref{tab:1:sensor_apps} um
   \label{tab:1:sensor_apps}
 \end{table}
 
-No trabalho \cite{10} é analisada a coexistência entre \acfp{WLAN} e \textit{ZigBee} que operam na mesma frequência de 2.4GHz. A problemática de um número elevado de módulos \acs{WLAN}, com potência de transmissão mais elevada,  impossibilitar a comunicação entre módulos \textit{ZigBee} é abordada. É sugerida como solução a implementação de um algoritmo implementado na \acf{WSN} que força a que, quando não existem frequências disponíveis, a \acs{WLAN} seja obrigada a abandonar o canal deixando assim espaço para o sistema \textit{ZigBee} comunicar. 
+No trabalho \cite{10} é analisada a coexistência entre \acfp{WLAN} e \textit{ZigBee} que operam na mesma frequência de 2.4GHz. A problemática de um número elevado de módulos \acs{WLAN}, com potência de transmissão mais elevada, impossibilita a comunicação entre módulos \textit{ZigBee}. É sugerida como solução a implementação de um algoritmo implementado na \acf{WSN} que força a que, quando não existem frequências disponíveis, a \acs{WLAN} seja obrigada a abandonar o canal deixando assim espaço para o sistema \textit{ZigBee} comunicar. 
 
 \cite{11} propõe um projecto que integra tecnologias \acs{WSN} com redes públicas de comunicação por forma a construir um sistema eficiente de cuidados de saúde para idosos em casa. O sistema apresenta quatro funcionalidades principais: monitorização interior, monitorização exterior, actividade e decisão com base no estado de saúde. É feita a medição e colecção de parâmetros do corpo e da casa e enviada para um servidor central através de várias redes disponíveis.
 
@@ -120,7 +120,7 @@ Identificam-se vários tipos de sensores aplicáveis a dispositivos domésticos:
 \item Sensores de corrente;
 \end{itemize}
 
-No artigo \cite{15} aborda-se a prestação de cuidados de saúde aos idosos num complexo construído pela \textit{Elite Care}\footnote{http://www. elite-care.com}.Com o objectivo de dar maior autonomia aos residentes são criados ambientes personalizados de sensores. O sistema permite identificar residentes que precisam de cuidados imediatos ou iluminar o caminho para um residente que se vá durante a noite à casa-de-banho. A informação monitorizada neste sistema pertence a três categorias: sinais vitais, sinais de entrada/saída e movimento. Na Tabela \ref{tab:2:pervasiveness}, a partir de um estudo feito com questionários feitos aos residentes é obtido o grau de intrusão de cada uma das tecnologias implementadas.
+No artigo \cite{15} aborda-se a prestação de cuidados de saúde aos idosos num complexo construído pela \textit{Elite Care}\footnote{http://www. elite-care.com}.Com o objectivo de dar maior autonomia aos residentes são criados ambientes personalizados de sensores. O sistema permite identificar residentes que precisam de cuidados imediatos ou iluminar o caminho para um residente que vá durante à noite à casa-de-banho. Na Tabela \ref{tab:2:pervasiveness}, a partir de um estudo feito com questionários feitos aos residentes é obtido o grau de intrusão de cada uma das tecnologias implementadas.
 
 \begin{table}[!htb]
   \centering
@@ -129,11 +129,11 @@ No artigo \cite{15} aborda-se a prestação de cuidados de saúde aos idosos num co
   \label{tab:2:pervasiveness}
 \end{table}
 
-\cite{13} usa sensores de pressão para localização. É referida, a título de exemplo, a aplicação do sistema a uma pessoa com doença de Alzheimer num estádio médio e cuja detecção do movimento permite activar ecrãs que se ligam quando a pessoa se aproxima e indicam as opções de percurso na casa. Os melhores sensores conseguem identificar a posição e direcção do utilizador, no entanto a \$10800 por metro quadrado não é uma alternativa viável. No projecto são usados os \textit{Phidgets} 1.5 polegadas que para 32.5 metros quadrados custa \$4000. Sendo o custo uma desvantagem evidente são propostas alternativas, como por exemplo a redução de sensores às zonas previsíveis de passagem ou a utilização de modelos de previsão que preencham as secções sem sensores.
+\cite{13} usa sensores de pressão para localização. É referida, a título de exemplo, a aplicação do sistema a uma pessoa com doença de Alzheimer num estádio médio e cuja detecção do movimento permite activar ecrãs que se ligam quando a pessoa se aproxima e indicam as opções de percurso na casa. Os melhores sensores conseguem identificar a posição e direcção do utilizador, no entanto a \$10800 por metro quadrado não é uma alternativa viável. No projecto são usados os \textit{Phidgets} 1.5 polegadas que para 32.5 metros quadrados custa \$4000. Sendo o custo uma desvantagem evidente, são propostas alternativas, por exemplo a redução de sensores às zonas previsíveis de passagem ou a utilização de modelos de previsão que preencham as secções sem sensores.
 
-Em \cite{14} é abordado o \textit{PlaceLab}. Situado em Cambrige é um laboratório vivo para estudo das tecnologias ubíquas. Está optimizado para moradias 1 habitantes. Foram criadas para este laboratório 15 divisões e em cada foram colocadas redes de 25 a 30 sensores. 
+Em \cite{14} é abordado o \textit{PlaceLab}. Situado em Cambrige é um laboratório vivo para estudo das tecnologias ubíquas. Está optimizado para moradias unipessoais. Foram criadas para este laboratório 15 divisões e em cada foram colocadas redes de 25 a 30 sensores. 
 
-O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético e o carregamento feito usando um campo electromagnético instalado num pires. É utilizada a tecnologia \acf{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acf{CAN} integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:6:mediacup})
+O projecto \textit{Mediacup} \cite{12} faz uma análise da adaptação de sensores, processamento e comunicação a dispositivos domésticos. Neste artigo uma caneca é adaptada com sensores de movimento e temperatura e ligada em rede com diversos outros dispositivos. Num cenário completo, todos os objectos de uso diário numa casa poderiam ser adaptados. É usado um processador de 1MHz para redução do consumo energético sendo o  carregamento feito através de um campo electromagnético instalado num pires. É utilizada a tecnologia \acf{IR} para a comunicação, através de mensagens, com transdutores que usam uma arquitectura \acf{CAN} integrada por sua vez com uma \acs{LAN} (Figura \ref{fig:6:mediacup})
 
 \begin{figure}[!htb]
   \centering
@@ -148,9 +148,9 @@ A bibliografia revista permitiu adquirir um maior conhecimento das soluções exis
 
 O rápido crescimento das redes \acs{BSN} e a diversidade de sensores existentes, tornam a integração das mesmas como uma rede \acs{WSN} muito aliciante, traduzindo um valor acrescido na monitorização de pessoas, pela possibilidade de detectar situações anómalas antes de qualquer sinal evidente da mesma. 
 
-O grande foco nas quedas de idosos, encontrado em diversos trabalhos permite antever a necessidade de incluir num sistema de monitorização, sensores com câmaras embutidas, pese embora todas as questões de privacidade associadas.
+O grande foco nas quedas de idosos, encontrado em diversos trabalhos permite antever a necessidade de incluir num sistema de monitorização, sensores com câmaras embutidas, pese embora todas as questões de privacidade e custos associadas.
 
-A abordagem pouco intrusiva dos sensores menos evoluídos tecnologicamente e que permitem monitorizar sem ultrapassar as barreiras da privacidade. Pequenas melhorias nos sensores comuns que podem melhorar significativamente a qualidade de vida dos idos.
+A utilização de sensores de uso doméstico comuns e tecnologicamente menos evoluídos, para uma monitorização não-intrusiva é também uma possibilidade a explorar.
 
 Por último a possibilidade de tornar os sensores parte integrante dos objectos do dia-a-dia, revela a necessidade de tornar as aplicações mais ubíquas mesmo que para isso seja necessário fazer algumas concessões ao nível dos custos.
 
