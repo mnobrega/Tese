@@ -45,7 +45,7 @@ Na Figura \ref{fig:3:omnetInternal} é possível observar a estrutura interna de u
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.85\textwidth]{img/04_omnet_internal.png}
+  \includegraphics[width=0.87\textwidth]{img/04_omnet_internal.png}
   \caption{Arquitectura lógica de um executável OMNeT++ \cite{33}.}
   \label{fig:3:omnetInternal}
 \end{figure}
@@ -58,6 +58,8 @@ A \textit{Model Component Library} contém o código compilado dos módulos simples
   \caption{Ambiente de simulação Tkenv no OMNeT++ \cite{33}.}
   \label{fig:4:omnetTkenv}
 \end{figure}
+
+\clearpage
 
 \section{Mixed Simulator (MiXiM) para OMNeT++}
 \label{chap:4:sec:2}
@@ -117,6 +119,10 @@ Para modelar este complexo processo o MiXiM implementa uma classe especial de si
 
 Quando recebe uma mensagem vinda do exterior (\textit{AirFrame}), a camada \acs{PHY} envia a mensagem para o modelo analógico que irá calcular a atenuação do sinal e para o \textit{Decider} que verifica se o sinal é ruído (com base na potência recebida) e calcula os bit-errors. Depois deste momento a camada \acs{PHY} calcula o atraso de propagação e de transmissão da mensagem cabendo à camada \acs{MAC} determinar com base nos \textit{bit errors} se a mensagem é válida ou não.
 
+A título de curiosidade, no trabalho \cite{36} é apresentada uma descrição mais pormenorizada sobre todo o funcionamento desta camada no \acs{MiXiM}.
+
+\clearpage
+
 
 \section{Simulação de Obstáculos para MiXiM}
 \label{chap:4:sec:3}
@@ -136,7 +142,6 @@ O trabalho \cite{35} implementa a simulação de obstáculos no MiXiM e a sua repre
   \caption{Simulação de uma rede MiXiM com obstáculos.}
   \label{fig:9:miximWithObstacles}
 \end{figure}
-
 
 Para melhor perceber a solução encontrada analisa-se a base matemática do modelo.
 
@@ -179,7 +184,34 @@ Devido à não utilização de nós reais neste trabalho, por condicionantes relacion
   \label{tab:1:attenuationPerInch}
 \end{table}
 
+\clearpage
 
+\section{Simulação da Propagação do Sinal}
+\label{chap:4:sec:4}
+
+A escolha de um modelo adequado de propagação do sinal assume particular importância, dado que para métodos de localização probabilísticos a inferência sobre a localização de um determinado nó, será feita a partir de funções densidade de probabilidade, que dependem exactamente das características da propagação do sinal. 
+
+Se um modelo demasiado simples fosse usado, poderia criar resultados diferentes do esperado e que não correspondessem a uma situação real. 
+
+Habitualmente a propagação de um sinal num ambiente interior é afectada por três factores:
+
+\begin{itemize}
+\item \textit{Path-loss}: perdas resultantes da atenuação causada pela distância de propagação;
+\item \textit{Shadowing} : perdas que resultam de flutuações aleatórias devido a obstruções;
+\item \textit{Fading} : perdas resultantes da existência de reflexões que provocam a multi-propagação do sinal.
+\end{itemize}
+
+Neste trabalho, são simuladas a \textit{Path-Loss} e a \textit{Shadowing} usando para isso modelos disponíveis no \acs{MiXiM} para simular este comportamento: o \textit{SimplePathlossModel} e o \textit{LogNormalShadowing}.
+
+O \textit{SimplePathLossModel} implementa um modelo simples de perdas, com atenuação dada por:
+
+\begin{equation}
+L_{pathloss} = \frac{\lambda{}^2}{16\pi{}^2}{d^{-2\alpha{}}}
+\end{equation}
+
+onde: \begin{math}d\end{math} é a distância percorrida, \begin{math}\lambda{}=\frac{c}{f}\end{math} e \begin{math}\alpha{}\end{math} é o coeficiente de perdas.
+
+Por sua vez o \textit{LogNormalShadowing} é implementado recorrendo a uma distribuição normal para gerar uma atenuação, em que os valores da média e do desvio padrão são calculados de forma aleatória.
 
 
 % Ensure that the next chapter starts in a odd page

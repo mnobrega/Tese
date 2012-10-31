@@ -128,7 +128,7 @@ A partir da Figura \ref{fig:3:localizationClass} é possível, desde já, fazer alg
 
 \textbf{Entidade localizadora}: As entidades a localizar são os nós móveis e como tal deverá ser a rede a efectuar a localização para efectuar uma poupança de energia no nó móvel.
 
-\textbf{Segurança}: Embora se tenha optado por deixar esta questão fora do âmbito deste trabalho por limitações do simulador, um sistema de monitorização doméstica não poderia ser aberto pelas questões de privacidade abordadas na Secção \ref{chap:3:sec:1.2}.\\
+\textbf{Segurança}: Embora se tenha optado por deixar esta questão fora do âmbito deste trabalho por limitações do simulador, um sistema de monitorização doméstica não poderia ser aberto pelas questões de privacidade abordadas na Secção \ref{chap:3:sec:1.2}.
 
 Feitas algumas opções são analisados alguns trabalhos que se enquadram nas características escolhidas.
 
@@ -138,7 +138,7 @@ Em \cite{29} temos o MoteTrack que, com base no trabalho RADAR, sugere um esquem
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.9\textwidth]{img/03_motetrack.png}
+  \includegraphics[width=1\textwidth]{img/03_motetrack.png}
   \caption{Sistema de localização MoteTrack \cite{29}.}
   \label{fig:4:motetrack}
 \end{figure}
@@ -171,6 +171,8 @@ Uma \acs{WSN} apresenta diversas restrições tais como fornecimento de energia li
 
 \textbf{\acf{QoS}}. Em algumas aplicações os dados têm de ser entregues com sucesso durante um determinado limite de tempo após a sua obtenção, caso contrário perdem significado ou introduzem erros desnecessários no sistema. Este limite de tempo pode ser gerido de forma dinâmica conforme a qualidade da transmissão.
 
+\clearpage
+
 \subsection{Protocolos de Encaminhamento}
 \label{chap:3:sec:3.2}
 Os protocolos nas \acsp{WSN} podem ser classificados conforme a sua estrutura em \textit{flat-routing} onde todos os nós têm as mesmas capacidades e papéis na rede, \textit{hierarchical-routing} em que existem nós com capacidades diferenciadas e papéis diferentes e \textit{location-based routing} onde a posição dos nós é parte integrante do protocolo de encaminhamento.
@@ -185,6 +187,8 @@ O \acf{SPIN} \cite{20} surge com a necessidade de resolver três problemas nos mé
   \caption{Protocolo SPIN \cite{20}.}
   \label{fig:1:spin}
 \end{figure}
+
+\clearpage
 
 O \acf{DD} \cite{21} introduz um método de procura através da propagação de interesses e criação de gradientes construídos à medida que um determinado percurso vai sendo utilizado cada vez mais utilizado.
 

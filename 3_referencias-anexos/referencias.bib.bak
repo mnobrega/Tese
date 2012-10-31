@@ -349,24 +349,6 @@
   url = {http://dblp.uni-trier.de/db/conf/simutools/simutools2008.html#KopkeSWWHPVLV08}
 }
 
-@PROCEEDINGS{25,
-  title = {{PEGASIS: Power-efficient gathering in sensor information systems}},
-  year = {2002},
-  volume = {3},
-  author = {Lindsey, S. and Raghavendra, C. S.},
-  booktitle = {Aerospace Conference Proceedings, 2002. IEEE},
-  citeulike-article-id = {1598083},
-  citeulike-linkout-0 = {http://dx.doi.org/10.1109/AERO.2002.1035242},
-  citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1035242},
-  doi = {10.1109/AERO.2002.1035242},
-  journal = {Aerospace Conference Proceedings, 2002. IEEE},
-  keywords = {cluster, routing, wsn},
-  pages = {3-1125--3-1130 vol.3},
-  posted-at = {2008-01-13 14:01:34},
-  priority = {3},
-  url = {http://dx.doi.org/10.1109/AERO.2002.1035242}
-}
-
 @ARTICLE{29,
   author = {Lorincz, Konrad and Welsh, Matt},
   title = {MoteTrack: a robust, decentralized approach to RF-based location
@@ -548,6 +530,27 @@
   timestamp = {2012.10.25}
 }
 
+@INPROCEEDINGS{Wessel:2009:MPL:1537614.1537713,
+  author = {Wessel, Karl and Swigulski, Michael and K\"{o}pke, Andreas and Willkomm,
+	Daniel},
+  title = {MiXiM: the physical layer an architecture overview},
+  booktitle = {Proceedings of the 2nd International Conference on Simulation Tools
+	and Techniques},
+  year = {2009},
+  series = {Simutools '09},
+  pages = {78:1--78:8},
+  address = {ICST, Brussels, Belgium, Belgium},
+  publisher = {ICST (Institute for Computer Sciences, Social-Informatics and Telecommunications
+	Engineering)},
+  acmid = {1537713},
+  articleno = {78},
+  doi = {10.4108/ICST.SIMUTOOLS2009.5555},
+  isbn = {978-963-9799-45-5},
+  location = {Rome, Italy},
+  numpages = {8},
+  url = {http://dx.doi.org/10.4108/ICST.SIMUTOOLS2009.5555}
+}
+
 @INPROCEEDINGS{6,
   author = {Adam Williams and Dan Xie and Shichao Ou and Roderic Grupen and Allen
 	Hanson and Edward Riseman},
@@ -573,6 +576,10 @@
 	protocol for wireless sensor networks},
   institution = {UCLA - University of California, Los Angeles},
   year = {2001}
+}
+
+@PROCEEDINGS{25,
+  title = {PEGASIS: Power-efficient gathering in sensor information systems}
 }
 
 @comment{jabref-meta: selector_publisher:}

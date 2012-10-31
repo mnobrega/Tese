@@ -22,7 +22,6 @@ A monitorização de ambos os casos descritos permitiria libertar mão-de-obra espe
 
 A evolução tecnológica dos sensores wireless tem vindo a introduzir no mercado sensores, rádios e processadores de baixa potência e baixo custo. Estes dispositivos, com o seu reduzido tamanho, têm um enorme potencial para o desenvolvimento de aplicações centradas no utilizador. Com um vasto tipo de sensores, as aplicações ubíquas\footnote[1]{Aplicação que tem como objectivo tornar a interacção entre pessoa e máquina invisível, integrando a informática com acções e comportamentos naturais das pessoas.}  podem por isso surgir como alternativa de baixo custo e enorme valor acrescentado para monitorização de pessoas num ambiente doméstico, criando uma simbiose entre pessoa e máquina, que permitiria usufruir do direito de viver de forma independente, com privacidade e dignidade.
 
-
 \section{Objectivos}
 \label{chap:1:sec:2}
 Nesta dissertação é proposto o desenvolvimento de uma solução onde uma ou mais pessoas, portadoras de um nó com comunicação wireless, se movimentam num ambiente onde existem outros nós wireless. Deverá ser possível localizar cada pessoa e estabelecer uma comunicação bidireccional entre esta e um servidor central. 
@@ -37,27 +36,28 @@ Assim definem-se os seguintes objectivos:
 	\item Simular casos de estudo que permitam validar o protocolo de encaminhamento e de localização implementados.
 \end{itemize}
 
+Esta dissertação apresenta as seguintes contribuições:
 
-\section{Principais Contribuições}
-\label{chap:1:sec:3}
-%TODO
-\textcolor{red}{TODO: escrever no fim}
+\begin{itemize}
+\item Propõe um sistema de monitorização de pessoas idosas simulado;
+\item Propõe diversas soluções de hardware para a implementação de um sistema real;
+\item Implementa um módulo \acf{AODV} para \acs{OMNeT++}/\acs{MiXiM};
+\item Implementa um sistema de localização de nós móveis numa rede \acs{WSN}, usando um sistema HORUS modificada para \acs{OMNeT++}/\acs{MiXiM}; 
+\end{itemize}
 
 \section{Organização da Dissertação}
-\label{chap:1:sec:4}
-%TODO
-\textcolor{red}{TODO: escrever no fim}
-%Esta dissertação encontra-se organizada nos seguintes seis capítulos:
-%\begin{enumerate}
-%	\item \nameref{capítulo:introdução}
-%	\item \nameref{chap:ea}
-%	\item \nameref{chap:conclusoes}
-%\end{enumerate}
-%
-%O \autoref{capítulo:introdução} inclui a introdução ao projecto, assim como os seus objectivos, contribuições do trabalho desenvolvido e a presente explicação da organização da dissertação.
-%
-%O \autoref{chap:ea} ...
-%
-%Finalmente, no \autoref{chap:conclusoes} são tiradas as conclusões do trabalho efectuado, fazendo-se também referências ao trabalho futuro que pode ser feito sobre o apresentado nesta dissertação.
+\label{chap:1:sec:3}
+
+No \autoref{chap:1} é apresentada uma pequena introdução, referindo a motivação para o tema, bem como objectivos propostos e contribuições.
+
+No \autoref{chap:2} é abordado o estado da arte. Neste capítulo faz-se uma análise da diversa bibliografia existente sobre o tema da monitorização. São abordados os sistemas de monitorização com áudio e vídeo, bem como os sensores  \textit{Wearable} e os sensores domésticos de uso comum..
+
+No \autoref{chap:3} é feita uma recolha de trabalho relacionado, considerado relevante para este trabalho. A monitorização de idosos e a forma como estes aceitam a tecnologia, a visão dos prestadores de cuidados de saúde. As métricas necessárias no contexto das pessoas idosas. Seguidamente fala-se da localização em redes \acs{WSN}, das possibilidade de localização, usando a potência do sinal recebido, o ângulo de chegada e são analisados três sistemas de localização. São ainda estudados os protocolos de encaminhamento, as vantagens e desvantagens de cada um.
+
+No \autoref{chap:4} é feita uma introdução ao ambiente trabalho, ao processo de escolha e às decisões tomadas na simulação de obstáculos, bem como o modelo usado. É analisado ao pormenor o mecanismo de tratamento de sinal recebido do \acs{MiXiM}.
+
+No \autoref{chap:5} é descrita a arquitectura do sistema \acs{EMoS}, dos seus componentes, da camada \textit{NIC}, da camada \textit{network} onde é implementado o \acs{AODV} e da camada de aplicação onde e implementado o sistema de localização HORUS. Faz-se uma descrição completa do funcionamento das duas camadas recorrendo para isso a fluxogramas exemplificativos.
+
+No \autoref{chap:7} faz-se a conclusão deste trabalho e lançam-se algumas ideias trabalho futuro.
 
 \cleardoublepage

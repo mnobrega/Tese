@@ -36,10 +36,12 @@ Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} p
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.80\textwidth]{img/05_emos_node_internal.png}
+  \includegraphics[width=0.78\textwidth]{img/05_emos_node_internal.png}
   \caption{Estrutura interna de um nó no sistema EMoS.}
   \label{fig:2:emonsNodeInternal}
 \end{figure}
+
+\clearpage
 
 Neste trabalho foi criada uma camada \textit{Network} comum para todos os nós e uma camada \textit{Application} por cada tipo de nó que implementa cada u dos tipos descritos. Nas próximas secções é feita uma exposição detalhada de todo o sistema.
 
@@ -133,39 +135,7 @@ O nó base tem como função efectuar toda a gestão centralizada da informação gera
 
 Este nó usa o mesmo rádio que o \textit{Waspmote}, com parâmetros para simulação já registados na Tabela \ref{tab:1:xbeeNICParameters}.
 
-\section{Camada \textit{NIC}}
-\label{chap:5:sec:2}
-Esta camada é constituída pelo \acs{MAC} e \acs{PHY}. 
-
-Tal como descrito na Secção \ref{chap:4:sec:2} a camada \acs{PHY} do \acs{MiXiM} tem um conjunto de modelos analógicos e um \textit{decider} que calculam as diversas atenuações e \textit{bit-errors} do sinal. Para o simulação deste sistema optou-se por usar um conjunto de três modelos analógicos que vão introduzir atenuação no sinal recebido.
-
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=1\textwidth]{img/05_analogue_models.png}
-  \caption{Sistema linear correspondente à aplicação dos modelos analógicos à potência do sinal recebido pelo nó.}
-  \label{fig:7:analogueModels}
-\end{figure}
-
-Optou-se por usar o modelo \textit{Breakpoint Path Loss}, um modelo empírico que permite recriar a atenuação de um sinal a longas distâncias, onde a partir da \textit{BreakPoint distance} o sinal sofre uma atenuação com declive superior e o \textit{Log Normal Shadowing} que permite simular as perdas provocadas pelas diversas reflexões existentes dentro de um edifício. Para simular a existência de obstáculos é utilizado o \textit{Simple Obstacle Shadowing} que tal como descrito na Secção \ref{chap:4:sec:3} permite recriar a atenuação causada pelas paredes da habitação. Dada a falta de dados reais que permitam inferir os parâmetros do modelo, utilizaremos parâmetros de configurações usadas nos exemplos do MiXiM para simulação de redes \acs{WSN}.
-
-%Assim para o modelo \textit{Breakpoint Path Loss} dado por:
-%
-%\begin{equation}
-%	P_L = L_0 + 10\alpha{}\log{d}
-%\end{equation}
-%
-%Temos \begin{math}\alpha{}=2\end{math},\begin{math}L_0=40.2\end{math}dB para \begin{math}d<8\end{math}m e \begin{math}\alpha{}=3.3\end{math}, \begin{math}L_0=58.8\end{math}dB para \begin{math}d>=8.0\end{math}.
-%
-%Por sua vez para o modelo \textit{Log Normal Shadowing} dado por:
-%
-%\begin{equation}
-%	G = -normal(\bar{x},\sigma{})
-%\end{equation}
-
-Paralelamente à atenuação do sinal há também o cálculo dos \textit{bit-errors} da mensagem levada a cabo pelo bloco \textit{decider}. Este foi configurado com uma probabilidade de erro de \begin{math}BER=1\times{10^{-8}}\end{math} e modulação O-QPSK.
-
-O ficheiro de configuração da camada \acs{NIC} está disponível no Anexo \ref{list:a1:xmlNIC}.
-
+\clearpage
 
 \section{Camada \textit{Network} : \textit{AODVRoute}}
 \label{chap:5:sec:3}
@@ -261,7 +231,7 @@ Portanto quando não existe caminho para o nó pretendido de destino o nó de orige
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.9\textwidth]{img/05_aodv_flow_02.png}
+  \includegraphics[width=1\textwidth]{img/05_aodv_flow_02.png}
   \caption{Fluxograma de chegada de um \textit{RREQ} vindo da camada \textit{MAC}.}
   \label{fig:13:aodvFlux2}
 \end{figure}
@@ -269,7 +239,11 @@ Portanto quando não existe caminho para o nó pretendido de destino o nó de orige
 
 Dado que o nó guarda todos os \acs{RREQ} que recebe no \textit{RouteVector}, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de nó para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no \textit{RouteMap} o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino é incrementado o contador do nó para garantir que não haverá mais nenhum caminho que se sobreponha.  
 
-Então, assim que o caminho é encontrado existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem, o nó pode então ir buscar ao pktMap, a próxima mensagem, a enviá-la para aquele endereço de destino.
+Então, assim que o caminho é encontrado existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. 
+
+\clearpage
+
+Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem, o nó pode então ir buscar ao pktMap, a próxima mensagem, a enviá-la para aquele endereço de destino.
 
 \begin{figure}[!htb]
   \centering
@@ -291,12 +265,12 @@ Na Figura \ref{fig:16:aodvFlux5}  temos o comportamento dos nós intermédios e de
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.68\textwidth]{img/05_aodv_flow_05.png}
+  \includegraphics[width=0.70\textwidth]{img/05_aodv_flow_05.png}
   \caption{Fluxograma da chegada de um \textit{RERR} vindo da camada \textit{MAC}.}
   \label{fig:16:aodvFlux5}
 \end{figure}
 
-
+\clearpage
 
 \section{Camada \textit{Application} : Localização}
 \label{chap:5:sec:4}
@@ -322,7 +296,7 @@ O sistema \textit{HORUS} usado no \acs{EMoS} difere do apresentado pelo seu auto
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=1\textwidth]{img/05_horus_mod.png}
+  \includegraphics[width=0.85\textwidth]{img/05_horus_mod.png}
   \caption{Componentes do sistema HORUS modificado e fluxo de informação.}
   \label{fig:17:horusMod}
 \end{figure}
@@ -467,7 +441,7 @@ O nó móvel e o nó base, têm ambos um papel fulcral na localização. Apresentam-se
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.85\textwidth]{img/05_horus_flow_01.png}
+  \includegraphics[width=1\textwidth]{img/05_horus_flow_01.png}
   \caption{Fluxograma do modo de funcionamento do nó móvel na localização.}
   \label{fig:20:horusFlow01}
 \end{figure}
@@ -478,6 +452,8 @@ No ramo esquerdo do fluxograma podemos observar o que acontece quando uma assina
 
 Quando não está no modo de calibração, o nó móvel usa um conceito de agendamento do \acs{OMNeT++} que permite agendar eventos, através de mensagens que são enviadas, num determinado tempo da simulação, para o próprio nó. Assim este conceito é usado para enviar periodicamente mensagens para o nó base para que este possa calcular a posição do nó móvel. Este comportamento está exemplificado na ramo direito do fluxograma.
 
+\clearpage
+
 Por sua vez na Figura \ref{fig:21:horusFlow02} temos um fluxograma do modo de funcionamento do nó base. Este nó recebe de um nó móvel, por intermédio de um ou mais nós fixos, uma mensagem que contém as médias das potências de nós fixos, recebidas pelo nó móvel durante um determinado espaço de tempo. Assim quando o nó base recebe esta mensagem, ordena por potência de forma descendente e selecciona apenas os N primeiros, em que N representa o número de nós estáticos presentes em cada posição do mapa rádio. 
 
 São então seleccionados os endereços dos dois primeiros nós estáticos da amostra que constituem a chave da amostra. Com a chave são obtidas as posições do \textit{cluster} cuja chave é igual à chave da amostra. Percorrendo então todas as posições obtidas é calculada para cada uma, a probabilidade do nó móvel estar nessa posição.
@@ -486,10 +462,12 @@ Se a probabilidade for maior que zero então é guardada numa lista. Uma vez perco
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.80\textwidth]{img/05_horus_flow_02.png}
+  \includegraphics[width=0.85\textwidth]{img/05_horus_flow_02.png}
   \caption{Fluxograma do modo de funcionamento do nó base na localização.}
   \label{fig:21:horusFlow02}
 \end{figure}
+
+\clearpage
 
 \section{Mobilidade}
 \label{chap:5:sec:5}

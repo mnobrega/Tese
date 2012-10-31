@@ -4,14 +4,9 @@
 <root>
 	<!-- ANALOGUE MODELS -->
 	<AnalogueModels>
-		<AnalogueModel type="BreakpointPathlossModel">
-		    <!-- IEEE 802.15.4 path loss channel model -->
-	    	<parameter name="alpha1" type="double" value="2"/>
-	    	<parameter name="L01" type="double" value="40.2"/>
-	    	<parameter name="breakpointDistance" type="double" value="8.0"/>
-	    	<parameter name="alpha2" type="double" value="3.3"/>
-	    	<parameter name="L02" type="double" value="58.8"/>
-	    	<parameter name="carrierFrequency" type="double" value="2.4E+9"/>
+		<AnalogueModel type="SimplePathlossModel">
+	    	<parameter name="alpha" type="double" value="3.0"/>
+	    	<parameter name="carrierFrequency" type="double" value="2.412e+9"/>
 	    </AnalogueModel>
 		<!-- we add a log-normal shadowing effect on top of the IEEE 802.15.4 path loss --> 
 		<AnalogueModel type="LogNormalShadowing">
@@ -21,24 +16,14 @@
 		</AnalogueModel>
 		<!-- we add obstacle shadowing on top of the log-normal shadowing effect -->
 		<AnalogueModel type="SimpleObstacleShadowing">
-	    	<parameter name="carrierFrequency" type="double" value="2.4E+9"/>
+	    	<parameter name="carrierFrequency" type="double" value="2.412E+9"/>
 	    </AnalogueModel>
 	</AnalogueModels>
-	<Decider type="Decider802154Narrow">
-		<!--Length of Start Frame Delimiter (used to compute probability of successful synchronization)-->
-		<parameter name="sfdLength" type="long" value="8"/>
-		
-		<!--minimum possible bit error rate (BER floor)-->
-		<parameter name="berLowerBound" type="double" value="1e-8"/>
-		
-		<!--modulation type-->
-		<parameter name="modulation" type="string" value="oqpsk16"/>
-	</Decider>
 </root>
 \end{annex-code}
 
 %XML CONFIG radio MAP
-\begin{annex-code}{Exemplo de ficheiro XML com mapa rádio para carregamento no nó móvel.}{list:a1:xmlRadioMap}
+\begin{annex-code}{Exemplo de ficheiro XML de configuração do mapa rádio.}{list:a1:xmlRadioMap}
 <?xml version="1.0" encoding="UTF-8"?><radioMap maxPositionPDFsSize="4">
   <position x="2" y="2">
     <staticNodePDF address="1000" mean="-6.86524" stdDev="-2.39173"/>
@@ -79,7 +64,9 @@
 </radioMap>
 \end{annex-code}
 
-\begin{annex-code}{Exemplo de ficheiro XML com \textit{clusters} de posições para carregamento no nó móvel.}{list:a1:xmlRadioMapCluster}
+\clearpage
+
+\begin{annex-code}{Exemplo de ficheiro XML de configuração de \textit{clusters} de posições.}{list:a1:xmlRadioMapCluster}
 <?xml version="1.0" encoding="UTF-8"?>
 <radioMapClusters clusterKeySize="1">
   <cluster>
