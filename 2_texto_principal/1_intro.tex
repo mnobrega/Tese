@@ -7,7 +7,7 @@
 
 \section{Motivação}
 \label{chap:1:sec:1}
-O aumento da esperança de vida provoca actualmente um envelhecimento generalizado da população mundial o que coloca diversos desafios ao desenvolvimento nacional, à sustentabilidade das famílias e à capacidade dos sistemas de saúde. Durante anos recentes, o número de pessoas no mundo acima dos 60 anos aumentou de 200 milhões em 1950 para 670 milhões, sector etário que representa já cerca de 20\% do total da população nos países desenvolvidos \citep{1}. Com a deslocalização dos jovens para a periferia dos grandes centros e a baixa natalidade, aumenta cada vez mais o número de idosos que vivem sozinhos em suas casas. Esta situação cria ansiedade em todos os envolvidos, resultando muitas vezes num internamento precoce em lares, com um custo elevado e vagas limitadas.
+O aumento da esperança de vida provoca actualmente um envelhecimento generalizado da população mundial o que coloca diversos desafios ao desenvolvimento nacional, à sustentabilidade das famílias e à capacidade dos sistemas de saúde. Durante anos recentes, o número de pessoas no mundo, com idades acima dos 60 anos aumentou de 200 milhões em 1950 para 670 milhões, sector etário que representa já cerca de 20\% do total da população nos países desenvolvidos \citep{1}. Com a deslocalização dos jovens para a periferia dos grandes centros e a baixa natalidade, aumenta cada vez mais o número de idosos que vivem sozinhos em suas casas. Esta situação cria ansiedade em todos os envolvidos, resultando muitas vezes num internamento precoce em lares, com um custo elevado e vagas limitadas.
 
 \begin{figure}[!htb]
   \centering
@@ -18,7 +18,7 @@ O aumento da esperança de vida provoca actualmente um envelhecimento generalizad
 
 Pessoas com deficiências físicas ou mentais apresentam também uma idêntica necessidade de acompanhamento. Por exemplo, pessoas com deficiência mental média, normalmente têm capacidades sociais e funcionais para serem minimamente independentes, ainda que necessitem de alguma supervisão e assistência. Normalmente têm problemas tão básicos como, por exemplo, decidir quando se levantar ou deitar na cama, ou tomar medicamentos à hora certa.
 
-A monitorização de ambos os casos descritos permitiria libertar mão-de-obra especializada para situações de maior dependência, reduzindo custos e aumentando a eficiência, notificando médicos ou hospitais da mudança de sinais vitais e comportamentos, que precedam situações de risco ou interagindo com ambientes inteligentes.
+A monitorização de ambos os casos descritos permitiria libertar mão-de-obra especializada para situações de maior dependência, reduzindo custos e aumentando a eficiência, notificando médicos ou hospitais da mudança de sinais vitais e comportamentos, que precedam situações de risco.
 
 A evolução tecnológica dos sensores wireless tem vindo a introduzir no mercado sensores, rádios e processadores de baixa potência e baixo custo. Estes dispositivos, com o seu reduzido tamanho, têm um enorme potencial para o desenvolvimento de aplicações centradas no utilizador. Com um vasto tipo de sensores, as aplicações ubíquas\footnote[1]{Aplicação que tem como objectivo tornar a interacção entre pessoa e máquina invisível, integrando a informática com acções e comportamentos naturais das pessoas.}  podem por isso surgir como alternativa de baixo custo e enorme valor acrescentado para monitorização de pessoas num ambiente doméstico, criando uma simbiose entre pessoa e máquina, que permitiria usufruir do direito de viver de forma independente, com privacidade e dignidade.
 
@@ -39,7 +39,7 @@ Assim definem-se os seguintes objectivos:
 Esta dissertação apresenta as seguintes contribuições:
 
 \begin{itemize}
-\item Propõe um sistema de monitorização de pessoas idosas simulado;
+\item Propõe um sistema simulado de monitorização de pessoas idosas;
 \item Propõe diversas soluções de hardware para a implementação de um sistema real;
 \item Implementa um módulo \acf{AODV} para \acs{OMNeT++}/\acs{MiXiM};
 \item Implementa um sistema de localização de nós móveis numa rede \acs{WSN}, usando um sistema HORUS modificada para \acs{OMNeT++}/\acs{MiXiM}; 
@@ -52,11 +52,11 @@ No \autoref{chap:1} é apresentada uma pequena introdução, referindo a motivação 
 
 No \autoref{chap:2} é abordado o estado da arte. Neste capítulo faz-se uma análise da diversa bibliografia existente sobre o tema da monitorização. São abordados os sistemas de monitorização com áudio e vídeo, bem como os sensores  \textit{Wearable} e os sensores domésticos de uso comum..
 
-No \autoref{chap:3} é feita uma recolha de trabalho relacionado, considerado relevante para este trabalho. A monitorização de idosos e a forma como estes aceitam a tecnologia, a visão dos prestadores de cuidados de saúde. As métricas necessárias no contexto das pessoas idosas. Seguidamente fala-se da localização em redes \acs{WSN}, das possibilidade de localização, usando a potência do sinal recebido, o ângulo de chegada e são analisados três sistemas de localização. São ainda estudados os protocolos de encaminhamento, as vantagens e desvantagens de cada um.
+No \autoref{chap:3} é feita uma recolha de trabalho relacionado, considerado relevante para este trabalho. Temas como, a monitorização de idosos e a forma como estes aceitam a tecnologia, a visão dos prestadores de cuidados de saúde, são abordados, bem como as métricas necessárias em contexto de pessoas idosas. Seguidamente fala-se da localização em redes \acs{WSN}, das possibilidade de localização, usando a potência do sinal recebido, o ângulo de chegada e são analisados três sistemas de localização. São ainda estudados os protocolos de encaminhamento, as vantagens e desvantagens de cada um.
 
 No \autoref{chap:4} é feita uma introdução ao ambiente trabalho, ao processo de escolha e às decisões tomadas na simulação de obstáculos, bem como o modelo usado. É analisado ao pormenor o mecanismo de tratamento de sinal recebido do \acs{MiXiM}.
 
-No \autoref{chap:5} é descrita a arquitectura do sistema \acs{EMoS}, dos seus componentes, da camada \textit{NIC}, da camada \textit{network} onde é implementado o \acs{AODV} e da camada de aplicação onde e implementado o sistema de localização HORUS. Faz-se uma descrição completa do funcionamento das duas camadas recorrendo para isso a fluxogramas exemplificativos.
+No \autoref{chap:5} é descrita a arquitectura do sistema \acs{EMoS}, dos seus componentes, da camada \textit{NIC}, da camada \textit{network} onde é implementado o \acs{AODV} e da camada de aplicação onde se implementa o sistema de localização HORUS. Faz-se uma descrição completa do funcionamento das duas camadas recorrendo para isso a fluxogramas exemplificativos.
 
 No \autoref{chap:7} faz-se a conclusão deste trabalho e lançam-se algumas ideias trabalho futuro.
 

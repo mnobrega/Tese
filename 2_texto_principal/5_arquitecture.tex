@@ -9,7 +9,7 @@
 \label{chap:5:sec:1}
 Propõe-se nesta tese o \acf{EMoS}, uma solução simulada para o problema da monitorização de pessoas em ambiente doméstico. O \acs{EMoS} é uma rede \acs{WSN} constituída por diversos nós com comunicação wireless colocados de forma homogénea numa casa. Embora o sistema possa efectuar a monitorização de todo o tipo de pessoas, neste trabalho é focada a monitorização de idosos ou pessoas com necessidades especiais. 
 
-São sugeridas opções de hardware comercialmente disponíveis para cada componente do sistema pretendendo-se desta forma ir para além da simples simulação e obter parâmetros reais para a configuração da mesma. Alguns aspectos de hardware mencionados não serão simulados por limitação de tempo na execução deste trabalho e também por não corresponderem ao âmbito estabelecido no Capítulo \ref{chap:1:sec:2}.
+São sugeridas opções de hardware comercialmente disponíveis para cada componente do sistema, pretendendo-se desta forma ir para além da simples simulação e obter parâmetros reais para a configuração da mesma. Alguns aspectos de hardware mencionados não serão simulados por limitação de tempo na execução deste trabalho e também por não corresponderem ao âmbito estabelecido no Capítulo \ref{chap:1:sec:2}.
 
 \begin{figure}[!htb]
   \centering
@@ -32,7 +32,7 @@ O nó base recebe informação dos nós fixos ou do exterior através da \acs{LAN} e 
 
 O nó móvel pode funcionar em dois modos: calibração e normal. No modo de calibração limita-se a receber assinaturas dos nós fixos e a registar essa informação, gerando um ficheiro XML com o mapa rádio do casa. No modo normal recebe de igual forma as assinaturas, mas periodicamente envia de volta para o nó fixo mais próximo, um conjunto de médias das potências recebidas. O nó fixo por sua vez envia esta informação para o nó base que irá calcular a localização do nó móvel.
 
-Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} para comunicar e apresentam uma estrutura interna idêntica (Figura \ref{fig:2:emonsNodeInternal}). O sistema é perfeitamente escalável, sendo possível adicionar-se vários outros nós móveis. No caso de existir um número muito elevado de nós móveis é possível criar novos nós base associados a \textit{clusters} de nós fixos, que comuniquem através da LAN para eliminar sobreposições.
+Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} para comunicar e apresentam uma estrutura interna idêntica (Figura \ref{fig:2:emonsNodeInternal}). O sistema é perfeitamente escalável, sendo possível adicionar-se vários outros nós móveis. No caso de existir um número muito elevado de nós móveis, é possível criar novos nós base associados a \textit{clusters} de nós fixos, que comuniquem através da LAN para eliminar sobreposições.
 
 \begin{figure}[!htb]
   \centering
@@ -227,7 +227,7 @@ Suponhamos que a camada de aplicação de um nó fixo pretende enviar uma mensagem 
 
 Cada nó guarda também um registo, para cada nó com o qual já tenha comunicado um registo do número de sequência desse nó. Este valor é colocado no \acs{RREQ} para que, caso seja encontrado um caminho mais recente, este pedido seja ignorado.
 
-Portanto quando não existe caminho para o nó pretendido de destino o nó de origem gera o \acs{RREQ} que é enviado em modo \textit{broadcast} para o resto da rede. Na Figura \ref{fig:13:aodvFlux2} está a recepção de outro nó do pacote enviado pelo nó de origem. 
+Portanto quando não existe caminho para o nó pretendido de destino, o nó de origem gera o \acs{RREQ} que é enviado em modo \textit{broadcast} para o resto da rede. Na Figura \ref{fig:13:aodvFlux2} está a recepção de outro nó do pacote enviado pelo nó de origem. 
 
 \begin{figure}[!htb]
   \centering
@@ -237,13 +237,13 @@ Portanto quando não existe caminho para o nó pretendido de destino o nó de orige
 \end{figure}
 
 
-Dado que o nó guarda todos os \acs{RREQ} que recebe no \textit{RouteVector}, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de nó para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no \textit{RouteMap} o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino é incrementado o contador do nó para garantir que não haverá mais nenhum caminho que se sobreponha.  
+Dado que o nó guarda todos os \acs{RREQ} que recebe no \textit{RouteVector}, este consegue verificar se já recebeu aquele mesmo pacote ou não. No caso de não ter recebido é incrementado o contador de saltos para que a distância até á origem seja actualizada. A informação do nó de origem, o número de saltos até ao mesmo são usados para criar um caminho inverso para o nó de origem. Enquanto este não for o nó de origem a mensagem vai sendo enviada de nó para nó até chegar ao destino. Pode ainda se dar o caso do nó não ser o nó de destino mas já existir um caminho no \textit{RouteMap}, o que permite ao nó intermédio devolver logo um \acs{RREP}. Quando se trata do nó de destino, é incrementado o contador do nó para garantir que não haverá mais nenhum caminho que se sobreponha.  
 
-Então, assim que o caminho é encontrado existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. 
+Então, assim que o caminho é encontrado, existe um \acs{RREP} que volta pelo caminho inverso em \textit{unicast} construindo o caminho do nó de origem para o nó de destino iniciais. 
 
 \clearpage
 
-Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem, o nó pode então ir buscar ao pktMap, a próxima mensagem, a enviá-la para aquele endereço de destino.
+Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem à medida que vai passando pelos nós intermédios até chegar ao nó de origem original. Quando é alcançada a origem, o nó pode então ir buscar ao pktMap, a próxima mensagem e enviá-la para aquele endereço de destino.
 
 \begin{figure}[!htb]
   \centering
@@ -252,7 +252,7 @@ Na Figura \ref{fig:14:aodvFlux3} podemos observar o que acontece a essa mensagem
   \label{fig:14:aodvFlux3}
 \end{figure}
 
-Quando ocorre um erro, ou seja, existe uma mensagem que é entregue mas o \acs{MAC} não recebe uma resposta de confirmação \acs{ACK} é necessário tomar medidas para que a origem seja informada que aquele caminho já não é válido. Assim são criados \acs{RERR} que viajam pelos precursores até atingir nó de origem. Na Figura \ref{fig:15:aodvFlux4} podemos ver a primeira fase quando a falha na entrega da mensagem ocorre. Nesse momento o nó procura todos os caminhos que estejam no \textit{RouteMap} e elimina-os, enviando depois um \acs{RERR} para cada um dos precursores.
+Quando ocorre um erro, ou seja, existe uma mensagem que é entregue mas o \acs{MAC} não recebe uma resposta de confirmação \acs{ACK}, é necessário tomar medidas para que a origem seja informada que aquele caminho já não é válido. Assim são criados \acs{RERR} que viajam pelos precursores até atingir nó de origem. Na Figura \ref{fig:15:aodvFlux4} podemos ver a primeira fase quando a falha na entrega da mensagem ocorre. Nesse momento o nó procura todos os caminhos que estejam no \textit{RouteMap} e elimina-os, enviando depois um \acs{RERR} para cada um dos precursores.
 
 \begin{figure}[!htb]
   \centering
@@ -363,7 +363,7 @@ P(s_i/x) =  P(s_i<=0.5) = \int_{s_i-0.5}^{s_i+0.5} fdp(q) dq
 \label{eq4}
 \end{equation}
 
-Dado que queremos evitar a utilização de algoritmos numéricos, computacionalmente pesados, para a resolução do integral, optou-se neste trabalho, por transformar, a função densidade de probabilidade encontrada para cada nó estático, numa função de distribuição normal standard, cujos valores podem ser tabelados. Para efeitos da simulação criou-se, por isso, um ficheiro XML que contém os valores necessários.
+Dado que queremos evitar a utilização de algoritmos numéricos, computacionalmente pesados, para a resolução do integral, transformou-se a função densidade de probabilidade encontrada para cada nó estático, numa função de distribuição normal standard, cujos valores podem ser tabelados. Para efeitos de simulação criou-se por isso, um ficheiro XML que contém os valores necessários.
 
 Assim sabendo que:
 
@@ -407,13 +407,13 @@ x = \frac{\sum_{j=1}^{K} x_i}{K}
 y = \frac{\sum_{j=1}^{K} y_i}{K}
 \end{equation}
 
-Neste trabalho serão usados os valores de base \begin{math}N=6\end{math} e \begin{math}K=10\end{math} referenciados em \cite{31} como valores com bons resultados numa situação real. Serão no entanto, obtidos resultados na simulação, de more a aferir quais os valores que dão origem a melhores resultados.
+Neste trabalho serão usados os valores de base \begin{math}N=6\end{math} e \begin{math}K=10\end{math} referenciados em \cite{31} como valores com bons resultados numa situação real. Serão no entanto, obtidos resultados na simulação, de modo a aferir quais os valores que dão origem aos melhores resultados.
 
 \subsection{Estruturas de Dados e Ficheiros XML}
 \label{chap:5:sec:4.3}
 São definidas duas estruturas de dados no \textit{HORUS} modificado.
 
-Na Figura \ref{fig:18:horusModRadioMap} temos a estrutura de dados escolhida para guardar as posições obtidas à saída do \textit{Correlation Modeler}. O resultado são um conjunto de posições, onde para cada posição, existem várias funções de densidade de probabilidade para cada nó, \acfp{PDF} caracterizadas pelos seus valores de média e desvio padrão.
+Na Figura \ref{fig:18:horusModRadioMap} temos a estrutura de dados escolhida para guardar as posições obtidas à saída do \textit{Correlation Modeler}. O resultado é um conjunto de posições, onde para cada posição, existem várias funções de densidade de probabilidade para cada nó, \acfp{PDF} caracterizadas pelos seus valores de média e desvio padrão.
 
 Na Figura \ref{fig:19:horusModRadioMapClusters} está representada a estrutura de dados utilizada para guardar os \textit{clusters}. 
 

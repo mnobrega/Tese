@@ -4,7 +4,7 @@
 \fancychapter{Estado da Arte}
 \label{chap:2}
 
-A casa inteligente actual consiste em vários electrodomésticos e outros dispositivos, com sensores, actuadores e/ou monitores biomédicos, usados pelos residentes numa base diária. Em alguns casos a casa é monitorizada recorrendo a tecnologias áudio e vídeo, sendo que estes sistemas apresentam uma excelente forma de monitorização mas têm algumas desvantagens:
+O conceito de casa inteligente actual consiste em vários electrodomésticos e outros dispositivos, com sensores, actuadores e/ou monitores biomédicos, usados pelos residentes numa base diária. Em alguns casos a casa é monitorizada recorrendo a tecnologias áudio e vídeo, sendo que estes sistemas apresentam uma excelente forma de monitorização mas têm algumas desvantagens:
 
 \begin{itemize}
 \item Custos elevados devido ao uso de sensores sofisticados e equipamentos áudio-visuais;
@@ -23,7 +23,7 @@ Três grupos de tecnologias emergem por entre a bibliografia revista:
 
 \section{Monitorização com Sinal Vídeo ou Áudio}
 \label{chap:2:sec:1}
-Em \cite{2} através de um sensor wireless equipado com um acelerómetro e transportado pela pessoa, são detectadas possíveis quedas. Por forma a minimizar o número de falsos alarmes, são usadas câmaras que cobrem o espaço, que analisam a posição da pessoa e são activadas de acordo com a localização do nó móvel. Essa localização é obtida através de triangulação baseada nas posições conhecidas dos nós fixos e a potência recebida do nó móvel. É também apresentada a possibilidade de efectuar transmissão de voz utilizando o rádio \acs{IEEE} 802.15.4, uma vez que já existem rádios com largura de banda necessária para efectuar transmissão de voz.
+Em \cite{2} através de um sensor wireless equipado com um acelerómetro e transportado pela pessoa, são detectadas possíveis quedas. Por forma a minimizar o número de falsos alarmes, são usadas câmaras que cobrem o espaço, que analisam a posição da pessoa e são activadas de acordo com a localização do nó móvel. Essa localização é obtida através de triangulação baseada nas posições conhecidas dos nós fixos e da potência recebida do nó móvel. É também apresentada a possibilidade de efectuar transmissão de voz utilizando o rádio \acs{IEEE} 802.15.4, uma vez que já existem rádios com largura de banda necessária para efectuar transmissão de voz.
 
 \begin{figure}[!htb]
   \centering
@@ -41,7 +41,7 @@ Em \cite{3} e \cite{4} é feita a combinação da informação fornecida por redes de
   \label{fig:2:video_monit_02}
 \end{figure}
 
-No trabalho \cite{5} é feita a aplicação de um sistema de monitorização num lar de idosos através de vídeo e áudio sem recurso a sensores portáteis. O trabalho referencia a insuficiência de profissionais em contraste com o rápido crescimento da população idosa e o pouco tempo que estes têm disponível para cada idoso. Emerge assim a necessidade de obter um conjunto de dados de forma autónoma e usado para detectar situações de perigo de atempadamente, como por exemplo a instabilidade do andar ou registos comportamentais que favorecem a prescrição de medicamentos psicotrópicos. Os grandes desafios indicados são a localização por vídeo, a correcta identificação e marcação das pessoas no campo de visão e a análise das suas actividades individuais.
+No trabalho \cite{5} é feita a aplicação de um sistema de monitorização num lar de idosos através de vídeo e áudio sem recurso a sensores portáteis. O trabalho referencia a insuficiência de profissionais em contraste com o rápido crescimento da população idosa e o pouco tempo que estes têm disponível para cada idoso. Emerge assim a necessidade de obter um conjunto de dados de forma autónoma e usado para detectar situações de perigo atempadamente, como por exemplo a instabilidade do andar ou registos comportamentais que favorecem a prescrição de medicamentos psicotrópicos. Os grandes desafios indicados são a localização por vídeo, a correcta identificação e marcação das pessoas no campo de visão e a análise das suas actividades individuais.
 
 Partindo do conceito \textit{aging in place}, onde idosos vivem de forma independente e segura nas suas próprias casas, o trabalho \cite{6} apresenta, a monitorização de quedas mas também funcionalidades utilitárias como a detecção de objectos, calendário, vídeo-conferência e livro de endereços. Recorrendo a câmaras e a técnicas de \textit{machine learning} o sistema não necessita que o utilizador use um sensor. O sistema tem uma abordagem centralizada devido à forte exigência de processamento em tempo real e capacidade de memória. A detecção de objectos é feita verificando mudanças na imagem ou procurando objectos de acordo com as suas características. 
 
@@ -52,7 +52,7 @@ Partindo do conceito \textit{aging in place}, onde idosos vivem de forma indepen
   \label{fig:3:video_monit_03}
 \end{figure}
 
-Em \cite{7} é utilizado o sinal áudio em conjunto com o vídeo para inferir acerca de uma possível queda. O sinal áudio torna-se essencial para distinguir entre uma pessoa que se sentou ou que caiu. Consideram-se processos de textit{Markov}\footnote{Processo sem memória onde podem ser feitas previsões do futuro com base somente no estado presente, onde o futuro é independente do passado} que permitem perceber se o comportamento do indivíduo está de acordo com o previsto ou não e assim tomar as medidas necessárias.
+Em \cite{7} é utilizado o sinal áudio em conjunto com o vídeo para inferir acerca de uma possível queda. O sinal áudio torna-se essencial para distinguir entre uma pessoa que se sentou ou que caiu. Consideram-se processos de textit{Markov}\footnote{Processo sem memória onde podem ser feitas previsões do futuro com base somente no estado presente, onde o futuro é independente do passado}, processos esses que permitem perceber se o comportamento do indivíduo está de acordo com o previsto ou não e assim tomar as medidas necessárias.
 
 Embora cada aplicação tenha as suas mais-valias e a precisão dos sistemas onde o sinal vídeo é utilizado seja bastante elevada, existe a questão da privacidade que resulta numa baixa aceitação deste tipo de sistemas por parte de pessoas idosas.
 
@@ -60,9 +60,9 @@ A grande preocupação nos trabalhos identificados permanece na detecção de quedas
 
 \section{Monitorização com Sensores \textit{Wearable}}
 \label{chap:2:sec:2}
-Com a evolução dos sensores wireless aparecem cada vez mais soluções que permitem fazer uma monitorização contínua do estado de saúde de uma pessoa, independentemente da sua localização ou actividade. A redução do tamanho dos sensores permite idealizar a criação de vestuário com sensores embutidos, suficiente leve e confortável para poder ser usado diariamente. Para além da monitorização há também a possibilidade de administrar medicamentos, recorrendo a actuadores, automaticamente ou de forma manual por um profissional de saúde de forma remota.
+Com a evolução dos sensores wireless aparecem cada vez mais soluções que permitem fazer uma monitorização contínua do estado de saúde de uma pessoa, independentemente da sua localização ou actividade. A redução do tamanho dos sensores permite idealizar a criação de vestuário com sensores embutidos, suficiente leve e confortável para poder ser usado diariamente. Para além da monitorização há também a possibilidade de administrar medicamentos automaticamente (recorrendo a actuadores) ou de forma manual por um profissional de saúde de forma remota.
 
-Em \cite{8} é abordada a \acf{BSN} como solução para a detecção precoce de problemas cardíacos. Através de um conjunto de sensores equipados com medidor de temperatura, medidor de pulso, acelerómetro e até sensores capazes de obter um electrocardiograma\footnote{Representação gráfica da actividade eléctrica do coração} (ECG), um electromiograma\footnote{Representação do potencial eléctrico gerado pelas células dos músculos} (EMG) ou um electroencefalograma\footnote{Representação da actividade do cérebro, obtida por pequenos sinais eléctricos chamados impulsos} (EEG). O sistema abordado tem um nó coordenador para onde todos os outros enviam informação e é usada a norma \acs{IEEE} 802.15.4, que com suficiente largura de banda permite a transmissão da informação necessária.
+Em \cite{8} é abordada a \acf{BSN} como solução para a detecção precoce de problemas cardíacos, através de um conjunto de sensores equipados com medidor de temperatura, medidor de pulso, acelerómetro e até sensores capazes de obter um electrocardiograma\footnote{Representação gráfica da actividade eléctrica do coração} (ECG), um electromiograma\footnote{Representação do potencial eléctrico gerado pelas células dos músculos} (EMG) ou um electroencefalograma\footnote{Representação da actividade do cérebro, obtida por pequenos sinais eléctricos chamados impulsos} (EEG). O sistema abordado tem um nó coordenador para onde todos os outros enviam informação e é usada a norma \acs{IEEE} 802.15.4, que com suficiente largura de banda permite a transmissão da informação necessária.
 
 \begin{figure}[!htb]
   \centering
