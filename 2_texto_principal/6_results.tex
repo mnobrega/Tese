@@ -5,15 +5,74 @@
 \fancychapter{Resultados}
 \label{chap:6}
 
-\section{Simulação de Obstáculos}
+\section{\textit{Testbed}}
 \label{chap:6:sec:1}
+Por forma a validar os resultados e a simulação desenvolvida, foi necessário criar um cenário de monitorização em ambiente doméstico. No cenário criado foram colocados 9 nós fixos, 1 nó móvel e 1 nó base, com o intuito de monitorizar uma pessoa idosa na sua rotina normal.
 
-\section{Protocolo de Encaminhamento}
-\label{chap:6:sec:2}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/06_testbed.png}
+  \caption{Cenário da simulação criada para testar o EMoS.}
+  \label{fig:1:testbed}
+\end{figure}
+
+Na Figura \ref{fig:1:testbed} é possível observar os 9 nós, que estão todos interligados. A ligação entre nós nós não se deve ao facto de estarem todos à distância de recepção, embora neste cenário seja o caso das as distâncias consideradas, mas porque no \acs{MiXiM} todos os nós que estejam à distância de interferência consideram-se ligados, mesmo que seja impossível a recepção.
+
+O cenário escolhido consiste numa casa com cerca de 93.75 m2 de área (12.5 m x 7.5 m) onde foram colocados obstáculos para cada parede interior, visíveis a vermelho na imagem. O conteúdo do ficheiro de configuração de obstáculos está no Anexo \ref{list:b1}.
 
 \section{Sistema de Localização}
-\label{chap:6:sec:3}
+\label{chap:6:sec:2}
 
+Para testar o protocolo de localização foi feito um mapa rádio da \textit{testbed} usando o modelo de mobilidade \textit{TractorMobility} tal como indicado no capítulo anterior.
+
+Foi também necessário criar um caminho para o nó móvel para simular uma pessoa em movimento dentro da casa. Criou-se então o cenário de mobilidade da Figura \ref{fig:2:testbedMobility} onde existe um percurso pela casa, em que o nó móvel executa o percurso indicado pelas setas a vermelho, parando durante algum tempo em alguns dos pontos por onde passou.   
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/06_testbed_mobility.png}
+  \caption{Cenário de mobilidade para teste do sistema de localização.}
+  \label{fig:2:testbedMobility}
+\end{figure}
+
+O ficheiro criado para o efeito, está disponível no Anexo \ref{list:b2} bem como o ficheiro de configuração da simulação \textit{omnetpp.ini}, no Anexo \ref{list:b3}.
+
+Assim para o mesmo percurso foram feitos diversos testes onde se avaliou o efeito das técnicas de estimação de espaço contínuo.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/06_horus_simple.png}
+  \caption{Erros de estimativa no sistema HORUS sem técnicas de centro de massa e sem média.}
+  \label{fig:3:horusSimple}
+\end{figure}
+
+Podemos observar na Figura \ref{fig:3:horusSimple} a estima de localização ao longo do percurso, obtida a partir do estimador de espaço discreto. Quanto mais próximo o nó móvel está dos pontos que foram anteriormente medidos na fase \textit{offline}, melhores são as estimativas da posição. Na Figura \ref{fig:4:horusCenterMass}, está o resultado da estimação ao longo do percurso efectuado usando a técnica do centro de massa. Observa-se uma melhoria relativamente ao anterior.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass.png}
+  \caption{Erros de estimativa no sistema HORUS com centro de massa e sem média.}
+  \label{fig:4:horusCenterMass}
+\end{figure}
+
+Por fim na Figura \ref{fig:5:horusCenterMassMean} vemos o melhor valor de precisão alcançado pelas três simulações, no mínimo do gráfico em questão, mas por outro lado vemos um sistema bastante mais afectado por mudanças súbitas da posição estimada.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass_mean.png}
+  \caption{Erros de estimativa no sistema HORUS com centro de massa e com média.}
+  \label{fig:5:horusCenterMassMean}
+\end{figure}
+
+Outro ponto que pode ser interessante é a taxa com que o nó móvel reúne as assinaturas dos nós fixos e envia tudo para o nó base. Os testes anteriores foram feitos com 15 segundos entre envios. Se for alterado esse valor para 40 s obtemos uma curva bastante mais estável, uma vez que a informação reunida é muito mais semelhante à que está no mapa rádio, dada a correlação existente entre amostras.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass_40s.png}
+  \caption{Erros de estimativa no sistema HORUS com centro de massa e sem média para um tempo de amostragem do nó móvel de t=40s.}
+  \label{fig:5:horus40s}
+\end{figure}
+
+\clearpage
 
 
 % Ensure that the next chapter starts in a odd page

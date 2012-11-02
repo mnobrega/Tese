@@ -51,6 +51,17 @@ CanCreateInstance, LogName, Message, MessageNumber, Expression,CorrelationHandle
 	commentstyle=\color{forestGreen}\ttfamily
 }
 
+\lstnewenvironment{ini-code}[2]
+{
+	\lstset{
+		caption=#1,
+		label=#2,
+		style=workflowStyle,
+		captionpos=t,
+		xleftmargin=2em,
+		xrightmargin=2em	
+	}
+}{}
 
 \lstnewenvironment{workflow-code}[2]{
 	\lstset{

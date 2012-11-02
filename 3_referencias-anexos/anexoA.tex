@@ -1,26 +1,5 @@
-%XML CONFIG NIC
-\begin{annex-code}{Ficheiro XML de conciguração da camada \acs{NIC}.}{list:a1:xmlNIC}
-<?xml version="1.0" encoding="UTF-8"?>
-<root>
-	<!-- ANALOGUE MODELS -->
-	<AnalogueModels>
-		<AnalogueModel type="SimplePathlossModel">
-	    	<parameter name="alpha" type="double" value="3.0"/>
-	    	<parameter name="carrierFrequency" type="double" value="2.412e+9"/>
-	    </AnalogueModel>
-		<!-- we add a log-normal shadowing effect on top of the IEEE 802.15.4 path loss --> 
-		<AnalogueModel type="LogNormalShadowing">
-			<parameter name="mean" type="double" value="0.0"/>
-			<parameter name="stdDev" type="double" value="6"/>
-			<parameter name="interval" type="double" value="1"/>
-		</AnalogueModel>
-		<!-- we add obstacle shadowing on top of the log-normal shadowing effect -->
-		<AnalogueModel type="SimpleObstacleShadowing">
-	    	<parameter name="carrierFrequency" type="double" value="2.412E+9"/>
-	    </AnalogueModel>
-	</AnalogueModels>
-</root>
-\end{annex-code}
+\fancychapter{Apêndice 1 - Ficheiros de XML de Exemplo}
+\label{annexA}
 
 %XML CONFIG radio MAP
 \begin{annex-code}{Exemplo de ficheiro XML de configuração do mapa rádio.}{list:a1:xmlRadioMap}
@@ -64,6 +43,21 @@
 </radioMap>
 \end{annex-code}
 
+\begin{annex-code}{Exemplo de ficheiro XML de configuração do módulo \textit{TurtleMobility} do MiXiM.}{list:a1:xmlTurtleMobility}
+<movement>
+	<set speed="10" angle="180"/>
+	<repeat n="4">
+		<forward d="50"/>
+		<turn angle="90"/>
+    </repeat>
+    <repeat>
+		<set speed="uniform(10,20)"/>
+        <turn angle="uniform(-30,30)"/>
+        <forward t="uniform(0.1,1)"/>
+    </repeat>
+</movement>
+\end{annex-code}
+
 \clearpage
 
 \begin{annex-code}{Exemplo de ficheiro XML de configuração de \textit{clusters} de posições.}{list:a1:xmlRadioMapCluster}
@@ -103,19 +97,4 @@
     <position x="3" y="6"/>
   </cluster>
 </radioMapClusters>
-\end{annex-code}
-
-\begin{annex-code}{Exemplo de ficheiro XML de configuração do módulo \textit{TurtleMobility} do MiXiM.}{list:a1:xmlTurtleMobility}
-<movement>
-	<set speed="10" angle="180"/>
-	<repeat n="4">
-		<forward d="50"/>
-		<turn angle="90"/>
-    </repeat>
-    <repeat>
-		<set speed="uniform(10,20)"/>
-        <turn angle="uniform(-30,30)"/>
-        <forward t="uniform(0.1,1)"/>
-    </repeat>
-</movement>
 \end{annex-code}
