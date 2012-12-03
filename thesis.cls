@@ -328,7 +328,7 @@
 				   \ifthenelse{\equal{\th@presidentofjury}{\relax}}{\relax}{Presidente: & \th@presidentofjury \\}
 				   Orientador: & \th@supervisor \\
 				   \ifthenelse{\equal{\th@othersupervisor}{\relax}}{\relax}{Co-Orientador: & \th@othersupervisor \\}
-				   \ifthenelse{\equal{\th@vogalofjuryone}{\relax}}{\relax}{Vogais: & \th@vogalofjuryone \\} 
+				   \ifthenelse{\equal{\th@vogalofjuryone}{\relax}}{\relax}{Vogal: & \th@vogalofjuryone \\} 
 				   \ifthenelse{\equal{\th@vogalofjurytwo}{\relax}}{\relax}{& \th@vogalofjurytwo \\} 
 				   \ifthenelse{\equal{\th@vogalofjurythree}{\relax}}{\relax}{& \th@vogalofjurythree \\} 
 				   \ifthenelse{\equal{\th@vogalofjuryfour}{\relax}}{\relax}{& \th@vogalofjuryfour \\} 
