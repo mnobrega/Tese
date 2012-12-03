@@ -126,7 +126,7 @@ A título de curiosidade, no trabalho \cite{36} é apresentada uma descrição mais 
 
 \section{Simulação de Obstáculos para MiXiM}
 \label{chap:4:sec:3}
-Embora esteja referida em \cite{34}, a simulação de obstáculos, como parte integrante do MiXiM, nunca chegou a ser implementada Assim foi necessário procurar uma solução que permitisse simular a existência de obstáculos no ambiente de trabalho.
+Embora esteja referida em \cite{34}, a simulação de obstáculos, como parte integrante do MiXiM, nunca chegou a ser implementada. Assim foi necessário procurar uma solução que permitisse simular a existência de obstáculos no ambiente de simulação.
 
 O trabalho \cite{35} implementa a simulação de obstáculos no MiXiM e a sua representação no ambiente Tkenv. O modelo descrito não contempla efeitos de reflexão ou difracção e pretende ser computacionalmente rápido. A configuração dos obstáculos é feita através de um ficheiro XML. Na \lstlistingname{} \ref{list:1:obstaclesXML} está o código XML necessário para desenhar o obstáculo da Figura \ref{fig:9:miximWithObstacles}.
 
@@ -145,15 +145,15 @@ O trabalho \cite{35} implementa a simulação de obstáculos no MiXiM e a sua repre
 
 Para melhor perceber a solução encontrada analisa-se a base matemática do modelo.
 
-Sabendo que a potência recebida de um sinal é dada por:
+A potência de um sinal recebido é dada por:
 
 \begin{equation}
 	P_r[dBm] = P_t[dBm] + G_t[dB] + G_r[dB] - \sum{L_x[dB]}
 \end{equation}
 
-onde \begin{math}P\end{math} é potência, \begin{math}G\end{math} é ganho e \begin{math}L_x\end{math} são os termos que traduzem as perdas. No MiXiM as perdas já são calculadas como descrito na secção anterior pela camada \acs{PHY} mas não contemplam as perdas provocadas por obstáculos. 
+onde \begin{math}P\end{math} é potência, \begin{math}G\end{math} é ganho e \begin{math}L_x\end{math} são os termos que traduzem as perdas. No MiXiM as perdas já são calculadas como descrito na secção anterior pela camada \acs{PHY} mas não contemplam as perdas decorrentes da existência de obstáculos. 
 
-É então sugerido um termo para a potência provocada por obstáculos:
+É então sugerido um termo para este tipo de perdas da seguinte forma:
 
 \begin{equation}
 	L_{obs}[dB] = \beta{n} + \gamma{d_m}
