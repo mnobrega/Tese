@@ -349,6 +349,45 @@
   url = {http://dblp.uni-trier.de/db/conf/simutools/simutools2008.html#KopkeSWWHPVLV08}
 }
 
+@PROCEEDINGS{25,
+  title = {{PEGASIS: Power-efficient gathering in sensor information systems}},
+  year = {2002},
+  volume = {3},
+  abstract = {{Sensor webs consisting of nodes with limited battery power and wireless
+	communications are deployed to collect useful information from the
+	field. Gathering sensed information in an energy efficient manner
+	is critical to operate the sensor network for a long period of time.
+	In W. Heinzelman et al. (Proc. Hawaii Conf. on System Sci., 2000),
+	a data collection problem is defined where, in a round of communication,
+	each sensor node has a packet to be sent to the distant base station.
+	If each node transmits its sensed data directly to the base station
+	then it will deplete its power quickly. The LEACH protocol presented
+	by W. Heinzelman et al. is an elegant solution where clusters are
+	formed to fuse data before transmitting to the base station. By randomizing
+	the cluster heads chosen to transmit to the base station, LEACH achieves
+	a factor of 8 improvement compared to direct transmissions, as measured
+	in terms of when nodes die. In this paper, we propose PEGASIS (power-efficient
+	gathering in sensor information systems), a near optimal chain-based
+	protocol that is an improvement over LEACH. In PEGASIS, each node
+	communicates only with a close neighbor and takes turns transmitting
+	to the base station, thus reducing the amount of energy spent per
+	round. Simulation results show that PEGASIS performs better than
+	LEACH by about 100 to 300\% when 1\%, 20\%, 50\%, and 100\% of nodes
+	die for different network sizes and topologies.}},
+  author = {Lindsey, S. and Raghavendra, C. S.},
+  booktitle = {Aerospace Conference Proceedings, 2002. IEEE},
+  citeulike-article-id = {1598083},
+  citeulike-linkout-0 = {http://dx.doi.org/10.1109/AERO.2002.1035242},
+  citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1035242},
+  doi = {10.1109/AERO.2002.1035242},
+  journal = {Aerospace Conference Proceedings, 2002. IEEE},
+  keywords = {cluster, routing, wsn},
+  pages = {3-1125--3-1130 vol.3},
+  posted-at = {2008-01-13 14:01:34},
+  priority = {3},
+  url = {http://dx.doi.org/10.1109/AERO.2002.1035242}
+}
+
 @ARTICLE{29,
   author = {Lorincz, Konrad and Welsh, Matt},
   title = {MoteTrack: a robust, decentralized approach to RF-based location
@@ -426,8 +465,16 @@
 @INPROCEEDINGS{35,
   author = {Sommer, Christoph and Eckhoff, David and German, Reinhard and Dressler,
 	Falko},
-  title = {A Computationally Inexpensive Empirical Model of IEEE 802.11p Radio
-	Shadowing in Urban Environments}
+  title = {{A Computationally Inexpensive Empirical Model of IEEE 802.11p Radio
+	Shadowing in Urban Environments}},
+  booktitle = {8th IEEE/IFIP Conference on Wireless On demand Network Systems and
+	Services (WONS 2011)},
+  year = {2011},
+  pages = {84-90},
+  address = {Bardonecchia, Italy},
+  month = {January},
+  publisher = {IEEE},
+  doi = {10.1109/WONS.2011.5720204}
 }
 
 @ARTICLE{15,
@@ -530,7 +577,7 @@
   timestamp = {2012.10.25}
 }
 
-@INPROCEEDINGS{Wessel:2009:MPL:1537614.1537713,
+@INPROCEEDINGS{36,
   author = {Wessel, Karl and Swigulski, Michael and K\"{o}pke, Andreas and Willkomm,
 	Daniel},
   title = {MiXiM: the physical layer an architecture overview},
@@ -576,10 +623,6 @@
 	protocol for wireless sensor networks},
   institution = {UCLA - University of California, Los Angeles},
   year = {2001}
-}
-
-@PROCEEDINGS{25,
-  title = {PEGASIS: Power-efficient gathering in sensor information systems}
 }
 
 @comment{jabref-meta: selector_publisher:}

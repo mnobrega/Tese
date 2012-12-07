@@ -14,8 +14,8 @@ In \cite{3} and \cite{4} an installed surveillance system is used to infer about
 \subsection{Monitoring using Wearable Sensors}
 \label{chap22}
 The reduction in size of wireless sensors is bringing to the market solutions that can track a person's health, independently of his location or activity. The possibility of smart clothes with built-in sensors sufficiently small and light to be carried without any discomfort, enable the mass usage of such equipments in a medium term.
-In \cite{8} the \acf{BSN} is addressed, as a solution to early detect heart problems with sensors capable of measuring temperature, acceleration or building an electrocardiogram all connected to a central coordinator node using Bluetooth (Figure \ref{fig:4:bsn}).
-\cite{9} discusses the the need for three types of priorities for messages in a \acs{WBAN}: \textit{On-demand} requested by a doctor or physician in order to monitor the patient vital signs, \textit{Emergency} initiated by the sensors when some critical threshold has been exceeded and \textit{Normal} with the lowest priority.In \cite{10} it is discussed the problems that arise from the usage of Zigbee in a crowed \acs{WLAN} environment. An algorithm is suggested to solve this issue in which the Zigbee forces an \acs{AP} to leave from an occupied frequency.
+In \cite{8} the \acf{BSN} is addressed, as a solution to early detect heart problems with sensors capable of measuring temperature, acceleration or building an electrocardiogram, all connected to a central coordinator node using Bluetooth (Figure \ref{fig:4:bsn}).
+\cite{9} discusses the the need for three types of priorities for messages in a \acs{WBAN}: \textit{On-demand} requested by a doctor or physician, in order to monitor the patient vital signs, \textit{Emergency} initiated by the sensors when some critical threshold has been exceeded and \textit{Normal} with the lowest priority.In \cite{10} it is discussed the problems that arise from the usage of Zigbee in a crowed \acs{WLAN} environment. An algorithm is suggested to solve this issue in which the Zigbee forces an \acs{AP} to leave from an occupied frequency.
 
 \begin{figure}[!htb]
   \centering
@@ -24,7 +24,7 @@ In \cite{8} the \acf{BSN} is addressed, as a solution to early detect heart prob
   \label{fig:4:bsn}
 \end{figure} 
 
-\cite{11} suggests the integration of several networks into one integrated platform able to track a person in the interior or exterior enabling all the case managers to be constantly aware of their patient. The same paper also refers the need to develop sensors that don't present any discomfort to theirs users, since that might be a very strong reason for not wearing sensors during a long period of time.
+\cite{11} suggests the integration of several networks into one integrated platform able to track a person in the interior or exterior enabling all the case managers to be constantly aware of their patient. The same paper also refers the need to develop sensors that don't present any discomfort to their users, since that might be a very strong reason for not wearing sensors during a long period of time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,8 +47,8 @@ A lot of research has been done focusing falls, vital signs tracking and ubiquou
 
 \subsection{Elder Home Monitoring}
 \label{chap31} 
-In study named \``The Activities of Daily Living Study''\ presented at \cite{16} several questionnaires were delivered to \acfp{CM} ( professionals that give assistance to elder people living at home). This study refers to the existence of a group of \acfp{ADL} which \acp{CM} keep track. These include getting up in the morning, dressing or feeding. Through these \acp{ADL} healthcare professionals are able to keep track of their elders mental and physical state. This study also sets some of the most valuable features which a monitoring system can present to elders. Features like panic buttons and security improvement measures seem to have success while others like cameras don't seem as accepted.\\
-The study also enumerates the some of the main needs in monitoring elder people in-home. Location tracking to know if the elder got up of his bed, better scheduling of visits the \acs{CM} being able to know if the elder is at home, house occupancy to understand the elder need for companionship.
+In a study named \``The Activities of Daily Living Study''\ presented at \cite{16} several questionnaires were delivered to \acfp{CM} ( professionals that give assistance to elder people living at home). This study refers to the existence of a group of \acfp{ADL} which \acp{CM} keep track. These include getting up in the morning, dressing or feeding. Through these \acp{ADL} healthcare professionals are able to keep track of their elders mental and physical state. This study also sets some of the most valuable features which a monitoring system can present to elders. Features like panic buttons and security improvement measures seem to have success while others like cameras don't seem as accepted.\\
+The study also enumerates some of the main needs in monitoring elder people in-home. Location tracking to know if the elder got up of his bed, better scheduling of visits as the \acs{CM} would be able to know if the elder is at home, house occupancy to understand the elder need for companionship.
 
 \subsection{Position tracking for Wireless Sensor Networks}
 \label{chap32} 
@@ -80,11 +80,11 @@ Several types of routing protocols exist for \acp{WSN}. They are divided in thre
   \caption{Modular overview of the work environment.}
   \label{fig:1:frameworkOverview}
 \end{figure}
-Due to economical reasons the work presented in this paper was implemented using a simulated environment. The need to find a solution that would present close to real values and close to real behaviours, brought to line \acf{OMNeT++}\cite{33}, the base framework and \acf{MiXiM}\cite{34}, a framework for \acs{OMNeT++} with mobility, channel and wireless sensors simulation great capabilities. Some of the reasons that make OMNeT++ the most obvious choice are: the modular hierarchical design, which can be combined for reuse and flexibility, the Object Oriented approach, the C++ internal structure, \acf{NED} language for module building and a auto-animated environment. \acs{MiXiM} in turn provides a complex channel losses model, which for indoor environments allow us to achieve close to real values and several \acs{MAC} and \acs{NIC} models for the \acs{IEEE} 802.15.4. Finally the simulation of obstacles was obtained using a \acs{MiXiM} modification \cite{35} that implements a simple obstacle model given by:
+Due to cost reasons the work presented in this paper was implemented using a simulated environment. The need to find a solution that would present close to real values and close to real behaviours, brought the need to use  \acf{OMNeT++}\cite{33}, the base framework and \acf{MiXiM}\cite{34}, a framework for \acs{OMNeT++} with mobility, channel and wireless sensors simulation great capabilities. Some of the reasons that make OMNeT++ the most obvious choice are: the modular hierarchical design, which can be combined for reuse and flexibility, the Object Oriented approach, the C++ internal structure, \acf{NED} language for module building and a auto-animated environment. \acs{MiXiM} in turn provides a complex channel losses model, which for indoor environments allow us to achieve close to real values and several \acs{MAC} and \acs{NIC} models for the \acs{IEEE} 802.15.4. Finally the simulation of obstacles was obtained using a \acs{MiXiM} modification \cite{35} that implements a simple obstacle model given by:
 \begin{equation}
 	L_{obs}[dB] = \beta{n} + \gamma{d_m}
 \end{equation}
-with attenuation per meter \begin{math}\beta{n}\end{math} and attenuation per wall \begin{math}\gamma{d_m}\end{math} configurable using a XML file. 
+with attenuation per wall \begin{math}\beta{n}\end{math} and attenuation per meter \begin{math}\gamma{d_m}\end{math}, configurable using a XML file. 
 
 In this work the following values were used:
 
@@ -111,9 +111,9 @@ In this work the following values were used:
   \caption{Model structure of the \textit{Elder Monitorization System} (EMoS).}
   \label{fig:1:emosOverview}
 \end{figure}
-\acs{EMoS} is comprised of three types of nodes: \acf{SN}, \acf{MN} and \acf{BN}. These nodes all have distinct roles in the network.\\ The MN is a sensor equipped with two radios, one IEEE 802.15.4 and another Bluetooth for connection with a BSN. It can be installed in a walker or a wheelchair. It has the ability to communicate with all the other nodes in the WSN and to record static node signatures for localization tracking.\\
+\acs{EMoS} is comprised of three types of nodes: \acf{SN}, \acf{MN} and \acf{BN}. These nodes all have distinct roles in the network.\\ The MN is a sensor equipped with two radios, one IEEE 802.15.4 and another Bluetooth for connecting with a BSN. It can be installed in a walker or a wheelchair. It has the ability to communicate with all the other nodes in the WSN and to record static node signatures for localization tracking.\\
 The SN is a sensor equipped with one radio IEEE 802.15.4 capable of sending messages when connected to a stove or a bed pressure sensor and establishing communication with all the other nodes in the WSN. All static nodes are connected to the power network and don't need any batteries.\\
-The BN is a USB IEEE 802.15.4 gateway and is connected to a PC. It has the largest computational capability in the network. It is responsible for coordinating all the WSN, communications with the exterior and tracking all the mobile nodes detected.
+The BN is a USB IEEE 802.15.4 gateway and is connected to a PC. It has the  computational capability in the network. It is responsible for coordinating all the WSN, communications with the exterior and tracking all the mobile nodes detected.
 
 All nodes share the same CSMA MAC layer and have an AODV custom build for this simulation Network Layer. The application layer differs accordingly to the node role.
 
@@ -164,9 +164,9 @@ Two types of radios exist in the simulation: the \textit{Texas Instruments CC 24
 
 
 \subsection{Network Layer}
-The network layer is common to all nodes in the network. It has been implemented with an \acf{AODV} routing protocol which uses three types of messages for establishing the routes: \acf{RREQ}, \acf{RREP} and \acf{RERR}.\\ When a node A wants to communicate with a node B it sends the package from the application layer to the network layer. After arriving the node checks if there is a path to node B. If there isn't sends a RREQ in broadcast mode to all the nodes. Each node knows if it has already forwarded a RREQ so that the same RREQ can only be sent by each node one single time. Each node the RREQ passes creates a reverse route to the node A. When it reaches the destination, B sends a RREP through the reverse path created in unicast mode. As the RREP transverses the reverse path a forward path to node B is created. When node A receives the RREP it gets the waiting packet and sends it to the B trough the new path found.\\
-Finally, when a message cannot be delivered the node that detected the route failure sends a RERR to all the route precursors (nodes that used the route before). This information removes the route and makes node A to send a RREQ again.\\
-In EMoS this schema was implemented fully and only the local-repair function was left out.
+The network layer is common to all nodes in the network. It has been implemented with an \acf{AODV} routing protocol which uses three types of messages for establishing the routes: \acf{RREQ}, \acf{RREP} and \acf{RERR}.\\ When a node A wants to communicate with a node B it sends the package from the application layer to the network layer. After arriving there it checks if there is a path to node B. If the path doesn't exist it sends a RREQ in broadcast mode to all the nodes. Each node knows if it has already forwarded a RREQ so that the same RREQ can only be sent by each node one single time. Each node that the RREQ passes creates a reverse route to the node A. When it reaches the destination, B sends a RREP through the reverse path created, using a unicast mode. As the RREP transverses the reverse path a forward path to node B is created. When node A receives the RREP it gets the waiting packet and sends it to the B trough the new path found.\\
+Finally, when a message cannot be delivered the node that detected the route failure, sends a RERR to all the route precursors (nodes that used the route before it failed). This information removes the route and makes node A to send a RREQ again.\\
+In EMoS this schema was fully implemented and only the local-repair function was left out.
 
 \subsection{Application Layer}
 \begin{figure}[!htb]
@@ -175,9 +175,9 @@ In EMoS this schema was implemented fully and only the local-repair function was
   \caption{Modified HORUS modules.}
   \label{fig:17:horusMod}
 \end{figure}
-Although each node is capable of sending messages from the application layer, the most important feature, is the position tracking which will be the referred in this paper.
+Although each node is capable of sending messages from the application layer, the most important feature, is the position tracking which will be the focused in this paper.
 
-The position tracking in EMoS is made using a modified versions of HORUS\cite{31}. It is a probabilistic method that uses probabilistic density functions in it's parametrized form, to calculate the probability of a mobile node being in a certain position. The HORUS has two phases. An offline phase where a radio map is built and a online phase where the built radio map is used to infer the position of the mobile node.\\
+The position tracking in EMoS is made using a modified versions of HORUS\cite{31}. It uses a probabilistic method which uses probabilistic density functions in it's parametrized form, to calculate the probability of a mobile node being in a certain position. The HORUS has two phases. An offline phase where a radio map is built and a online phase where the built radio map is used to infer the position of the mobile node.\\
 In the offline phase MN is in calibration mode what means that it will capture all the static nodes signatures till a position change occurs. In this process it stores in a \textit{Raw} database all the signatures collected.The data is then transformed in radio ma positions in which for each position and each node the mean and standard deviation is found using the following equations:
 
 \begin{equation}
@@ -197,7 +197,7 @@ pdf(q) = \frac{1}{\sigma{}\sqrt{2\pi{}}}e^\frac{-(q-\mu)^2}{2\sigma{}^2}
 \label{eq1}
 \end{equation}
 
-So for each position a set of static nodes addresses are stored together with their respective mean and standard deviation. This results in a normal distribution for each node in each position. The parametrization of the distribution allows for a filtering of erroneous values and existence of values for all the signal strength range.
+For each position a set of static nodes addresses are stored together with their correspondent mean and standard deviation. This results in a normal distribution for each static node in each position. The parametrization of the distribution allows for a filtering of erroneous values and existence of values for all the signal strength range.
 
 \begin{figure}[!htb]
   \centering
@@ -206,13 +206,13 @@ So for each position a set of static nodes addresses are stored together with th
   \label{fig:23:horusNormal}
 \end{figure}
 
-In EMoS this information is stored in a XML file. After this computation the result is sent to the Clustering model which divides all the positions in clusters. The division is made using the position key determined by the 2 largest signal strength value nodes.
+In EMoS this information is stored in a XML file. After this process the result is sent to the Clustering model which divides all the positions in clusters. The division is made using the position key determined by the 2 largest signal strength value nodes.
 
 In the online phase the MN collects all the signatures during a certain amount of time. When that time is over it calculates the mean signal strength for each static node received and sends the result to the closest SN. 
 
 The SN in turn sends to the BN (Base Node). Note that if no route is available the network layer will find one using AODV. When the message with the static nodes samples arrives to the BN it will be used to infer the MN position. This will be made using firstly a discrete-space estimator and afterwords a continuous-space estimator. The discrete-space estimator can only determine a position available in the radio map while the continuous-space estimator allows all the other points.
 
-All correlations modules are simple mean operations.
+All correlation modules are simple mean operations.
 
 Therefore when the message arrives to the discrete-space estimator it's joint probability is calculated as:
 

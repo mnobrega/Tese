@@ -27,7 +27,7 @@
 
 
 %XML CONFIG NIC
-\begin{annex-code}{Ficheiro de configuração dos objectos da \textit{testbed}.}{list:b1}
+\begin{annex-code}{Ficheiro de configuração dos obstáculos da \textit{testbed}.}{list:b1}
 <obstacles>
 	<!--<poly id="wall#0" type="brickWall20cm" color="#F00" shape="x,y x,y x,y x,y" />-->
    <poly id="wall#0" type="brickWall20cm" color="#F00" shape="3.29,0 3.47,0 3.47,2.81 3.29,2.81" />
@@ -43,7 +43,7 @@
 </obstacles>
 \end{annex-code}
 
-\begin{annex-code}{Ficheiro de configuração para o cenário de mobilidade usado nos testes do sistema de localização.}{list:b2}
+\begin{annex-code}{Ficheiro de configuração de mobilidade usado no teste do sistema de localização.}{list:b2}
 <movement>
 	<wait t="100"/>
 	<set speed="0.8"/>
@@ -68,8 +68,12 @@
 </movement>
 \end{annex-code}
 
-\begin{ini-code}{Ficheiro de configuração omnetpp.ini para testes de localização.}{list:b3}
+\clearpage
+
+\begin{ini-code}{Ficheiro de configuração omnetpp.ini para teste de localização.}{list:b3}
 [General]
+rng-class="cLCG32"
+num-rngs=2
 network = EMoS01
 repeat = 1
 ned-path=/home/mnobrega/workspace/mixim/src;/home/mnobrega/workspace/mixim
@@ -93,11 +97,11 @@ load-libs=/home/mnobrega/workspace/mixim/src/modules/miximmodules /home/mnobrega
 **.connectionManager.carrierFrequency = 2.4E+9Hz
 
 ## OBSTACLES ##
-*.obstacles.debug = true
+*.obstacles.debug = false
 
 ## NODES ##
-***.app.debug = true
-***.net.debug = true
+***.app.debug = false
+***.net.debug = false
 
 #NICs config
 ***.nic.phy.usePropagationDelay = true
@@ -123,27 +127,19 @@ load-libs=/home/mnobrega/workspace/mixim/src/modules/miximmodules /home/mnobrega
 
 
 [Config testbed1]
-**.numHostsStatic = 9
+**.numHostsStatic = 5
 **.numHostsMobile = 1
 **.numHostsBase = 1
-**.staticNode[0].mobility.x = 1.49
-**.staticNode[0].mobility.y = 1.49
-**.staticNode[1].mobility.x = 2.39
-**.staticNode[1].mobility.y = 4.78
-**.staticNode[2].mobility.x = 4.78
-**.staticNode[2].mobility.y = 1.49
-**.staticNode[3].mobility.x = 6.88
+**.staticNode[0].mobility.x = 2.39
+**.staticNode[0].mobility.y = 4.78
+**.staticNode[1].mobility.x = 4.78
+**.staticNode[1].mobility.y = 1.49
+**.staticNode[2].mobility.x = 6.88
+**.staticNode[2].mobility.y = 5.68
+**.staticNode[3].mobility.x = 10.47
 **.staticNode[3].mobility.y = 5.68
-**.staticNode[4].mobility.x = 6.88
-**.staticNode[4].mobility.y = 3.29
-**.staticNode[5].mobility.x = 7.48
-**.staticNode[5].mobility.y = 1.49
-**.staticNode[6].mobility.x = 8.75
-**.staticNode[6].mobility.y = 1.49
-**.staticNode[7].mobility.x = 10.47
-**.staticNode[7].mobility.y = 5.68
-**.staticNode[8].mobility.x = 10.77
-**.staticNode[8].mobility.y = 1.79
+**.staticNode[4].mobility.x = 10.77
+**.staticNode[4].mobility.y = 1.79
 **.mobileNode[0].mobility.x = 0.5
 **.mobileNode[0].mobility.y = 0.5
 **.baseStation[0].mobility.x = 0.6
@@ -152,22 +148,22 @@ load-libs=/home/mnobrega/workspace/mixim/src/modules/miximmodules /home/mnobrega
 
 #offline phase
 [Config offline]
-sim-time-limit = 86 min # for calibration
+sim-time-limit = 30 min # for calibration
 extends = testbed1
 **.stats = false
 *.obstacles.obstacles = xmldoc("xml_config_files/config.obstacles-01.xml")
 **.mobileNode[0].app.minimumStaticNodesForSample = 5
 **.mobileNode[0].app.clusterKeySize = 1
-**.mobileNode[0].app.maxPositionPDFsSize = 4
+**.mobileNode[0].app.maxPositionPDFsSize = 2
 **.mobileNode[0].app.calibrationMode = true
 **.mobileNode[0].mobilityType = "TractorMobility"
 **.mobileNode[0].mobility.updateInterval = 40 s
-**.mobileNode[0].mobility.x1 = 0.5m
-**.mobileNode[0].mobility.y1 = 0.5m
+**.mobileNode[0].mobility.x1 = 1m
+**.mobileNode[0].mobility.y1 = 1m
 **.mobileNode[0].mobility.x2 = 12m
 **.mobileNode[0].mobility.y2 = 7m
-**.mobileNode[0].mobility.rows = 10 #  d= 2*(7-0.5) + 10*(12-0.5) = 128 m
-**.mobileNode[0].mobility.speed = 0.025 mps # 128/0.025 = 5120 s -> 85.3 min to complete the run
+**.mobileNode[0].mobility.rows = 3 #  d= 2*(7-1) + 3*(12-1) = 45 m
+**.mobileNode[0].mobility.speed = 0.025 mps # 23/0.025 = 920 s -> 30 min to complete the run
 **.mobileNode[0].mobility.debug = true
 **.mobileNode[0].mobility.x = 2
 **.mobileNode[0].mobility.y = 2
@@ -180,12 +176,13 @@ extends = testbed1
 #online phase
 [Config online]
 extends = testbed1
-sim-time-limit = 40 min
+sim-time-limit = 100 min
 **.stats = false
 *.obstacles.obstacles = xmldoc("xml_config_files/config.obstacles-01.xml")
 **.mobileNode[0].app.calibrationMode = false
 **.mobileNode[0].app.minimumStaticNodesForSample = 5
-**.mobileNode[0].app.collectedDataSendingTimePeriod = 40
+**.mobileNode[0].app.collectedDataSendingTimePeriod = 20
+**.mobileNode[0].app.maxPositionPDFsSize = 2
 **.mobileNode[0].mobility.x = 4
 **.mobileNode[0].mobility.y = 4
 **.mobileNode[0].app.firstPosX = 4
@@ -198,13 +195,14 @@ sim-time-limit = 40 min
 **.baseStation[0].app.normalStandardDistribXML = xmldoc("xml_data_files/normalStandard.xml")
 **.baseStation[0].app.useClustering = true
 **.baseStation[0].app.useCenterOfMass = true
-**.baseStation[0].app.usePhySpaceTimeAvg = false
+**.baseStation[0].app.usePhySpaceTimeAvg = true
 **.baseStation[0].app.recordStats = true
 **.baseStation[0].app.maxCenterOfMassPositions = 6 #HORUS VALUE
 **.baseStation[0].app.phySpaceTimeAvgWindowSize = 10 #HORUS VALUE
 **.staticNode[*].app.beaconMode = true
 **.staticNode[*].app.nodeSigStartingTime = 1
 **.staticNode[*].app.nodeSigPeriod = 1
+
 
 \end{ini-code}
 

@@ -9,13 +9,17 @@ Com o intuito de obter uma simulação o mais fidedigna possível, foi necessário a
 
 Grande parte do problema ficou resolvido com o \acs{MiXiM}, no entanto foi necessário encontrar um protocolo de encaminhamento adequado e um sistema de localização que conjuntamente, permitissem criar um sistema completamente funcional de monitorização.
 
-Este trabalho permitiu assim desenvolver uma solução simulada de um sistema de monitorização de pessoas idosas, sem deixar de referenciar o hardware necessário e adquirir um conhecimento alargado do protocolo de encaminhamento \acs{AODV} e do sistema de localização HORUS.
+Este trabalho permitiu assim desenvolver uma solução simulada de um sistema de monitorização de pessoas em ambiente doméstico, sem deixar de referenciar o hardware necessário e permitir a aquisição de um conhecimento alargado do protocolo de encaminhamento \acs{AODV} e do sistema de localização HORUS.
+
+A grande quantidade de temas presentes nesta dissertação tornou impossível desenvolver uma temática mais aprofundada acerca do mecanismo de inteligência artificial que estaria encarregue de analisar a movimentação do idoso e daí inferir conclusões, usando-as para efectuar acções sobre a rede ou comunicar com um sistema externo. Este tema por diversos vezes referido no trabalho relacionado, por si só seria ele mesmo matéria suficiente para uma nova dissertação. 
+
+Neste trabalho optou-se por isso, por construir uma simulação dotada dos mecanismos necessários e suficientes para realizar com sucesso, a monitorização de pessoas idosas num ambiente doméstico de forma simulada, sendo por isso uma base bastante promissora para a criação de novos módulos desenvolvidos no âmbito de outras dissertações. 
 
 Futuramente poderá ser melhorado o protocolo de localização para que deixe de ser necessário existir uma fase \textit{offline}, utilizando-se nós fixos que saibam a sua própria localização e que com isso criem de forma automática e periódica novos mapas rádio sem a necessidade de intervenção.
 
 Outra possibilidade interessante, seria implementar no nó móvel um conjunto de camadas paralelo com rádio bluetooth, ligando assim esse nó também a uma rede \acs{BSN} simulada, o que permitiria recriar no ambiente de trabalho eventos humanos que despoletassem mensagens, como aumento da temperatura ou batimento cardíaco.
 
-O melhoramento do modelo de obstáculos ou até mesmo a utilização de nós reais que permitissem chegar aos parâmetros do modelo utilizado, seria também uma possibilidade interessante de trabalho futuro.
+O melhoramento do modelo de obstáculos ou até mesmo a utilização de nós reais que permitissem chegar aos parâmetros do modelo utilizado, seria também uma possibilidade interessante de trabalho futuro, bem como a inclusão dos efeitos do \textit{fading} nas perdas do sinal.
 
 % Ensure that the next chapter starts in a odd page
 \cleardoublepage

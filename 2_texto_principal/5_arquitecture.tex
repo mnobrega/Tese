@@ -28,7 +28,7 @@ O sistema \acs{EMoS} (Figura \ref{fig:1:emosOverview}) é caracterizado pelos seg
 
 Os nós fixos estão ligados à rede eléctrica e enviam periodicamente  mensagens de assinatura em modo \textit{broadcast}. No caso dos nós \textit{SN8}, \textit{SN9}, \textit{SN12} e \textit{SN13}, pode existir também envio de mensagens para outros nós fixos ou para o nó base. Isto pode acontecer quando por exemplo, é detectado gás no caso do \textit{SN12}, quando é ligado/desligado o fogão no caso do \textit{SN13} ou quando alguém se deita/levanta numa das camas onde estão os sensores \textit{SN8} e \textit{SN9}.
 
-O nó base recebe informação dos nós fixos ou do exterior através da \acs{LAN} e toma decisões com base nessa informação. Pode, por exemplo, avisar num monitor que existe alguma anomalia na casa, enviar uma mensagem para o nó móvel ou para um nó fixo, ou comunicar com o exterior caso seja necessário. 
+O nó base recebe informação dos nós fixos ou do exterior através da \acs{LAN} e toma decisões com base nessa informação. Pode, por exemplo, avisar num monitor que existe alguma anomalia na casa, enviar uma mensagem para o nó móvel ou para um nó fixo, ou comunicar com o exterior caso seja necessário.
 
 O nó móvel pode funcionar em dois modos: calibração e normal. No modo de calibração limita-se a receber assinaturas dos nós fixos e a registar essa informação, gerando um ficheiro XML com o mapa rádio do casa. No modo normal recebe de igual forma as assinaturas, mas periodicamente envia de volta para o nó fixo mais próximo, um conjunto de médias das potências recebidas. O nó fixo por sua vez envia esta informação para o nó base que irá calcular a localização do nó móvel.
 
@@ -43,7 +43,7 @@ Todos os nós formam uma estrutura em \textit{flat-routing} usando o \acs{AODV} p
 
 \clearpage
 
-Neste trabalho foi criada uma camada \textit{Network} comum para todos os nós e uma camada \textit{Application} por cada tipo de nó que implementa cada u dos tipos descritos. Nas próximas secções é feita uma exposição detalhada de todo o sistema.
+Neste trabalho foi criada uma camada \textit{Network} comum para todos os nós e uma camada \textit{Application} por cada tipo de nó que implementa cada um dos tipos descritos. Nas próximas secções é feita uma exposição detalhada de todo o sistema.
 
 \subsection{Nó Móvel (MN)}
 \label{chap:5:sec:1.1}
@@ -52,7 +52,7 @@ O nó móvel é um sensor equipado com rádios \acs{IEEE} 802.15.4 e Bluetooth, um a
 
 A rede \acs{BSN} é composta por um electrocardiógrafo e um medidor de pressão arterial ambos equipados com Bluetooth, que efectuam monitorização contínua. Quando detectam uma situação anómala comunicam a mesma ao nó móvel. Na simulação este comportamento é recreado com um temporizador aleatório no nó móvel que simula a comunicação vinda da \acs{BSN} ao nível da aplicação.
 
-Como solução de hardware sugere-se a utilização do módulo \textit{Waspmote} (Figura \ref{fig:3:waspMote}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:4:waspXBee}), da \textit{Libelium}\footnote{http://www.libelium.com/products/waspmote} que permite a utilização de dois tipos de rádio, tem acelerómetro integrado, micro\acs{SD} e pins para obtenção do \acs{RSSI}. 
+Como solução de hardware sugere-se a utilização do módulo \textit{Waspmote} (Figura \ref{fig:3:waspMote}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:4:waspXBee}), da \textit{Libelium}\footnote{http://www.libelium.com/products/waspmote} que permite a utilização de dois tipos de rádio (Bluetooth para a \acs{BSN} e 802.15.4 para a \acs{WSN}), tem um acelerómetro integrado, micro\acs{SD} e pins para obtenção do \acs{RSSI}. 
 
 \begin{figure}[!htb]
   \centering
@@ -93,6 +93,8 @@ O rádio \textit{XBee} simulado terá os seguintes parâmetros obtidos do  manual  
 
 O nó fixo está equipado com rádio \acs{IEEE} 802.15.4. Ficará ligado à rede eléctrica dada a necessidade de estar periodicamente a enviar assinaturas em \textit{broadcast}. O hardware escolhido para a implementação deste nó será o \textit{MicaZ} com rádio \textit{Texas Instruments CC2420} da \textit{Crossbow}\footnote{http://www.xbow.com/} (Figura \ref{fig:5:micaz}).
 
+\clearpage
+
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.35\textwidth]{img/05_micaz.png}
@@ -124,7 +126,9 @@ O rádio \textit{Texas Instruments CC2420} tem os seguintes parâmetros obtidos do
 \subsection{Nó Base (BN)}
 \label{chap:5:sec:1.3}
 
-O nó base tem como função efectuar toda a gestão centralizada da informação gerada por cada um dos sensores. Dada a grande necessidade de rapidez de processamento, espaço de armazenamento e comunicação com o exterior, optou-se por usar um \acs{PC} ligado a uma \acs{LAN} que está por sua vez ligada à Internet. Assim o hardware para a implementação física deste nó e que fará a ponte entre o \acs{PC} e a rede \acs{WSN}, será o \textit{Waspmote Gateway}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:4:waspXBee}), da \textit{Libelium}. 
+O nó base tem como função efectuar toda a gestão centralizada da informação gerada por cada um dos sensores. Dada a grande necessidade de rapidez de processamento, espaço de armazenamento e comunicação com o exterior, optou-se por usar um \acs{PC} ligado a uma \acs{LAN} que está por sua vez ligada à Internet. Assim o hardware para a implementação física deste nó e que fará a ponte entre o \acs{PC} e a rede \acs{WSN}, será o \textit{Waspmote Gateway}, com rádio \textit{XBee-802.15.4} (Figura \ref{fig:6:waspmoteGateway}), da \textit{Libelium}. Este nó usa o mesmo rádio que o \textit{Waspmote}, com parâmetros para simulação já registados na Tabela \ref{tab:1:xbeeNICParameters}.
+
+\clearpage
 
 \begin{figure}[!htb]
   \centering
@@ -133,9 +137,7 @@ O nó base tem como função efectuar toda a gestão centralizada da informação gera
   \label{fig:6:waspmoteGateway}
 \end{figure}
 
-Este nó usa o mesmo rádio que o \textit{Waspmote}, com parâmetros para simulação já registados na Tabela \ref{tab:1:xbeeNICParameters}.
 
-\clearpage
 
 \section{Camada \textit{Network} : \textit{AODVRoute}}
 \label{chap:5:sec:3}
@@ -317,14 +319,14 @@ Nesta fase o nó móvel recolhe e guarda assinaturas dos nós fixos durante um dete
 
 O nó base contém os ficheiros XML gerados na fase \textit{offline} e como tal possui toda a informação necessária para determinar a probabilidade do nó estar numa determinada posição. Inicialmente a estimativa é discreta (\textit{Discrete-Space Estimator}) e apenas são determinadas posições para o nó móvel que constam no mapa rádio. 
 
-Nesse momento o nó fixo analisa o sinal recebido, verifica se estão presentes um número mínimo de nós fixos e determina a chave da amostra (neste caso os dois nós com maior \acs{RSSI}). Com essa chave obtém o \textit{cluster} correspondente e as posições associadas. Para cada posição é calculada a densidade de probabilidade da distribuição normal (Ver Secção \ref{chap:5:sec:4.2}). A posição com maior valor é a posição obtida à saída do \textit{Discrete-Space Estimator}.
+Nesse momento o nó base analisa o sinal recebido, verifica se estão presentes um número mínimo de nós fixos e determina a chave da amostra (neste caso os dois nós com maior \acs{RSSI}). Com essa chave obtém o \textit{cluster} correspondente e as posições associadas. Para cada posição é calculada a densidade de probabilidade da distribuição normal (Ver Secção \ref{chap:5:sec:4.2}). A posição com maior valor é a posição obtida à saída do \textit{Discrete-Space Estimator}.
 
 Uma vez que existem diversas posições onde o nó móvel poderá estar, que não estão registadas no mapa rádio é necessária uma estimação no espaço contínua. É essa precisamente a função do \textit{Continuous-Space Estimator} que irá através de duas técnicas: centro de massa das posições e média temporal do espaço físico, determinar uma posição estimada da posição real do nó.
 
 \subsection{Modelo Matemático}
 \label{chap:5:sec:4.2}
 
-O sistema \textit{HORUS} é um método probabilístico.Neste trabalho optou-se pela parametrização do sinal recebido, que permite obter uma distribuição normal que se ajusta ao histograma das potências recebidas tal como podemos ver na Figura \ref{fig:23:horusNormal}.
+O sistema \textit{HORUS} é um método probabilístico. Neste trabalho optou-se por parametrizar o sinal recebido o que permite obter uma distribuição normal que se ajusta ao histograma das potências recebidas, tal como podemos ver na Figura \ref{fig:23:horusNormal}. Esta abordagem garante uma continuidade dos valores obtidos.
 
 \begin{figure}[!htb]
   \centering
@@ -356,14 +358,16 @@ onde \begin{math}s_i(j)\end{math} é a amostra \begin{math}j\end{math} provenient
 
 O facto de se aproximar as amostras a uma função densidade de probabilidade permite uma poupança significativa de espaço de armazenamento, uma vez que deixa de ser necessário guardar os valores das potências recebidas. Para cada par (nó,posição) passa por isso a ser necessário guardar apenas a média e desvio padrão da função. Esta abordagem permite também obter valores de probabilidade para potências de sinal que não tenham sido medidas e filtrar possíveis anomalias registadas durante a fase \textit{offline}. 
 
-Na fase \textit{online} é necessário calcular a probabilidade de um nó estar numa determinada posição. Assim é necessário para um vector \begin{math}s=(s_1,...,s_k)\end{math} encontrar a posição \begin{math}x\end{math} que maximiza a probabilidade \begin{math}P(x/s)\end{math}. Para obter esta probabilidade usando a função densidade de probabilidade entretanto guardada recorremos à equação:
+Na fase \textit{online} é necessário calcular a probabilidade de um nó estar numa determinada posição. Para um vector de potências médias de nós estáticos recebidas no nó móvel dado por  \begin{math}s=(s_1,...,s_k)\end{math}, pretende-se encontrar a posição \begin{math}x\end{math} que maximiza a probabilidade \begin{math}P(x/s)\end{math}. Para obter esta probabilidade usando a função densidade de probabilidade registada no \textit{RadioMap} recorremos à equação:
 
 \begin{equation}
-P(s_i/x) =  P(s_i<=0.5) = \int_{s_i-0.5}^{s_i+0.5} fdp(q) dq
+P(s_i<=0.5) = \int_{s_i-0.5}^{s_i+0.5} fdp(q) dq
 \label{eq4}
 \end{equation}
 
-Dado que queremos evitar a utilização de algoritmos numéricos, computacionalmente pesados, para a resolução do integral, transformou-se a função densidade de probabilidade encontrada para cada nó estático, numa função de distribuição normal standard, cujos valores podem ser tabelados. Para efeitos de simulação criou-se por isso, um ficheiro XML que contém os valores necessários.
+onde \begin{math}fdp(q)\end{math} é a função densidade de probabilidade normal determinada na posição \begin{math}x\end{math} dada por \ref{eq1}.
+
+Dado que queremos evitar a utilização de algoritmos numéricos, computacionalmente pesados, para a resolução do integral, transforma-se a função densidade de probabilidade encontrada para cada nó estático, numa função de distribuição normal standard, cujos valores podem ser tabelados. Para efeitos de simulação criou-se por isso, um ficheiro XML que contém os valores necessários e que é carregado no nó base onde é determinada a posição.
 
 Assim sabendo que:
 
@@ -382,10 +386,16 @@ onde com os valores tabelados rapidamente chegamos a um resultado.
 Para um amostra que contenha vários nós estáticos, a probabilidade conjunta é dada pela multiplicação das probabilidades individuais calculadas para cada nó:
 
 \begin{equation}
-P = \prod_{j=1}^{n} P_i
+P = \prod_{i=1}^{n} P_i
 \end{equation}
 
-Obtida uma posição usando o \textit{Discrete-Space Estimator} torna-se necessário ainda usar o \textit{Continous-Space Estimator} para chegar a um valor mais próximo da localização real.
+A posição do \textit{RadioMap} escolhida para é a que tem probabilidade dada por:
+
+\begin{equation}
+argmax_x[P(s/x)]
+\end{equation}
+
+Obtida a posição usando o \textit{Discrete-Space Estimator} torna-se necessário usar o \textit{Continous-Space Estimator} para chegar a um valor mais próximo da localização real, uma vez que no estimador discreto são apenas consideradas posições medidas durante a fase \textit{offline}.
 
 A primeira técnica é o centro de massa de \begin{math}N\end{math} posições obtidas. A posição estimada no espaço contínuo \begin{math}(x,y)\end{math} é obtida a partir das seguintes equações, considerando o espaço bi-dimensional utilizado neste trabalho:
 

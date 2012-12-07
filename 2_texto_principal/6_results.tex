@@ -7,7 +7,7 @@
 
 \section{\textit{Testbed}}
 \label{chap:6:sec:1}
-Por forma a validar os resultados e a simulação desenvolvida, foi necessário criar um cenário de monitorização em ambiente doméstico. No cenário criado foram colocados 9 nós fixos, 1 nó móvel e 1 nó base, com o intuito de monitorizar uma pessoa idosa na sua rotina normal.
+Por forma a validar os resultados e a simulação desenvolvida, foi necessário criar um cenário de monitorização em ambiente doméstico. No cenário criado foram colocados 5 nós fixos, 1 nó móvel e 1 nó base, com o intuito de monitorizar uma pessoa idosa numa rotina normal.
 
 \begin{figure}[!htb]
   \centering
@@ -16,16 +16,16 @@ Por forma a validar os resultados e a simulação desenvolvida, foi necessário cri
   \label{fig:1:testbed}
 \end{figure}
 
-Na Figura \ref{fig:1:testbed} é possível observar os 9 nós, que estão todos interligados. A ligação entre nós nós não se deve ao facto de estarem todos à distância de recepção, embora neste cenário seja o caso das as distâncias consideradas, mas porque no \acs{MiXiM} todos os nós que estejam à distância de interferência consideram-se ligados, mesmo que seja impossível a recepção.
+Na Figura \ref{fig:1:testbed} é possível observar os 7 nós, que estão todos interligados. A ligação entre nós não se deve ao facto de estarem todos à distância de recepção, embora neste cenário seja o caso para as distâncias consideradas, mas porque no \acs{MiXiM} todos os nós que estejam à distância de interferência consideram-se ligados, mesmo que seja impossível a recepção.
 
-O cenário escolhido consiste numa casa com cerca de 93.75 m2 de área (12.5 m x 7.5 m) onde foram colocados obstáculos para cada parede interior, visíveis a vermelho na imagem. O conteúdo do ficheiro de configuração de obstáculos está no Anexo \ref{list:b1}.
+O cenário escolhido consiste numa casa com cerca de 93.75 m2 de área (12.5 m x 7.5 m) onde foram colocados obstáculos para cada parede interior, visíveis como rectângulos vermelhos sobre as paredes na planta da casa. O conteúdo do ficheiro de configuração de obstáculos está no Anexo \ref{list:b1}.
 
 \section{Sistema de Localização}
 \label{chap:6:sec:2}
 
-Para testar o protocolo de localização foi feito um mapa rádio da \textit{testbed} usando o modelo de mobilidade \textit{TractorMobility} tal como indicado no capítulo anterior.
+Para testar o protocolo de localização foi feito um mapa rádio da \textit{testbed} usando o modelo de mobilidade \textit{TractorMobility} tal como indicado no capítulo anterior durante a fase \textit{offline}.
 
-Foi também necessário criar um caminho para o nó móvel para simular uma pessoa em movimento dentro da casa. Criou-se então o cenário de mobilidade da Figura \ref{fig:2:testbedMobility} onde existe um percurso pela casa, em que o nó móvel executa o percurso indicado pelas setas a vermelho, parando durante algum tempo em alguns dos pontos por onde passou.   
+Para a fase \textit{online} foi necessário criar um caminho para o nó móvel para simular uma pessoa em movimento dentro de uma casa. Criou-se desta forma o cenário de mobilidade da Figura \ref{fig:2:testbedMobility} onde existe um percurso em que o nó móvel percorre o caminho indicado pelas setas a vermelho, parando em alguns dos pontos, durante o tempo indicado na figura.
 
 \begin{figure}[!htb]
   \centering
@@ -36,43 +36,78 @@ Foi também necessário criar um caminho para o nó móvel para simular uma pessoa e
 
 O ficheiro criado para o efeito, está disponível no Anexo \ref{list:b2} bem como o ficheiro de configuração da simulação \textit{omnetpp.ini}, no Anexo \ref{list:b3}.
 
-Assim para o mesmo percurso foram feitos diversos testes onde se avaliou o efeito das técnicas de estimação de espaço contínuo.
+Foram feitas diversas simulações, com um tempo máximo de 100 minutos (6000 segundos) usando o percurso dado e com o intuito de demonstrar a influência dos diversos blocos do sistema HORUS na precisão da localização estimada. 
+
+No gráfico da Figura \ref{fig:3:horusPrecision} é possível o efeito da introdução por camadas, das diversas melhorias de estimativa obtidas com o estimador de espaço contínuo e do \textit{clustering}.
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=1\textwidth]{img/06_horus_simple.png}
-  \caption{Erros de estimativa no sistema HORUS sem técnicas de centro de massa e sem média.}
-  \label{fig:3:horusSimple}
+  \includegraphics[width=1\textwidth]{img/06_precision_techniques.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility}.}
+  \label{fig:3:horusPrecision}
 \end{figure}
 
-Podemos observar na Figura \ref{fig:3:horusSimple} a estima de localização ao longo do percurso, obtida a partir do estimador de espaço discreto. Quanto mais próximo o nó móvel está dos pontos que foram anteriormente medidos na fase \textit{offline}, melhores são as estimativas da posição. Na Figura \ref{fig:4:horusCenterMass}, está o resultado da estimação ao longo do percurso efectuado usando a técnica do centro de massa. Observa-se uma melhoria relativamente ao anterior.
+No gráfico, a linha a azul indica os erros obtidos durante o percurso quando é usado apenas o estimador de espaço discreto. Neste estimador é apenas possível obter posições contidas no \textit{RadioMap}, o que provoca um erro elevado que na posição final em que a pessoa está no quarto deitada, permanece nos 5 metros de erro. Adicionando a estimação contínua através da técnica do centro de massa, nota-se desde logo uma melhoria na posição final que com alguns picos, estabiliza com um erro de 1 metro. Posteriormente acrescenta-se a média espaço-temporal (linha a amarelo), que tem um efeito de filtragem removendo da estimativa de posição os picos obtidos, mas que adiciona um atraso na determinação da posição real. Finalmente a introdução do \textit{clustering} por cima das técnicas já aplicadas, permite na posição final obter uma precisão média de 0.5 metro, uma vez que normalmente os nós mais próximos (normalmente parte integrante da chave do \textit{cluster}) permitem desde logo escolher a zona onde o nó móvel terá maior probabilidade de estar, removendo erros de simetria da rede.
+
+Adoptando o resultado final obtido no parágrafo anterior, onde o erro de localização é bastante baixo, são feitos testes para cada uma das técnicas de estimação contínua usadas.
+
+Na Figura \ref{fig:4:centerOfMassEval} é possível observar o efeito da variação do número de nós (N) que são usados para determinar o centro de massa da posição. 
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass.png}
-  \caption{Erros de estimativa no sistema HORUS com centro de massa e sem média.}
-  \label{fig:4:horusCenterMass}
+  \includegraphics[width=1\textwidth]{img/06_center_of_mass_eval.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility} variando o parâmetro N da técnica de centro de massa.}
+  \label{fig:4:centerOfMassEval}
 \end{figure}
 
-Por fim na Figura \ref{fig:5:horusCenterMassMean} vemos o melhor valor de precisão alcançado pelas três simulações, no mínimo do gráfico em questão, mas por outro lado vemos um sistema bastante mais afectado por mudanças súbitas da posição estimada.
-
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass_mean.png}
-  \caption{Erros de estimativa no sistema HORUS com centro de massa e com média.}
-  \label{fig:5:horusCenterMassMean}
-\end{figure}
-
-Outro ponto que pode ser interessante é a taxa com que o nó móvel reúne as assinaturas dos nós fixos e envia tudo para o nó base. Os testes anteriores foram feitos com 15 segundos entre envios. Se for alterado esse valor para 40 s obtemos uma curva bastante mais estável, uma vez que a informação reunida é muito mais semelhante à que está no mapa rádio, dada a correlação existente entre amostras.
-
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=0.9\textwidth]{img/06_horus_center_mass_40s.png}
-  \caption{Erros de estimativa no sistema HORUS com centro de massa e sem média para um tempo de amostragem do nó móvel de t=40s.}
-  \label{fig:5:horus40s}
+  \includegraphics[width=1\textwidth]{img/06_continuous_space_eval.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility} variando o parâmetro K da técnica da média espaço-temporal.}
+  \label{fig:5:continousSpaceEval}
 \end{figure}
 
 \clearpage
+
+É possível observar que os melhores resultados são obtidos para N=6, o que corresponde ao valor mais próxima do número total de nós estáticos na rede.Desta maneira é possível perceber que estabelecendo um perímetro mínimo para o qual o número de nós fixos médio detectados é constante para qualquer posição da casa, conseguimos obter o valor óptimo para N. 
+
+Na Figura \ref{fig:5:continousSpaceEval} é possível observar a variação do número de posições estimadas (K) usadas para calcular a média espaço-temporal. É possível perceber que quanto maior o valor de K maior será o atraso na determinação da posição real, havendo uma diminuição do declive nas mudanças abruptas do erro de localização.
+
+Outro parâmetro que pode também ser estudado é o período de amostragem do nó móvel. Este período representa o tempo para o qual o nó móvel recebe as diversas assinaturas dos nós estáticos que o rodeiam.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/06_sampling_1s.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility} e para um período de amostragem de 1 s.}
+  \label{fig:6:sampling1s}
+\end{figure}
+
+Na Figura \ref{fig:6:sampling1s} é assim possível verificar que quando o período de amostragem é bastante reduzido (1 segundo) a variabilidade da potência recebida é muito maior o que produz um erro de localização igualmente variável como registado na figura referida.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/06_sampling_5s.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility} e para um período de amostragem de 5 s.}
+  \label{fig:7:sampling5s}
+\end{figure}
+
+O aumento do tempo de amostragem para 5 segundos produz já resultados mais definidos e com erros mais constantes, tal como se pode observar na Figura \ref{fig:7:sampling5s}. O erro apresenta uma menor variabilidade oscilando aproximadamente com uma amplitude de 2 metros. Este valor é bem mais aceitável que a variabilidade de 5 metros apresentada na figura anterior. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1\textwidth]{img/06_sampling_20s.png}
+  \caption{Erros de estimativa no sistema HORUS modificado, para o percurso da Figura \ref{fig:2:testbedMobility} e para um período de amostragem de 20 s.}
+  \label{fig:8:sampling20s}
+\end{figure}
+
+Por fim, o valor considerado para este trabalho de 20 segundos, apresenta já uma melhoria muito significativa tal como se pode observar na Figura \ref{fig:8:sampling20s}.
+
+O aumento do tempo de amostragem traduz-se na melhoria do \textit{correlation modeler}, dado que quanto mais amostras de um nó fixo se recolhem num determinado ponto, mais próxima dos valores obtidos no \textit{RadioMap}, a média das potências recebidas estará.
+
+\clearpage
+
+
+
 
 
 % Ensure that the next chapter starts in a odd page

@@ -153,27 +153,27 @@ A potência de um sinal recebido é dada por:
 
 onde \begin{math}P\end{math} é potência, \begin{math}G\end{math} é ganho e \begin{math}L_x\end{math} são os termos que traduzem as perdas. No MiXiM as perdas já são calculadas como descrito na secção anterior pela camada \acs{PHY} mas não contemplam as perdas decorrentes da existência de obstáculos. 
 
-É então sugerido um termo para este tipo de perdas da seguinte forma:
+É então sugerido um termo para este tipo de perdas:
 
 \begin{equation}
 	L_{obs}[dB] = \beta{n} + \gamma{d_m}
 \end{equation}
 
-Os termos \begin{math}\beta{}\end{math} e \begin{math}\gamma{}\end{math} são calculados com base nos resultados obtidos experimentalmente e representam a atenuação por metro e a atenuação por parede respectivamente. Para o trabalho \cite{35} os valores obtidos foram \begin{math}\beta{}\approx{9dB}\end{math} e \begin{math}\gamma{}\approx{0.4dB/m}\end{math}. 
+onde \begin{math}n\end{math} é o número de vezes que a fronteira do obstáculo é atravessado por um segmento de recta entre o emissor e o receptor, \begin{math}d_m\end{math} é a profundidade (em metros) do obstáculo e \begin{math}\beta{}\end{math} e \begin{math}\gamma{}\end{math} são constantes obtidas experimentalmente que representam a atenuação por parede e a atenuação por metro respectivamente. Para o trabalho \cite{35} os valores obtidos foram \begin{math}\beta{}\approx{9dB}\end{math} e \begin{math}\gamma{}\approx{0.4dB/m}\end{math}. 
 
-Devido à não utilização de nós reais neste trabalho, por condicionantes relacionadas com o custo envolvido, que permitissem chegar a valores reais, optou-se por considerar, com base no Tabela \ref{tab:1:attenuationPerInch} do manual da \textit{3Com Wireless Antenas}\footnote{http://www.scribd.com/doc/32613170/3Com\%C2\%AE-Wireless-Antennas}, os seguintes valores:
+Devido à impossibilidade de utilizar nós reais neste trabalho, por condicionantes relacionadas com o custo envolvido, que permitissem chegar a valores realistas, optou-se por considerar, com base no Tabela \ref{tab:1:attenuationPerInch} do manual da \textit{3Com Wireless Antenas}\footnote{http://www.scribd.com/doc/32613170/3Com\%C2\%AE-Wireless-Antennas}, os seguintes valores:
 
 \begin{table}[!htb]
 	\centering
 \begin{tabular}{ |c|c|c|}
 	\hline
-  	Profundidade(cm) & \begin{math}\beta{}\end{math}(dBm)  & \begin{math}\gamma{}\end{math}(m)\\
+  	Profundidade(cm) & \begin{math}\beta{}\end{math}(dB)  & \begin{math}\gamma{}\end{math}(dB/m)\\
   	\hline
-  	20 & 106.3 & 0 \\
-  	10 & 26.575 & 0 \\
+  	20 & 0 & 106.3  \\
+  	10 & 0 & 26.575 \\
   	\hline
 \end{tabular}
-	\caption{Valores de atenuação por metro e por parede usados neste trabalho.}
+	\caption{Valores de atenuação por parede e por metro usados neste trabalho.}
 	\label{tab:1:attenuationValues}
 \end{table}
 
